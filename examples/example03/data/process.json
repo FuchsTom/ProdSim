@@ -1,0 +1,27 @@
+{
+  "order": [
+    {
+      "name": "bolt",
+      "source": "infinite_source",
+      "sink": "bolt_sink",
+      "storage": 5000,
+      "demand": [6],
+      "station": ["forge"],
+      "function": ["forging"]
+    }
+  ],
+  "station": [
+    {
+      "name": "forge",
+      "capacity": 5,
+      "storage": 10
+    }
+  ],
+  "factory": {
+    "number_bolts": ["f",0],
+    "active_machines": ["f",0],
+    "max_active_machines": ["f",0],
+    "current_demand": ["f",0],
+    "function": ["global_control"]
+  }
+}

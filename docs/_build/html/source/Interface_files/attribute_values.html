@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Attribute values &mdash; ProdSim 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Examples" href="../Examples/examples.html" />
+    <link rel="prev" title="Production functions" href="function_file.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> ProdSim
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../API/api.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="interface.html">Interface Files</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="data_file.html">Production structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function_file.html">Production functions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Attribute values</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#user-defined">User defined</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fixed">Fixed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#binary">Binary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#binomial">Binomial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#normal">Normal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uniform">Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#poisson">Poisson</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exponential">Exponential</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lognormal">Lognormal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#chisquare">Chisquare</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#student-t">Student-t</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Examples/examples.html">Examples</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ProdSim</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="interface.html">Interface Files</a> &raquo;</li>
+      <li>Attribute values</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="attribute-values">
+<span id="attr-values"></span><h1>Attribute values<a class="headerlink" href="#attribute-values" title="Permalink to this headline"></a></h1>
+<p>This section presents the possible distributions that can be assigned to the attributes of the simulation objects. A
+distribution is defined in the form of a list. The first element of the list is always a string of length 1, which
+serves as an identifier for the different distributions. The remaining attributes define the specific distribution
+parameters.</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Distribution</p></th>
+<th class="head"><p>Identifier</p></th>
+<th class="head"><p>Parameters</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#user-defined"><span class="std std-ref">User defined</span></a></p></td>
+<td><p>/</p></td>
+<td><p>/</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fix"><span class="std std-ref">Fix</span></a></p></td>
+<td><p>f</p></td>
+<td><p>[“f”, <span class="math notranslate nohighlight">\(\nu\)</span> ]</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#binary"><span class="std std-ref">Binary</span></a></p></td>
+<td><p>b</p></td>
+<td><p>[“b”, <em>p</em> ]</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#binomial"><span class="std std-ref">Binomial</span></a></p></td>
+<td><p>i</p></td>
+<td><p>[“i”, <em>n</em> , <em>p</em> ]</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#normal"><span class="std std-ref">Normal</span></a></p></td>
+<td><p>n</p></td>
+<td><p>[“n”, <span class="math notranslate nohighlight">\(\mu\)</span> , <span class="math notranslate nohighlight">\(\sigma\)</span> ]</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uniform"><span class="std std-ref">Uniform</span></a></p></td>
+<td><p>u</p></td>
+<td><p>[“u”, <em>a</em> , <em>b</em> ]</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#poisson"><span class="std std-ref">Poisson</span></a></p></td>
+<td><p>p</p></td>
+<td><p>[“p”, <span class="math notranslate nohighlight">\(\lambda\)</span> ]</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#exponential"><span class="std std-ref">Exponential</span></a></p></td>
+<td><p>e</p></td>
+<td><p>[“e”, <span class="math notranslate nohighlight">\(\beta\)</span> ]</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#lognormal"><span class="std std-ref">Lognormal</span></a></p></td>
+<td><p>l</p></td>
+<td><p>[“l”, <span class="math notranslate nohighlight">\(\mu\)</span> , <span class="math notranslate nohighlight">\(\sigma\)</span> ]</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#chisquare"><span class="std std-ref">Chisquare</span></a></p></td>
+<td><p>c</p></td>
+<td><p>[“c”, <em>n</em> ]</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#standard-t"><span class="std std-ref">Standard-t</span></a></p></td>
+<td><p>t</p></td>
+<td><p>[“t”, <em>n</em> ]</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+<section id="user-defined">
+<span id="id1"></span><h2>User defined<a class="headerlink" href="#user-defined" title="Permalink to this headline"></a></h2>
+<p>If the desired distribution is not predefined, then the user can define custom distribution functions. Such a function
+is defined in the global scope of the function <a class="reference internal" href="function_file.html#function-file"><span class="std std-ref">input file</span></a>. The function’s name later serves as an
+identifier and thus must have length 1 and not intersect with the predefined ones. Since the return value of such a
+function is assigned to the attributes, the return type must be int or float. However, the defined function can have any
+number of arguments of any type. In the distribution list, the arguments of this function are then passed in the same
+order.</p>
+<p>Example:</p>
+<p>The task is to define the following distribution function, which is not predefined, and then assign it to an attribute.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}P(X=x) = \left\{\begin{array}{ll} \frac{1}{2} &amp; ;x=0.9 \\
+                     \frac{1}{4} &amp; ;x=1.8 \\
+         \frac{1}{8} &amp; ;x=2.9 \\
+         \frac{1}{8} &amp; ;x=6 \\
+         0 &amp; ;else\\
+         \end{array}\right.\end{split}\]</div>
+<p>It is possible to define a function that uses the values shown. Alternatively, a general function is defined that can be
+used to map other arbitrary discrete distributions. For this purpose, x is used as a free identifier and choice from
+numpy.random as distribution. The attributes of the function x are two lists that contain the probabilities and discrete
+values.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">choice</span>
+
+<span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">probabilities</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+   <span class="k">return</span> <span class="n">choice</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">probabilities</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now, this distribution needs to be added to the attribute.</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;attr_1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,[</span><span class="mf">0.9</span><span class="p">,</span><span class="mf">1.8</span><span class="p">,</span><span class="mf">2.9</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.125</span><span class="p">,</span><span class="mf">0.125</span><span class="p">]]</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/distribution_ud.png"><img alt="distribution_normal" class="align-center" src="../../_images/distribution_ud.png" style="width: 45%;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>User-defined distributions are not checked by the inspector.</p>
+</div>
+<hr class="docutils" />
+</section>
+<section id="fixed">
+<span id="fix"></span><h2>Fixed<a class="headerlink" href="#fixed" title="Permalink to this headline"></a></h2>
+<p>The identifier <em>f</em> indicates a fixed attribute value. The second parameter of the list specifies the fixed value
+<span class="math notranslate nohighlight">\(\nu\)</span> that the attribute takes. Like all other attributes, the types <em>int</em> and <em>float</em> are possible. Distribution:</p>
+<p>Distribution:</p>
+<div class="math notranslate nohighlight">
+\[P(x=\nu)=1\ ,\hspace{0.2cm} \nu\in\mathbb{R}\]</div>
+<p>Example:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;prob_of_failure&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mf">4.34</span><span class="p">]</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/distribution_f.png"><img alt="distribution_normal" class="align-center" src="../../_images/distribution_f.png" style="width: 45%;" /></a>
+<p>Overview:</p>
+<table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 15%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Identifier</p></td>
+<td><p>f</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Additional parameter</p></td>
+<td><p><span class="math notranslate nohighlight">\(\nu\)</span></p></td>
+<td><p>Value</p></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>InvalidFormat</p></td>
+<td><p>List does not have length 2</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidType</p></td>
+<td><p><span class="math notranslate nohighlight">\(\nu\)</span> is not of type int or float</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+</section>
+<section id="binary">
+<span id="id2"></span><h2>Binary<a class="headerlink" href="#binary" title="Permalink to this headline"></a></h2>
+<p>The identifier <em>b</em> indicates a binary attribute value. The second element of the list is the probability <em>p</em> that
+the attribute takes the value 1. <em>B(k,p)</em> indicates the probability that an attribute takes the values <em>k</em>, given
+probability <em>p</em>.</p>
+<p>Distribution:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}B(k,p) = \left\{\begin{array}{ll} p^k(1-p)^{1-k} &amp; ;k\in\lbrace0,1\rbrace \\
+                     0 &amp; ;else\end{array}\right.\ ,\hspace{0.2cm} p\in\lbrack0,1\rbrack\end{split}\]</div>
+<p>Example:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;attr_1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="mf">0.2</span><span class="p">]</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/distribution_b.png"><img alt="distribution_binary" class="align-center" src="../../_images/distribution_b.png" style="width: 45%;" /></a>
+<p>Overview:</p>
+<table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 15%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Identifier</p></td>
+<td><p>b</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Additional parameter</p></td>
+<td><p><em>p</em></p></td>
+<td><p>Success probability</p></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>InvalidFormat</p></td>
+<td><p>List does not have length 2</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidType</p></td>
+<td><p><em>p</em> is not of type int or float</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>InvalidValue</p></td>
+<td><p><em>p</em> is not between 0.0 and 1.0</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+</section>
+<section id="binomial">
+<span id="id3"></span><h2>Binomial<a class="headerlink" href="#binomial" title="Permalink to this headline"></a></h2>
+<p>The identifier <em>i</em> indicates a binomial attribute value. The second list element is the number of trails <em>n</em>, while the
+third is the success probability <em>p</em>. <em>B(k,p)</em> indicates the probability that an attribute takes the values <em>k</em>, given
+probability <em>p</em> and the number of trails <em>n</em>.</p>
+<p>Distribution:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}B(k,n,p) = \left\{\begin{array}{ll}\binom{n}{k} p^k(1-p)^{1-k} &amp; ;k\in\lbrace0,..,n\rbrace \\
+                     0 &amp; ;else\end{array}\right.\ ,\hspace{0.2cm} p\in\lbrack0,1\rbrack\end{split}\]</div>
+<p>Example:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;attr_1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;i&quot;</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mf">0.4</span><span class="p">]</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/distribution_i.png"><img alt="distribution_binomial" class="align-center" src="../../_images/distribution_i.png" style="width: 45%;" /></a>
+<p>Overview:</p>
+<table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 15%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Identifier</p></td>
+<td><p>i</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Additional parameter</p></td>
+<td><p><em>n</em></p></td>
+<td><p>Number of trails</p></td>
+</tr>
+<tr class="row-even"><td><p>Additional parameter</p></td>
+<td><p><em>p</em></p></td>
+<td><p>Success probability for each trail</p></td>
+</tr>
+<tr class="row-odd"><td><p>Exceptions</p></td>
+<td><p>InvalidFormat</p></td>
+<td><p>List does not have length 2</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>InvalidType</p></td>
+<td><p><em>n</em> is not of type int</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td><p><em>p</em> is not of type int or float</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>InvalidValue</p></td>
+<td><p><em>n</em> is not greater than zero</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td><p><em>p</em> is not between 0.0 and 1.0</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+</section>
+<section id="normal">
+<span id="id4"></span><h2>Normal<a class="headerlink" href="#normal" title="Permalink to this headline"></a></h2>
+<p>The identifier <em>n</em> indicates a normally distributed attribute. The second list entry corresponds to the mean
+<span class="math notranslate nohighlight">\(\mu\)</span> and the third to the standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
+<p>Distribution:</p>
+<div class="math notranslate nohighlight">
+\[p(x)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\ ;\hspace{0.2cm} x,\mu\in\mathbb{R},\ \sigma\ge 0\]</div>
+<p>Example:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;attr_1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mf">2.5</span><span class="p">]</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/distribution_n.png"><img alt="distribution_normal" class="align-center" src="../../_images/distribution_n.png" style="width: 45%;" /></a>
+<p>Overview:</p>
+<table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 15%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Identifier</p></td>
+<td><p>n</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Additional parameter</p></td>
+<td><p><span class="math notranslate nohighlight">\(\mu\)</span></p></td>
+<td><p>Mean</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><span class="math notranslate nohighlight">\(\sigma\)</span></p></td>
+<td><p>Standard deviation</p></td>
+</tr>
+<tr class="row-odd"><td><p>Exceptions</p></td>
+<td><p>InvalidFormat</p></td>
+<td><p>List does not have length 3</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>InvalidType</p></td>
+<td><p><span class="math notranslate nohighlight">\(\mu\)</span> or <span class="math notranslate nohighlight">\(\sigma\)</span> is not of type int or float</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidValue</p></td>
+<td><p><span class="math notranslate nohighlight">\(\sigma\)</span> is smaller than zero</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+</section>
+<section id="uniform">
+<span id="id5"></span><h2>Uniform<a class="headerlink" href="#uniform" title="Permalink to this headline"></a></h2>
+<p>The identifier <em>u</em> indicates a uniform distributed attribute. The second list parameter <em>a</em> is the lower limit, while
+the third <em>b</em> sets the upper interval limit. The limits can be integers or floating-point numbers.</p>
+<p>Distribution:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}p(x) = \left\{\begin{array}{ll}\frac{1}{b-a} &amp; ;x\in\lbrack b,..,a) \\
+                     0 &amp; ;else\end{array}\right.\ ;\hspace{0.2cm} a,b\in\mathbb{R},\ b&gt;a\end{split}\]</div>
+<p>Example:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;attr_1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">2.34</span><span class="p">]</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/distribution_u.png"><img alt="distribution_normal" class="align-center" src="../../_images/distribution_u.png" style="width: 45%;" /></a>
+<p>Overview:</p>
+<table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 15%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Identifier</p></td>
+<td><p>u</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Additional parameter</p></td>
+<td><p><em>a</em></p></td>
+<td><p>lower bound</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><em>a</em></p></td>
+<td><p>upper bound</p></td>
+</tr>
+<tr class="row-odd"><td><p>Exceptions</p></td>
+<td><p>InvalidFormat</p></td>
+<td><p>List does not have length 3</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>InvalidType</p></td>
+<td><p><em>a</em> or <em>b</em> is not of type float or int</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidValue</p></td>
+<td><p><em>a</em> is greater or equal <em>b</em></p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+</section>
+<section id="poisson">
+<span id="id6"></span><h2>Poisson<a class="headerlink" href="#poisson" title="Permalink to this headline"></a></h2>
+<p>The identifier <em>p</em> indicates a Poisson-distributed attribute. The second list entry determines the rate <span class="math notranslate nohighlight">\(\lambda\)</span>,
+which must be type float or int and greater than or equal to zero. <span class="math notranslate nohighlight">\(P(k,\lambda)\)</span>lambda`.</p>
+<p>Distribution:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}P(k,\lambda) = \left\{\begin{array}{ll}\frac{\lambda^ke^{-\lambda}}{k!} &amp; ;k\in\mathbb{N}_{\ge0} \\
+                     0 &amp; ;else\end{array}\right.\ ,\hspace{0.2cm} \lambda&gt;0\end{split}\]</div>
+<p>Example:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;attr_1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;p&quot;</span><span class="p">,</span><span class="mf">2.1</span><span class="p">]</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/distribution_p.png"><img alt="distribution_normal" class="align-center" src="../../_images/distribution_p.png" style="width: 45%;" /></a>
+<p>Overview:</p>
+<table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 15%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Identifier</p></td>
+<td><p>p</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Additional parameter</p></td>
+<td><p><span class="math notranslate nohighlight">\(\lambda\)</span></p></td>
+<td><p>Rate</p></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>InvalidFormat</p></td>
+<td><p>List does not have length 2</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidType</p></td>
+<td><p><span class="math notranslate nohighlight">\(\lambda\)</span> is not of type float or int</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>InvalidValue</p></td>
+<td><p><span class="math notranslate nohighlight">\(\lambda\)</span> is less than zero</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+</section>
+<section id="exponential">
+<span id="id7"></span><h2>Exponential<a class="headerlink" href="#exponential" title="Permalink to this headline"></a></h2>
+<p>The identifier <em>e</em> indicates an exponential distributed attribute. The second list element is the scale <span class="math notranslate nohighlight">\(\beta\)</span>,
+which can be a positive floating-point number.</p>
+<p>Distribution:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}p(x) = \left\{\begin{array}{ll} \frac{1}{\beta} e^{-\frac{x}{\beta}} &amp; ;x \ge 0 \\
+                     0 &amp; ;else\end{array}\right.\ ,\hspace{0.2cm} \beta\in\mathbb{R}_{&gt;0}\end{split}\]</div>
+<p>Example:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;attr_1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;e&quot;</span><span class="p">,</span><span class="mf">2.5</span><span class="p">]</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/distribution_e.png"><img alt="distribution_normal" class="align-center" src="../../_images/distribution_e.png" style="width: 45%;" /></a>
+<p>Overview:</p>
+<table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 15%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Identifier</p></td>
+<td><p>e</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Additional parameter</p></td>
+<td><p><span class="math notranslate nohighlight">\(\beta\)</span></p></td>
+<td><p>Scale</p></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>InvalidFormat</p></td>
+<td><p>List does not have length 2</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidType</p></td>
+<td><p><span class="math notranslate nohighlight">\(\beta\)</span> is not of type float or int</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>InvalidValue</p></td>
+<td><p><span class="math notranslate nohighlight">\(\beta\)</span> is less or equal to zero</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Often the exponential function is also defined by the rate <span class="math notranslate nohighlight">\(\lambda=\frac{1}{\beta}\)</span>, instead of the scale
+<span class="math notranslate nohighlight">\(\beta\)</span>. For more information see
+<a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.exponential.html">numpy.random.exponential</a>.</p>
+</div>
+<hr class="docutils" />
+</section>
+<section id="lognormal">
+<span id="id8"></span><h2>Lognormal<a class="headerlink" href="#lognormal" title="Permalink to this headline"></a></h2>
+<p>The identifier <em>l</em> indicates a lognormal distributed attribute. The second list entry corresponds to the mean
+<span class="math notranslate nohighlight">\(\mu\)</span> and the third to the standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>; <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> must be of type int
+or float, while <span class="math notranslate nohighlight">\(\sigma\)</span> must also be greater than or equal to zero.</p>
+<p>Distribution:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}p(x) = \left\{\begin{array}{ll} \frac{1}{\sigma x \sqrt{2\pi}}e^{-\frac{(\ln{x}-\mu)^{2}}{2\sigma^{2}}} &amp; ;x &gt; 0 \\
+                     0 &amp; ;else\end{array}\right.\ ,\hspace{0.2cm} \mu\in\mathbb{R},\ \sigma\in\mathbb{R}_{&gt;0}\end{split}\]</div>
+<p>Example:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;attr_1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;l&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">]</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/distribution_l.png"><img alt="distribution_normal" class="align-center" src="../../_images/distribution_l.png" style="width: 45%;" /></a>
+<p>Overview:</p>
+<table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 15%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Identifier</p></td>
+<td><p>l</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Additional parameter</p></td>
+<td><p><span class="math notranslate nohighlight">\(\mu\)</span></p></td>
+<td><p>Mean</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><span class="math notranslate nohighlight">\(\sigma\)</span></p></td>
+<td><p>Standard deviation</p></td>
+</tr>
+<tr class="row-odd"><td><p>Exceptions</p></td>
+<td><p>InvalidFormat</p></td>
+<td><p>List does not have length 3</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>InvalidType</p></td>
+<td><p><span class="math notranslate nohighlight">\(\mu\)</span> or <span class="math notranslate nohighlight">\(\sigma\)</span> is not of type float or int</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidValue</p></td>
+<td><p><span class="math notranslate nohighlight">\(\sigma\)</span> is less than zero</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+</section>
+<section id="chisquare">
+<span id="id9"></span><h2>Chisquare<a class="headerlink" href="#chisquare" title="Permalink to this headline"></a></h2>
+<p>The identifier <em>c</em> indicates a chi-square distributed attribute. The second list entry determines the degrees of freedom
+<em>n</em>, which must be a positive floating-point or integer.</p>
+<p>Distribution:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}p_{n}(x) = \left\{\begin{array}{ll} \frac{1}{2^{\frac{n}{2}}\Gamma(\frac{n}{2})}x^{\frac{n}{2}-1}e^{-\frac{x}{2}} &amp; ;x &gt; 0 \\
+                     0 &amp; ;else\end{array}\right.\ ,\hspace{0.2cm} x\in\mathbb{R},\ n\in\mathbb{R}_{&gt;0}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\Gamma(x)=\int^{-\infty}_{0}t^{x-1}e^{-t}dt\]</div>
+<p>Example:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;attr_1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/distribution_c.png"><img alt="distribution_normal" class="align-center" src="../../_images/distribution_c.png" style="width: 45%;" /></a>
+<p>Overview:</p>
+<table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 15%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Identifier</p></td>
+<td><p>c</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Additional parameter</p></td>
+<td><p><em>n</em></p></td>
+<td><p>Degrees of freedom</p></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>InvalidFormat</p></td>
+<td><p>List does not have length 2</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidType</p></td>
+<td><p><em>n</em> is not of type float or int</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>InvalidValue</p></td>
+<td><p><em>n</em> is less than or equal to zero</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+</section>
+<section id="student-t">
+<span id="standard-t"></span><h2>Student-t<a class="headerlink" href="#student-t" title="Permalink to this headline"></a></h2>
+<p>The identifier <em>t</em> indicates a student-t distributed attribute. The second list entry determines the degrees of freedom
+<em>n</em>, which must be a positive floating-point or integer.</p>
+<p>Distribution:</p>
+<div class="math notranslate nohighlight">
+\[p_n(x)=\frac{\Gamma(\frac{n+1}{2})}{\Gamma(\frac{n}{2})\sqrt{n\pi}}(1+\frac{x^2}{n})^{-\frac{n+1}{2}}\ ,\hspace{0.2cm} x\in\mathbb{R},\ n\in\mathbb{R}_{&gt;0}\]</div>
+<div class="math notranslate nohighlight">
+\[\Gamma(x)=\int^{-\infty}_{0}t^{x-1}e^{-t}dt\]</div>
+<p>Example:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;attr_1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;t&quot;</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/distribution_t.png"><img alt="distribution_normal" class="align-center" src="../../_images/distribution_t.png" style="width: 45%;" /></a>
+<p>Overview:</p>
+<table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 15%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Identifier</p></td>
+<td><p>t</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Additional parameter</p></td>
+<td><p><em>n</em></p></td>
+<td><p>Degrees of freedom</p></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>InvalidFormat</p></td>
+<td><p>List does not have length 2</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidType</p></td>
+<td><p><em>n</em> is not of type float or int</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>InvalidValue</p></td>
+<td><p><em>n</em> is less than or equal to zero</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="function_file.html" class="btn btn-neutral float-left" title="Production functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Examples/examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Tom Fuchs.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

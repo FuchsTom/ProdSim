@@ -1,0 +1,380 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Example 02: Inspect and visualize input data &mdash; ProdSim 0.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Example 04: Plot output data" href="plot_data.html" />
+    <link rel="prev" title="Example 02:" href="example02.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ProdSim
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../API/api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Interface_files/interface.html">Interface Files</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="examples.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="example01.html">Example 01</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example02.html">Example 02:</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Example 02: Inspect and visualize input data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#inspect">Inspect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#visualize">Visualize</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plot_data.html">Example 04: Plot output data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_assembly.html">Example 05: Assembly process</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ProdSim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="examples.html">Examples</a> &raquo;</li>
+        
+      <li>Example 02: Inspect and visualize input data</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="example-02-inspect-and-visualize-input-data">
+<span id="id1"></span><h1>Example 02: Inspect and visualize input data<a class="headerlink" href="#example-02-inspect-and-visualize-input-data" title="Permalink to this headline">¶</a></h1>
+<p>This example shows how the input files defined in <a class="reference internal" href="example01.html#id1"><span class="std std-ref">example 1</span></a> can be inspected for errors and also how
+the modeled process can be visualized on a layout level. These steps should always be performed when a new data set has
+been defined, because the goal of these steps is to check whether all data has been set correctly and the process has
+also been mapped as you imagined it.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="example01.html#inspect"><span class="std std-ref">Inspect</span></a></p></li>
+<li><p><a class="reference internal" href="example01.html#visualize"><span class="std std-ref">Visualize</span></a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this example can be found in the following directory for experimentation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">prodsim</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">example00</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="inspect">
+<span id="inspect1"></span><h2>Inspect<a class="headerlink" href="#inspect" title="Permalink to this headline">¶</a></h2>
+<p>The aim of the insect function, which can be called on the simulation environment, is to find errors in the defined data
+that the user has made when entering the data.</p>
+<p>Since the inspector does not use the raw data, but the already modified data, it can happen that, depending on the
+severity of the error, the program flow is already terminated by exceptions when the simulation environment is created
+(during which the data is also transferred into the internal format).
+One of these errors is for example when functions, items or stations are used that are not defined in the files.</p>
+<p>However, there are also errors that do not lead to exceptions when converting to the internal data format, such as a
+defined function not being a generator function at all or not receiving the correct set of parameters. So that those
+errors do not lead to an exception in the simulation (after possible long runtimes), such ‘soft’ errors are
+identified by the inspector.</p>
+<p>The following code shows how to call the inspector.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">prodsim</span> <span class="kn">import</span> <span class="n">Environment</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="c1"># create new simulation environment</span>
+    <span class="n">env</span><span class="p">:</span> <span class="n">Environment</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">()</span>
+
+    <span class="c1"># read the input files</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">read_files</span><span class="p">(</span><span class="s1">&#39;../data/process_data.json&#39;</span><span class="p">,</span> <span class="s1">&#39;../data/functions.py&#39;</span><span class="p">)</span>
+
+    <span class="c1"># inspect the simulation environment</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">inspect</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>After the Inspector is launched, process bars appear in the console indicating the progress (the process takes a few
+seconds).</p>
+<p>After the process is completed, the console displays an overview of the number of errors. A distinction is made between
+warnings and exceptions.</p>
+<p>For demonstration purposes, the following errors are intentionally introduced into the raw data.</p>
+<ol class="arabic">
+<li><p>Incorrect parameter name of a process function</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">turning</span><span class="p">(</span><span class="n">environment</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">machine</span><span class="p">,</span> <span class="n">factory</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+</li>
+<li><p>Brackets around the demand for a pure edit for the item ‘shaft’</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>...
+&quot;demand&quot;: [[1],[3],10,2,[1,2]],
+&quot;component&quot;: [[],[&quot;gear&quot;],[],[],[&quot;ball_bearing&quot;,&quot;cylindrical_bearing&quot;]],
+...
+</pre></div>
+</div>
+</li>
+</ol>
+<p>The output in this case would look like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>progress station: [====================] 100%  quality_control
+progress item:    [====================] 100%  cylindrical_bearing
+factory:          [====================] 100%  factory
+WARNINGS-------------------
+Traceback (most recent call last):
+  File &quot;prodsim/inspector.py&quot;, line 574, in __inspect_item
+    warnings.warn(&quot;The signature of a process function should be (env, item, station, factory),&quot;
+exception.BadSignature: The signature of a process function should be (env, item, station, factory), but in the
+function &#39;turning&#39; at least one argument has a different name.
+
+EXCEPTIONS-----------------
+Traceback (most recent call last):
+  File &quot;prodsim/prodsim/inspector.py&quot;, line 470, in __inspect_item
+    raise exception.InvalidValue(&quot;The component list of the item at position {pos} in the &quot;
+exception.InvalidValue: The component list of the item at position 1 in the passed file implies that in the process
+step 1 is a machining process takes place, but the demand list implies an assembly.
+
+---------------------------
+Number of Warnings:    1
+Number of Exceptions:  1
+---------------------------
+</pre></div>
+</div>
+<p>You can see that the introduced errors led to a warning and an exception, which did not terminate the program, but were
+caught and displayed in order at the end.
+In the last lines of each error message you will find useful hints how to fix most of the errors.</p>
+<p>Warnings indicate errors that would not cause the simulation to abort, but which violate good assumptions. Thus, each
+warning should also be corrected before the data is used for further purposes.</p>
+<hr class="docutils" />
+</div>
+<div class="section" id="visualize">
+<span id="visualize1"></span><h2>Visualize<a class="headerlink" href="#visualize" title="Permalink to this headline">¶</a></h2>
+<p>After the inspector has checked that the input data is correct, the next step is to display the logistic part of the
+model as a interactive network graph to find structural errors in the modeling.</p>
+<p>The following code shows how to call the inspector.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">prodsim</span> <span class="kn">import</span> <span class="n">Environment</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="c1"># create new simulation environment</span>
+    <span class="n">env</span><span class="p">:</span> <span class="n">Environment</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">()</span>
+
+    <span class="c1"># read the input files</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">read_files</span><span class="p">(</span><span class="s1">&#39;../data/process_data.json&#39;</span><span class="p">,</span> <span class="s1">&#39;../data/functions.py&#39;</span><span class="p">)</span>
+
+    <span class="c1"># visualize the simulation environment</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">visualize</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>A local development app is started on a flask server when the method is called. The corresponding link to it is
+displayed in the command line or output window.</p>
+<p>For the process described above, the graph is as follows. In order not to lose the overview even with large graphs, you
+can zoom in the plot, move the graph and also move individual nodes, if the calculated position is not optimal.</p>
+<a class="reference internal image-reference" href="../../_images/example_02_plain.png"><img alt="Process graph" src="../../_images/example_02_plain.png" style="width: 100%;" /></a>
+<p>It can be seen that each station defined by the user is represented by a node (circle). The set of nodes is completed by
+one node per workpiece (triangle), which represents the final memory where the workpieces are stored at the end of the
+process.</p>
+<p>The flow of workpieces through the system is represented by directed cant between nodes. For example, the process for
+the gears starts at the grinding machine and ends at the final node ‘gear-store’.
+In addition, there are dashed lines, which always point from end nodes (triangle) to stations nodes (circle). These
+point to an assembly process and indicate which workpieces (from the end store) flow to an assembly process. For
+example, it can be seen that ‘gear’, ‘ball_bearing’ and ‘cylindrical_bearing’ are needed in the assembly station for
+assembly. Furthermore, the splice in the process chain of the item type ‘shaft’ can also be recognized.</p>
+<p>In order not to lose the overview also with large strongly branched graph you can select in the app in a dropdown menu
+one of the defined item types, then the appropriate path of these workpieces (including the start and end node and all
+end stations of assembly objects) is marked red. In the following the item type ‘gear’ is selected.</p>
+<a class="reference internal image-reference" href="../../_images/example_02_gear_assembly.png"><img alt="Process graph - selected: shaft + assembly" src="../../_images/example_02_gear_assembly.png" style="width: 100%;" /></a>
+<p>In addition, there are two tables that display different contents depending on the selected data. If you select an item
+in the dropdown menu, then you get all the information belonging to the item displayed in the table. If you select not
+only an item, but also a node (by clicking on it in the graph), you will also get information about the node. This
+information can be differentiated into two groups. One is the information that is independent of an item (like, for
+example, the name of the node or the capacity) and the other is information that is dependent on the selected item. For
+example, the attribute ‘function’ or ‘demand’ of a node depends on the selected item.</p>
+<p>Since the item ‘gear’ and the node ‘assembly’ have been selected in the picture above, no attributes ‘function’ or
+‘demand’ are displayed in the table of the station, since workpieces of the type Gear are not processed at the station
+assembly.</p>
+<p>However, if you select the item type ‘shaft’ next to the ‘assembly’ state (see picture below), then the items will
+indeed be processed on the selected node.</p>
+<a class="reference internal image-reference" href="../../_images/example_02_shaft_assembly.png"><img alt="Process graph - selected: shaft + assembly" src="../../_images/example_02_shaft_assembly.png" style="width: 100%;" /></a>
+<p>As you can see in the picture, you get more entries in the corresponding table. ‘function’ is a list, which shows all
+functions executed at this station on the selected item. It must be a list, because loops are allowed. In addition,
+there are other lines that represent the demand of this station. Since it is a station where an assembly is performed,
+there is not only one entry for ‘shaft’. Also here it concerns in each case lists, in order to be able to represent
+loops.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It should be noted that in the case of a triple (or higher) number of loops, it is not possible to reconstruct the
+actual progression of the items through the process, since it is not possible to know in which order the loops are
+run through. Therefore, the raw data must always be kept in mind.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="plot_data.html" class="btn btn-neutral float-right" title="Example 04: Plot output data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="example02.html" class="btn btn-neutral float-left" title="Example 02:" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Tom Fuchs.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

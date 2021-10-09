@@ -1,0 +1,124 @@
+.. _attr_values:
+
+Attribute values
+----------------
+
+The following section gives an overview of the different characteristics that the user can give to a custom attribute.
+The syntax is always the same, because a list is passed, which has an identifier at the first position, which determines
+the type. The following elements define the concrete characteristic or distribution depending on the type.
+
+* :ref:`Binary <binary>`
+* :ref:`Normal <normal>`
+* :ref:`Fix <fix>`
+
+....
+
+.. _binary:
+
+Binary
+******
+
+To signal that an attribute should be binary distributed the identifier "b" must be used as the first argument in the
+passed list. The second parameter specifies as a float the probability that the attribute takes the value 1.
+
+.. code-block:: JSON
+
+   "roasted": ["b",0.03]
+   "cracked": ["b",0.012]
+
+.. list-table:: Overview: binary
+   :header-rows: 1
+
+   * - Aspect
+     - Value
+     - Explanation
+   * - Identifier
+     - "b"
+     -
+   * - Additional parameter
+     - probability
+     - Probability that the value will be 1
+   * - Exceptions
+     - InvalidFormat
+     - List does not have length 2
+   * -
+     - InvalidType
+     - Second parameter is not a float
+   * -
+     - InvalidValue
+     - Second parameter is not between 0.0 and 1.0
+
+....
+
+.. _normal:
+
+Normal
+******
+
+To signal that an attribute should be normal distributed the identifier "n" must be used as the first argument in the
+passed list. The second parameter determines the mean value and the third the standard deviation. These additional
+parameters can be integers or floats, where the standard deviation must be greater than or equal to zero.
+
+.. code-block:: JSON
+
+   "surface_quality": ["n",1,0.05]
+   "weight": ["n",130.5,1]
+
+.. list-table:: Overview: normal
+   :header-rows: 1
+
+   * - Aspect
+     - Value
+     - Explanation
+   * - Identifier
+     - "n"
+     -
+   * - Additional parameter
+     - mean
+     - Type int oder float
+   * -
+     - standard deviation
+     - Type int oder float
+   * - Exceptions
+     - InvalidFormat
+     - List does not have length 3
+   * -
+     - InvalidType
+     - Additional parameters are not float or int
+   * -
+     - InvalidValue
+     - Standard deviation is less than 0
+
+....
+
+.. _fix:
+
+Fix
+***
+
+To signal that an attribute should be a fix value the identifier "f" must be used as the first argument in the passed
+list. The second parameter determines value the this attribute should have. Accepted types are integers and floats.
+
+.. code-block:: JSON
+
+   "prob_of_failure": ["f",0.01]
+   "min_strength": ["f",920]
+
+.. list-table:: Overview: fix
+   :header-rows: 1
+
+   * - Aspect
+     - Value
+     - Explanation
+   * - Identifier
+     - "f"
+     -
+   * - Additional parameter
+     - value
+     - Type int oder float
+   * - Exceptions
+     - InvalidFormat
+     - List does not have length 2
+   * -
+     - InvalidType
+     - Value is not float or int

@@ -1,0 +1,21 @@
+{
+  "order": [
+    {
+      "name": "item1",
+      "source": "source1",
+      "station": ["station1","station2"],
+      "function": ["function1","function2"],
+      "storage": 10
+    }
+  ],
+  "station": [
+    {
+      "name": "station1",
+      "storage": 10
+    },
+    {
+      "name": "station2",
+      "storage": 10
+    }
+  ]
+}

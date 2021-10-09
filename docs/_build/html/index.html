@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Overview &mdash; ProdSim 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Reference" href="source/API/api.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="#" class="icon icon-home"> ProdSim
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="source/API/api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/Interface_files/interface.html">Interface Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/Examples/examples.html">Examples</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">ProdSim</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li>Overview</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <a class="reference internal image-reference" href="_images/logo.png"><img alt="logo" src="_images/logo.png" style="width: 100%;" /></a>
+<hr class="docutils" />
+<section id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h1>
+<p>ProdSim is a process-based discrete event simulation for production environments based on the
+<a class="reference external" href="https://simpy.readthedocs.io/en/latest/">SimPy</a> framework. The package is designed to generate large high-resolution
+synthetic production data sets.</p>
+<p>The characteristics of a production system are represented by three system components, namely machines, workpieces, and
+a factory. These components interact with one another on the following three system layers:</p>
+<ul class="simple">
+<li><p>logistics</p></li>
+<li><p>stations</p></li>
+<li><p>processes</p></li>
+</ul>
+<p>The bottom level, namely the process level, models elementary assembly or machining operations in which the properties
+and behavior of the system components can be influenced. The middle level, namely the station level, maps the system’s
+buffer stores and groups machines together into stations according to a workshop or line production. At the top level,
+namely the layout level, workpieces are created by sources and removed by sinks. In addition, the material flow of
+workpieces through the production process is described.</p>
+<p>Users must define production processes in two input files. In a JSON file, all orders, stations, and the factory are
+defined. In a Python script, the users specify the assembly and processing functions, the behavior of the sources and
+sinks, as well as global functions and user-defined distributions for attribute values.</p>
+<p>Additionally, the package offers functionalities for the visualization of passed production processes, verification of
+input files, and methods for estimating the simulation runtime</p>
+<p>The following code displays the typical usage of the package:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">prodsim</span> <span class="kn">import</span> <span class="n">Environment</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+
+    <span class="c1"># Create simulation Environment</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">()</span>
+
+    <span class="c1"># Read the input files</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">read_files</span><span class="p">(</span><span class="s1">&#39;./data/process.json&#39;</span><span class="p">,</span> <span class="s1">&#39;./data/function.py&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Inspect and visualize the input data (optional)</span>
+    <span class="c1"># env.inspect()</span>
+    <span class="c1"># env.visualize()</span>
+
+    <span class="c1"># Start the simulation</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">sim_time</span><span class="o">=</span><span class="mi">10_000</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_memory</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">bit_type</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+
+    <span class="c1"># export the output data</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">data_to_csv</span><span class="p">(</span><span class="s2">&quot;./data/output/&quot;</span><span class="p">,</span> <span class="n">remove_column</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;item_id&#39;</span><span class="p">],</span> <span class="n">keep_original</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>How this documentation should be used:</p>
+<p>The <a class="reference internal" href="source/API/api.html#api"><span class="std std-ref">API Reference</span></a> chapter provides an overview of all methods and their attributes as well as the
+corresponding data types. The  <a class="reference internal" href="source/Interface_files/interface.html#interface"><span class="std std-ref">Interface Files</span></a> chapter describes the structure to be followed by the
+input files. These two chapters are designed as a reference for specific content. In the final
+<a class="reference internal" href="source/Examples/examples.html#examples"><span class="std std-ref">Examples</span></a> chapter, examples are chronologically matched to the later simulation study and contain all
+elementary features of the package. Since some modeling techniques are also explained, studying these examples is
+recommended before conducting one’s own simulation study.</p>
+</section>
+<hr class="docutils" />
+<section id="table-of-contents">
+<h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="source/API/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="source/API/api.html#environment"><code class="docutils literal notranslate"><span class="pre">Environment</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/API/api.html#estimator"><code class="docutils literal notranslate"><span class="pre">Estimator</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="source/Interface_files/interface.html">Interface Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="source/Interface_files/data_file.html">Production structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/Interface_files/function_file.html">Production functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/Interface_files/attribute_values.html">Attribute values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="source/Examples/examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="source/Examples/example01.html">Example 01: Gearbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/Examples/example02.html">Example 02: Shaft</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/Examples/example03.html">Example 03: Bolt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/Examples/example04.html">Example 04: Toy figure</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="source/API/api.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Tom Fuchs.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,472 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Example 01: Create input files &mdash; ProdSim 0.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Example 02: Inspect and visualize input data" href="example_inspect_visualize.html" />
+    <link rel="prev" title="Examples" href="examples.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ProdSim
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../API/api.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="examples.html">Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Example 01: Create input files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stations">Stations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#items">Items</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#factory">Factory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="example_inspect_visualize.html">Example 02: Inspect and visualize input data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_output_data.html">Example 03: Start simulation and create output data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_data.html">Example 04: Plot output data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Interface_files/interface.html">Interface Files</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ProdSim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="examples.html">Examples</a> &raquo;</li>
+        
+      <li>Example 01: Create input files</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="example-01-create-input-files">
+<span id="example-1"></span><h1>Example 01: Create input files<a class="headerlink" href="#example-01-create-input-files" title="Permalink to this headline">¶</a></h1>
+<p>In this example, a textual description of a sample process is converted into a formal structure, which can be passed to
+the program as an input file. This step is necessary for every simulation, because without appropriate files no
+simulation environment could be created. At the end of this example an .json file containing the process data and a .py
+file containing all the functions are created.</p>
+<p>A gear shaft serves as an example here, which must first be machined. Gear wheels are then assembled in an initial
+assembly process. Before bearings can be mounted in a further assembly process, the shaft with the gears must first heat
+treated and undergo quality control. The bearings are supplied externally and mounted as delivered, while the gears must
+first be ground.</p>
+<p>To map this process, the following content-related sub-aspects are considered.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../Interface_files/data_file.html#station"><span class="std std-ref">Stations</span></a></p></li>
+<li><p><a class="reference internal" href="../Interface_files/data_file.html#item"><span class="std std-ref">Items</span></a></p></li>
+<li><p><a class="reference internal" href="#factory"><span class="std std-ref">Factory</span></a></p></li>
+<li><p><a class="reference internal" href="#function-ex"><span class="std std-ref">Functions</span></a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The example does not claim to represent a real existing process, but aims to show as many facets as possible.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In the following, a file example is given separately for each of the three top-level attributes. It should be noted
+that the later input file combines all these three attributes into one large top-level object.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="stations">
+<span id="station"></span><h2>Stations<a class="headerlink" href="#stations" title="Permalink to this headline">¶</a></h2>
+<p>First, the stations that occur in the process are described, as these form the basis for the later process. Each station
+must have at least the attribute <code class="docutils literal notranslate"><span class="pre">name</span></code>, which must be chosen in such a way that there is no name collision, otherwise
+no clear assignment can be made. In addition, each station has the attribute <code class="docutils literal notranslate"><span class="pre">capacity</span></code>, which indicates the number of
+equivalent machines in the station. If this attribute is not set, it is assumed to be one. The attribute <code class="docutils literal notranslate"><span class="pre">storage</span></code> is
+also optional and specifies the capacity of the buffer memory in front of the station, which is infinite by default.
+All other <code class="docutils literal notranslate"><span class="pre">attributes</span></code> that are set by the user represent physical properties of the station itself. The characteristics
+of these attributes can take on different distributions (<a class="reference internal" href="../Interface_files/attribute_values.html#attr-values"><span class="std std-ref">distributions</span></a>), which describe the state
+of the characteristics at the beginning of the simulation.</p>
+<p>Since this structure is the same for all stations, the first station in the process ‘lathe’ is described in detail here
+and all others are only listed below.</p>
+<p>Since there is only one station with lathes in this process, the <code class="docutils literal notranslate"><span class="pre">name</span></code> lathe can be used. Assume that there are 2
+actual machines in the lathe station. So that the <code class="docutils literal notranslate"><span class="pre">capacity</span></code> differs from the default value and can be set to two. All
+of these machines have the same attributes, but of course each machine has its own characteristics of these attributes,
+which are individually determined for each machine during machining. If, on the other hand, you want to map two lathes
+that have different attributes, then you simply have to define two stations. It should be noted, however, that one must
+then also clearly define which of these machines will be visited by the workpiece, because in the case of a station with
+two machines, a possible free machine is always selected by itself. Since a separate source is to be defined later, it
+is advisable to define a <code class="docutils literal notranslate"><span class="pre">storage</span></code> for the buffer store, because otherwise an extremely large number of objects will
+accumulate if the processing time is greater than the interval in which new objects enter the system. The capacity is
+set here to twenty units as an example. If this buffer store full, the source, or upstream stations can only store new
+objects again when the machine has taken an object from the buffer. Finally, some physical <code class="docutils literal notranslate"><span class="pre">attributes</span></code> of the machine
+can be defined, which can be referenced later in the process function. Lathes of this station should have the attribute
+‘wear’, which is initially zero. In addition, each lathe has an eccentricity, which is normal distributed around the
+mean value 0 with a standard deviation of 0.5.</p>
+<p>Of course, lathes have many other properties, but only those that are relevant for the process should be defined here.</p>
+<p>For this particular machine, the following results:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;lathe&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;capacity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="nt">&quot;storage&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+  <span class="nt">&quot;wear&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+  <span class="nt">&quot;eccentricity&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This set of attributes now describes the station for the lathes. Each of these sets represents an station object. To
+describe all stations all these objects are written into the list <code class="docutils literal notranslate"><span class="pre">station</span></code>, which is an attribute of the top-level
+object in the json file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The order of attributes in objects is arbitrary</p>
+</div>
+<p>Thus, for the process described above, the following could result:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;station&quot;</span><span class="p">:</span> <span class="p">[</span>
+     <span class="p">{</span>
+       <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;lathe&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;capacity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+       <span class="nt">&quot;storage&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+       <span class="nt">&quot;wear&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+       <span class="nt">&quot;eccentricity&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">]</span>
+     <span class="p">},</span>
+     <span class="p">{</span>
+       <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;assembly&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;capacity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+       <span class="nt">&quot;storage&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+       <span class="nt">&quot;mistake_rate&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mf">0.01</span><span class="p">]</span>
+     <span class="p">},</span>
+     <span class="p">{</span>
+       <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;grinding_machine&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;wear&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+       <span class="nt">&quot;lubricant_purity&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="mf">0.99</span><span class="p">,</span><span class="mf">0.01</span><span class="p">]</span>
+     <span class="p">},</span>
+     <span class="p">{</span>
+       <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;heat_treatment&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;temperature&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="mi">1200</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
+       <span class="nt">&quot;atmosphere_CO2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mf">0.8</span><span class="p">],</span>
+       <span class="nt">&quot;atmosphere_N2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mf">0.1</span><span class="p">]</span>
+     <span class="p">},</span>
+     <span class="p">{</span>
+       <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;quality_control&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;detection_rate&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mf">0.98</span><span class="p">]</span>
+     <span class="p">}</span>
+   <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+</div>
+<div class="section" id="items">
+<span id="item"></span><h2>Items<a class="headerlink" href="#items" title="Permalink to this headline">¶</a></h2>
+<p>After defining the stations, which determine the rough structure of the process, it is recommended to define the actual
+workpieces. An item type receives all the information that it would receive in a real process in the form of a
+production card. Like the stations, the item types must also have unique <code class="docutils literal notranslate"><span class="pre">names</span></code> in order to be identified in the process.
+To describe the stations and the order in which a workpiece of this type passes through, there is a list <code class="docutils literal notranslate"><span class="pre">station</span></code>
+which contains the names of the stations in the order in which they are passed through. Each of these stations must
+itself also be defined in the .json file. If no list of stations is specified, then it is a workpiece that comes from
+outside and is only introduced into the process because it is part of an assembly process. At each defined station a
+function is executed, which must be defined by the user. The list <code class="docutils literal notranslate"><span class="pre">function</span></code> contains the names of these functions in
+the appropriate order to the list station. Therefore both lists must always have the same length. Finally, the demand
+quantities and the objects in the case of an assembly must be defined. Each station has a demand for objects that it
+needs to run once. This information is stored in the list <code class="docutils literal notranslate"><span class="pre">demand</span></code>, which of course must have the length of the
+station list. If a simple machining is mapped, the list at the corresponding index position contains the quantity as
+int. If, on the other hand, an assembly occurs, then demand contains a list which contains the quantity of the objects
+to be assembled. It should be noted that only one main workpiece is ever used in an assembly, to which any number of
+workpieces of other types can be assembled. In order to specify which item types are to be mounted in case of an
+assembly, there is the list <code class="docutils literal notranslate"><span class="pre">component</span></code>, which again has the same length as the list station. In the case of a simple
+machining it simply contains an empty list at the corresponding index position. In case of an assembly it contains a
+list with the names of the parts to be assembled at the position. In addition, each workpiece has a <code class="docutils literal notranslate"><span class="pre">priority</span></code> which
+becomes relevant when multiple workpieces request a scarce resource. The priority must be a positive integer, where
+small corresponds to a higher priority (the default value is 10). The <code class="docutils literal notranslate"><span class="pre">storage</span></code> describes the storage capacity of the
+end storage where finished workpieces of that type are stored before being removed from the sink or an assembly process.
+Finally, there are the <code class="docutils literal notranslate"><span class="pre">source</span></code> and <code class="docutils literal notranslate"><span class="pre">sink</span></code>, which are string representations of corresponding functions.</p>
+<p>The process described above consists of 4 different item types. The shaft, the gears and two different bearings. It may
+be that the gears have different diameters, for example, but if this fact is not relevant to the process, the three
+different gears can be modeled as one item type.</p>
+<p>All workpieces can be separated into three different mental categories. Workpieces which are assembled and/or machined,
+workpieces which are only machined and those which are machined or assembled and only workpieces which are delivered
+externally and then assembled.</p>
+<p>In this example, the shaft represents a workpiece that is both machined and assembled. Since this is the most general
+case, the procedure is described in more detail on the basis of the shaft.</p>
+<p>Since there is only one type of shaft, the <code class="docutils literal notranslate"><span class="pre">name</span></code> ‘shaft’ is appropriate. As described above, the shaft visits the
+stations ‘lathe’, ‘assembly’, ‘heat_treatment’, ‘quality_control’ and again ‘assembly’ in this order. This is stored in
+the list <code class="docutils literal notranslate"><span class="pre">station</span></code>. The functions are stored in exactly the same structure in the <code class="docutils literal notranslate"><span class="pre">function</span></code> list. For the
+<code class="docutils literal notranslate"><span class="pre">demand</span></code>, assume that the lathe always processes exactly one shaft at a time, while the heat_treatment always
+processes ten units and the quality_control always processes two units at a time. The first assembly step requires three
+gears and the second assembly step requires one ball bearing and two cylindrical bearings as a <code class="docutils literal notranslate"><span class="pre">component</span></code>. Since
+there are no competing types for resources here, the <code class="docutils literal notranslate"><span class="pre">priority</span></code> for all workpieces can be left at the default value.
+Also the final store should not be of interest here, so its <code class="docutils literal notranslate"><span class="pre">storage</span></code> is left at the default value (infinite) and
+also the default <code class="docutils literal notranslate"><span class="pre">sink</span></code> is used. The attribute <code class="docutils literal notranslate"><span class="pre">source</span></code> is assigned the name of the source function to be defined
+later. All other <code class="docutils literal notranslate"><span class="pre">attributes</span></code> differing from the reacted terms represent the core physical properties of the wave.</p>
+<p>This description can be translated as follows:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;shaft&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;station&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;lathe&quot;</span><span class="p">,</span><span class="s2">&quot;assembly&quot;</span><span class="p">,</span><span class="s2">&quot;heat_treatment&quot;</span><span class="p">,</span><span class="s2">&quot;quality_control&quot;</span><span class="p">,</span><span class="s2">&quot;assembly&quot;</span><span class="p">],</span>
+  <span class="nt">&quot;function&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;turning&quot;</span><span class="p">,</span><span class="s2">&quot;assembly_gear&quot;</span><span class="p">,</span><span class="s2">&quot;heating&quot;</span><span class="p">,</span><span class="s2">&quot;quality_check&quot;</span><span class="p">,</span><span class="s2">&quot;assembly_bearing&quot;</span><span class="p">],</span>
+  <span class="nt">&quot;demand&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,[</span><span class="mi">3</span><span class="p">],</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]],</span>
+  <span class="nt">&quot;component&quot;</span><span class="p">:</span> <span class="p">[[],[</span><span class="s2">&quot;gear&quot;</span><span class="p">],[],[],[</span><span class="s2">&quot;ball_bearing&quot;</span><span class="p">,</span><span class="s2">&quot;cylindrical bearing&quot;</span><span class="p">]],</span>
+  <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;shaft_source&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;length&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mf">0.02</span><span class="p">],</span>
+  <span class="nt">&quot;diameter_1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mf">0.08</span><span class="p">],</span>
+  <span class="nt">&quot;diameter_2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mf">0.02</span><span class="p">],</span>
+  <span class="nt">&quot;surface_quality&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="mf">1.2</span><span class="p">,</span><span class="mf">0.1</span><span class="p">],</span>
+  <span class="nt">&quot;hardness&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mi">650</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Of course, each item type that appears in the <code class="docutils literal notranslate"><span class="pre">component</span></code> list must also be defined. As with the stations, each item
+type represents an object. All types together are stored in the list/array <code class="docutils literal notranslate"><span class="pre">item</span></code>, which is a top-level attribute.
+This results in:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;item&quot;</span><span class="p">:</span> <span class="p">[</span>
+     <span class="p">{</span>
+       <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;shaft&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;station&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;lathe&quot;</span><span class="p">,</span><span class="s2">&quot;assembly&quot;</span><span class="p">,</span><span class="s2">&quot;heat_treatment&quot;</span><span class="p">,</span><span class="s2">&quot;quality_control&quot;</span><span class="p">,</span><span class="s2">&quot;assembly&quot;</span><span class="p">],</span>
+       <span class="nt">&quot;function&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;turning&quot;</span><span class="p">,</span><span class="s2">&quot;assembly_gear&quot;</span><span class="p">,</span><span class="s2">&quot;heating&quot;</span><span class="p">,</span><span class="s2">&quot;quality_check&quot;</span><span class="p">,</span><span class="s2">&quot;assembly_bearing&quot;</span><span class="p">],</span>
+       <span class="nt">&quot;demand&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,[</span><span class="mi">3</span><span class="p">],</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]],</span>
+       <span class="nt">&quot;component&quot;</span><span class="p">:</span> <span class="p">[[],[</span><span class="s2">&quot;gear&quot;</span><span class="p">],[],[],[</span><span class="s2">&quot;ball_bearing&quot;</span><span class="p">,</span><span class="s2">&quot;cylindrical bearing&quot;</span><span class="p">]],</span>
+       <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;shaft_source&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;length&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mf">0.02</span><span class="p">],</span>
+       <span class="nt">&quot;diameter_1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mf">0.08</span><span class="p">],</span>
+       <span class="nt">&quot;diameter_2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mf">0.02</span><span class="p">],</span>
+       <span class="nt">&quot;surface_quality&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="mf">1.2</span><span class="p">,</span><span class="mf">0.1</span><span class="p">],</span>
+       <span class="nt">&quot;hardness&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mi">650</span><span class="p">]</span>
+     <span class="p">},</span>
+     <span class="p">{</span>
+       <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;gear&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;station&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;grinding_machine&quot;</span><span class="p">],</span>
+       <span class="nt">&quot;function&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;gear_grinding&quot;</span><span class="p">],</span>
+       <span class="nt">&quot;storage&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+       <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;gear_source&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;inner_diameter&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mf">0.03</span><span class="p">],</span>
+       <span class="nt">&quot;hardness&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mi">1200</span><span class="p">]</span>
+     <span class="p">},</span>
+     <span class="p">{</span>
+       <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ball_bearing&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;storage&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+       <span class="nt">&quot;crack&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="mf">0.01</span><span class="p">],</span>
+       <span class="nt">&quot;roasted&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="mf">0.005</span><span class="p">],</span>
+       <span class="nt">&quot;inner_diameter&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mf">0.01</span><span class="p">]</span>
+     <span class="p">},</span>
+     <span class="p">{</span>
+       <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;cylindrical_bearing&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;storage&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+       <span class="nt">&quot;crack&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="mf">0.02</span><span class="p">],</span>
+       <span class="nt">&quot;inner_diameter&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mf">0.01</span><span class="p">],</span>
+       <span class="nt">&quot;outer_diameter&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mf">0.2</span><span class="p">]</span>
+     <span class="p">}</span>
+   <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>It should be noted that each workpiece automatically gets the attribute <code class="docutils literal notranslate"><span class="pre">reject</span></code>, which can be accessed in the process
+functions. This attribute determines whether a workpiece is to be removed from production after a process.
+Also, it is pointed out that the bearings here are supposed to represent external components, since unlike the gears,
+they do not have stations or similar as attributes. To see all parameters and their default values see:
+<a class="reference internal" href="../Interface_files/interface.html#interface"><span class="std std-ref">Interface file</span></a>.</p>
+<hr class="docutils" />
+</div>
+<div class="section" id="factory">
+<span id="id1"></span><h2>Factory<a class="headerlink" href="#factory" title="Permalink to this headline">¶</a></h2>
+<p>Factory provides a global variable space. The purpose of this is to introduce variables that are not tied to a specific
+machine or workpiece, but are available for each process to define the process function. In addition, global functions
+can also be defined here.
+In this example there should be three global parameters and one global function. Let us assume that the production
+process takes place in two halls and that each of these halls has its own temperature which can influence the processes.
+In addition, there is a variable, which should track the total power consumption. These attributes are also written into
+an object, as with the stations and items, with the difference that this object is now an attribute at the top level in
+the .json file, since there is only one of these objects and therefore no list is necessary.
+The global function has the purpose to control the course of the temperatures.</p>
+<p>Thus, for the top-level:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;factory&quot;</span><span class="p">:</span>
+     <span class="p">{</span>
+       <span class="nt">&quot;function&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;temperature_course&quot;</span><span class="p">],</span>
+       <span class="nt">&quot;temperature_1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mi">23</span><span class="p">],</span>
+       <span class="nt">&quot;temperature_2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mi">20</span><span class="p">],</span>
+       <span class="nt">&quot;energy_usage&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+     <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+</div>
+<div class="section" id="functions">
+<span id="function-ex"></span><h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<p>Now that the entire process has been described on a logistics level, the individual processes on the machine level still
+need to be represented. This is done by means of a .py input file, in which the corresponding functions are defined in
+the global scope. It is important that each function defined in the item attribute ‘function’ is also defined in the
+file.</p>
+<p>Here we will not go into the exact design of these functions, as this has already been done in the function file
+<a class="reference internal" href="../Interface_files/function_file.html#function-file"><span class="std std-ref">description</span></a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="example_inspect_visualize.html" class="btn btn-neutral float-right" title="Example 02: Inspect and visualize input data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="examples.html" class="btn btn-neutral float-left" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Tom Fuchs.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

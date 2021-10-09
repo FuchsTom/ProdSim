@@ -1,0 +1,491 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Example 05: Assembly process &mdash; ProdSim 0.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Example 04: Plot output data" href="plot_data.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ProdSim
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../API/api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Interface_files/interface.html">Interface Files</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="examples.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="example_setup.html">Example 01</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_inspect_visualize.html">Example 02: Inspect and visualize input data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_output_data.html">Example 03: Start simulation and create output data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_data.html">Example 04: Plot output data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Example 05: Assembly process</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#process-description">Process description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#start-simulation">Start simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#visualize-data">Visualize data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ProdSim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="examples.html">Examples</a> &raquo;</li>
+        
+      <li>Example 05: Assembly process</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="example-05-assembly-process">
+<span id="id1"></span><h1>Example 05: Assembly process<a class="headerlink" href="#example-05-assembly-process" title="Permalink to this headline">¶</a></h1>
+<p>This example shows how an assembly process can be simulated. Roughly speaking, there are no major differences to the
+previous examples, but in an assembly process the additional attribute ‘component’ of the assembly workpiece must be
+specified.</p>
+<p>As an exemplary example, the production of the upper half of a toy figure is described, which consists of an upper body,
+two arms and a head.</p>
+<p>The content of the example is as follows:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#process-description"><span class="std std-ref">Process description</span></a></p></li>
+<li><p><a class="reference internal" href="#start-sim"><span class="std std-ref">Start simulation</span></a></p></li>
+<li><p><a class="reference internal" href="#visualize-data"><span class="std std-ref">Visualize data</span></a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this example can be found in the following directory for experimentation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">prodsim</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">example02</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="process-description">
+<span id="id2"></span><h2>Process description<a class="headerlink" href="#process-description" title="Permalink to this headline">¶</a></h2>
+<p>In order to be able to define the process in the input files, it must first be described verbally.</p>
+<p>First, the upper bodies of plastic are cast in a mold. Three units of plastic granules are cast to form three upper
+bodies per casting process. This casting process also provides holes for the joints of the arms and head. For the sake
+of simplicity, it is assumed here that the mold wears out at the injection opening (which corresponds to the connection
+mold for the head) with each casting process.
+Thus, the opening for the head becomes larger with each operation, while the openings for the arms remain constant.
+Since the plastic has to cool down from the melt, it is not possible to achieve an exact diameter, but only a
+distribution of the diameters of the openings for the joints.</p>
+<p>The arms (subdivided into right and left arms) are not manufactured by the manufacturer, but are sourced from an
+external process, as is the head. The diameter of the ball joints of the arms and the head is also distributed.</p>
+<p>First, the arms are mounted, and then the head.</p>
+<p>Since these toy figures should be usable later, the arms and the head should neither be too tight nor so loose that they
+do not stay in position. Therefore, a final process checks whether this condition is met. It is known from tests that
+the difference in diameter of the mold and the ball joint must not exceed or fall below a certain level.</p>
+<p>If this is the case, the corresponding figure is removed from the process and it is tracked how many parts are scrap. In
+addition, a distinction is made as to which joint caused the scrap, so that process improvements can be made later.</p>
+<p>The process described in this way can be translated into input files as described in <a class="reference internal" href="example_setup.html#id1"><span class="std std-ref">Example 01</span></a>.</p>
+<p><strong>Process Data:</strong></p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;item&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;upper_body&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;diameter_arm_r&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+      <span class="nt">&quot;diameter_arm_l&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+      <span class="nt">&quot;diameter_head&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+      <span class="nt">&quot;station&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;casting&quot;</span><span class="p">,</span> <span class="s2">&quot;assembly_arm&quot;</span><span class="p">,</span> <span class="s2">&quot;assembly_head&quot;</span><span class="p">,</span> <span class="s2">&quot;quality_control&quot;</span><span class="p">],</span>
+      <span class="nt">&quot;function&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;cast&quot;</span><span class="p">,</span> <span class="s2">&quot;assemble_arms&quot;</span><span class="p">,</span> <span class="s2">&quot;assemble_head&quot;</span><span class="p">,</span> <span class="s2">&quot;quality_check&quot;</span><span class="p">],</span>
+      <span class="nt">&quot;demand&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">],</span><span class="mi">5</span><span class="p">],</span>
+      <span class="nt">&quot;component&quot;</span><span class="p">:</span> <span class="p">[[],[</span><span class="s2">&quot;arm_l&quot;</span><span class="p">,</span> <span class="s2">&quot;arm_r&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;head&quot;</span><span class="p">],[]],</span>
+      <span class="nt">&quot;storage&quot;</span><span class="p">:</span> <span class="mi">20</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;arm_l&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;joint_diameter&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;l&quot;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">0.06</span><span class="p">],</span>
+      <span class="nt">&quot;storage&quot;</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;arm_r&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;joint_diameter&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;l&quot;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">0.05</span><span class="p">],</span>
+      <span class="nt">&quot;storage&quot;</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;head&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;joint_diameter&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mf">0.04</span><span class="p">],</span>
+      <span class="nt">&quot;storage&quot;</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;station&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;casting&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;storage&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+      <span class="nt">&quot;abrasion&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;assembly_arm&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;storage&quot;</span><span class="p">:</span> <span class="mi">20</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;assembly_head&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;storage&quot;</span><span class="p">:</span> <span class="mi">20</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;quality_control&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;storage&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+      <span class="nt">&quot;count_rej_a_l&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+      <span class="nt">&quot;count_rej_a_r&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+      <span class="nt">&quot;count_rej_h&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Special attention should be paid to the definition of the <cite>component</cite> attribute of the <cite>upper_body</cite> part.</p>
+</div>
+<p><strong>Function File:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Required for the initial diameter of the molds</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">cast</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">machine</span><span class="p">,</span> <span class="n">factory</span><span class="p">):</span>
+
+    <span class="c1"># Since three objects are created during casting, the attribute &#39;item&#39; is</span>
+    <span class="c1"># a list of length three, which contains three individual workpieces.</span>
+    <span class="c1"># You could also define a separate behavior for each of the three</span>
+    <span class="c1"># workpieces (via a differentiation of the index).</span>
+    <span class="k">for</span> <span class="n">item_</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+        <span class="n">item_</span><span class="o">.</span><span class="n">diameter_arm_r</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">normalvariate</span><span class="p">(</span><span class="mf">4.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+        <span class="n">item_</span><span class="o">.</span><span class="n">diameter_arm_l</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">normalvariate</span><span class="p">(</span><span class="mf">4.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+        <span class="c1"># Wear makes the diameter of the head mold smaller</span>
+        <span class="n">item_</span><span class="o">.</span><span class="n">diameter_head</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">normalvariate</span><span class="p">(</span><span class="mf">4.95</span><span class="o">-</span><span class="n">machine</span><span class="o">.</span><span class="n">abrasion</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+
+    <span class="c1"># Increase wear at the injection point</span>
+    <span class="n">machine</span><span class="o">.</span><span class="n">abrasion</span> <span class="o">+=</span> <span class="mf">0.001</span>
+
+    <span class="c1"># Injection and cooling processes require 4 time units</span>
+    <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">assemble_arms</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">machine</span><span class="p">,</span> <span class="n">factory</span><span class="p">):</span>
+    <span class="c1"># When assembling the parts are only plugged together and no attribute</span>
+    <span class="c1"># is changed (but of course properties could be changed here).</span>
+    <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">assemble_head</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">machine</span><span class="p">,</span> <span class="n">factory</span><span class="p">):</span>
+    <span class="c1"># When assembling the parts are only plugged together and no attribute</span>
+    <span class="c1"># is changed (but of course properties could be changed here).</span>
+    <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">quality_check</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">machine</span><span class="p">,</span> <span class="n">factory</span><span class="p">):</span>
+
+    <span class="c1"># Since 5 figures are always inspected at the same time during a quality control,</span>
+    <span class="c1"># it is also necessary to iterate over item here, since this is a list with 5 individual workpieces.</span>
+    <span class="k">for</span> <span class="n">item_</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+
+        <span class="c1"># A check is made to ensure that the permissible diameter difference is not exceeded.</span>
+        <span class="c1"># If it is, the workpiece is declared as scrap and a corresponding counter is increased.</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">item_</span><span class="o">.</span><span class="n">diameter_arm_r</span> <span class="o">-</span> <span class="n">item_</span><span class="o">.</span><span class="n">arm_r</span><span class="o">.</span><span class="n">joint_diameter</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.6</span><span class="p">:</span>
+            <span class="n">item_</span><span class="o">.</span><span class="n">reject</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">machine</span><span class="o">.</span><span class="n">count_rej_a_r</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">item_</span><span class="o">.</span><span class="n">diameter_arm_l</span> <span class="o">-</span> <span class="n">item_</span><span class="o">.</span><span class="n">arm_l</span><span class="o">.</span><span class="n">joint_diameter</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.6</span><span class="p">:</span>
+            <span class="n">item_</span><span class="o">.</span><span class="n">reject</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">machine</span><span class="o">.</span><span class="n">count_rej_a_l</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">item_</span><span class="o">.</span><span class="n">diameter_head</span> <span class="o">-</span> <span class="n">item_</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">joint_diameter</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">:</span>
+            <span class="n">item_</span><span class="o">.</span><span class="n">reject</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">machine</span><span class="o">.</span><span class="n">count_rej_h</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># One control operation takes 2 time units.</span>
+    <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Special attention should be paid to the referencing of the assembled objects <cite>arm_l</cite>, <cite>arm_r</cite> and <cite>head</cite> and their
+attributes in the function <cite>quality_check</cite>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The fact that the attribute <cite>reject</cite> is set to True has no influence on this process, because it is the last process
+step anyway, but it should be made clear that every item has the attribute reject, no matter whether it has been
+defined or not.</p>
+</div>
+<p>Finally, the <cite>inspect</cite> and <cite>visualize</cite> methods should be called. The visualization returns the following result:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">prodsim</span> <span class="kn">import</span> <span class="n">Environment</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+
+   <span class="n">env</span><span class="p">:</span> <span class="n">Environment</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">()</span>
+
+   <span class="c1"># read input files</span>
+   <span class="n">env</span><span class="o">.</span><span class="n">read_data</span><span class="p">(</span><span class="s1">&#39;../data/assemble_data.json&#39;</span><span class="p">,</span> <span class="s1">&#39;../data/assemble_functions.py&#39;</span><span class="p">)</span>
+
+   <span class="c1"># call the inspect und visualize function</span>
+   <span class="n">env</span><span class="o">.</span><span class="n">inspect</span><span class="p">()</span>
+   <span class="n">env</span><span class="o">.</span><span class="n">visualize</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/example_05_visualize.png"><img alt="process graph" src="../../_images/example_05_visualize.png" style="width: 100%;" /></a>
+<p>You can see the linear manufacturing process, which receives assembly objects in the second and third stage, which
+themselves do not go through any process steps.</p>
+<hr class="docutils" />
+</div>
+<div class="section" id="start-simulation">
+<span id="start-sim"></span><h2>Start simulation<a class="headerlink" href="#start-simulation" title="Permalink to this headline">¶</a></h2>
+<p>The start of the simulation is relatively unexciting, because there is no difference whether it is a process with
+assemblies or not.</p>
+<p>In the following, the number of parts declared as rejects will be examined. Therefore only the data from the last
+process step (<cite>quality_control</cite>) are of interest here, so that the parameter <cite>track_components</cite> is used.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">prodsim</span> <span class="kn">import</span> <span class="n">Environment</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;_main__&#39;</span><span class="p">:</span>
+
+    <span class="n">env</span><span class="p">:</span> <span class="n">Environment</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">()</span>
+
+    <span class="c1"># read input files</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">read_data</span><span class="p">(</span><span class="s1">&#39;../data/assemble_data.json&#39;</span><span class="p">,</span> <span class="s1">&#39;../data/assemble_functions.py&#39;</span><span class="p">)</span>
+
+    <span class="c1"># start the simulation an define tracked components</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">sim_time</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">track_components</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;quality_control&#39;</span><span class="p">],</span> <span class="n">progress_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># save data in .csv-file</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">data_to_csv</span><span class="p">(</span><span class="s1">&#39;../data/output_data/&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;quality_control&#39;</span><span class="p">],</span> <span class="n">remove_column</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;nr&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since only data of a single station is tracked here, the name and number of the machine (since there is only one
+anyway) does not matter, so that these do not have to be stored in the csv file. The name is not saved per default,
+while the attribute ‘nr’ must be explicitly excluded.</p>
+</div>
+<hr class="docutils" />
+</div>
+<div class="section" id="visualize-data">
+<span id="id3"></span><h2>Visualize data<a class="headerlink" href="#visualize-data" title="Permalink to this headline">¶</a></h2>
+<p>As already mentioned in <a class="reference internal" href="plot_data.html#id1"><span class="std std-ref">example 04</span></a>, to create individual plots you have to work with the raw data
+yourself, but ProdSim also offers a plot for this case, which gives you a quick overview of the data.</p>
+<p>The method <cite>station_attr_over_time</cite> can map records that have been recorded with the method <cite>track_component</cite> for a
+process station.</p>
+<p>The method gets three parameters, one of which is optional. The <cite>path_to_dir</cite> attribute is a string which specifies the
+path to the directory where the diagram should be saved as a .png-file.
+The attribute <cite>attr_name</cite> is optional and can be used if you want to plot several datasets from different simulation
+runs and want to plot the same attribute each time.
+The third attribute <cite>args</cite> gets for each plot a list with 2, or 3 elements. If the attribute <cite>attr_name</cite> is defined,
+then each list needs a string, which specifies the path to the csv file and a label, with which the plot should be
+labeled. The attribute that will be plotted is <cite>attr_name</cite>. But if you want to plot different attributes from one or
+different datasets (as in this example), then you leave <cite>attr_name</cite> at the default value and pass to each list as a
+third string the name of the attribute to be plotted from the corresponding station.</p>
+<p>This leads to the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">prodsim</span> <span class="kn">import</span> <span class="n">Environment</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;_main__&#39;</span><span class="p">:</span>
+
+    <span class="n">env</span><span class="p">:</span> <span class="n">Environment</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">()</span>
+
+    <span class="c1"># read input files</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">read_data</span><span class="p">(</span><span class="s1">&#39;../data/assemble_data.json&#39;</span><span class="p">,</span> <span class="s1">&#39;../data/assemble_functions.py&#39;</span><span class="p">)</span>
+
+    <span class="c1"># start the simulation an define tracked components</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">sim_time</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">track_components</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;quality_control&#39;</span><span class="p">],</span> <span class="n">progress_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># save data in .csv-file</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">data_to_csv</span><span class="p">(</span><span class="s1">&#39;../data/output_data/&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;quality_control&#39;</span><span class="p">],</span> <span class="n">remove_column</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;nr&#39;</span><span class="p">])</span>
+
+    <span class="c1"># plot station data</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">station_attr_over_time</span><span class="p">(</span><span class="s1">&#39;User/user/Desktop/&#39;</span><span class="p">,</span>
+                               <span class="p">[</span><span class="s1">&#39;../data/output_data/quality_control.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;left_arm&#39;</span><span class="p">,</span> <span class="s1">&#39;count_rej_a_l&#39;</span><span class="p">],</span>
+                               <span class="p">[</span><span class="s1">&#39;../data/output_data/quality_control.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;right_arm&#39;</span><span class="p">,</span> <span class="s1">&#39;count_rej_a_r&#39;</span><span class="p">],</span>
+                               <span class="p">[</span><span class="s1">&#39;../data/output_data/quality_control.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;head&#39;</span><span class="p">,</span> <span class="s1">&#39;count_rej_h&#39;</span><span class="p">],)</span>
+</pre></div>
+</div>
+<p>If you run the program, the output leads to the following diagram, which shows the number of rejections over time
+differentiated by the possible rejection reasons (left and right arm and head).</p>
+<p>Due to the definition of the function <cite>quality_check</cite>, a figure can have several reasons for rejection at the same time,
+so that the sum of the rejections from all three reasons does not necessarily correspond to the number of figures rejected.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since the process result is determined to a large extent by chance, the result is of course different for each run.</p>
+</div>
+<a class="reference internal image-reference" href="../../_images/example_05_plot.png"><img alt="plot" src="../../_images/example_05_plot.png" style="width: 100%;" /></a>
+<p>First, it can be seen that the left arm has a higher reject rate over the entire process, which is due to the slightly
+increased scatter in the diameter of the externally sourced arms (see:
+<a class="reference internal" href="#process-description"><span class="std std-ref">process description</span></a>).</p>
+<p>In addition, it can be seen that initially the scrap rate due to the heads is low, but from halfway through the process
+it increases to such an extent that virtually every head assembled causes scrap. This is clearly due to wear on the mold
+in the area of the head.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="plot_data.html" class="btn btn-neutral float-left" title="Example 04: Plot output data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Tom Fuchs.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

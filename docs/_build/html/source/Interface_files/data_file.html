@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Production structure &mdash; ProdSim 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Production functions" href="function_file.html" />
+    <link rel="prev" title="Interface Files" href="interface.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> ProdSim
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../API/api.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="interface.html">Interface Files</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Production structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#order">Order</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#station">Station</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#factory">Factory</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="function_file.html">Production functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attribute_values.html">Attribute values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Examples/examples.html">Examples</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ProdSim</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="interface.html">Interface Files</a> &raquo;</li>
+      <li>Production structure</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="production-structure">
+<span id="data-file"></span><h1>Production structure<a class="headerlink" href="#production-structure" title="Permalink to this headline"></a></h1>
+<p>Each production process is defined in its own JSON file. This file contains a top-level object with two required
+attributes and one optional one. The structure of these attributes is described as follows:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#order"><span class="std std-ref">Order</span></a></p></li>
+<li><p><a class="reference internal" href="#station"><span class="std std-ref">Station</span></a></p></li>
+<li><p><a class="reference internal" href="#factory2"><span class="std std-ref">Factory</span></a></p></li>
+</ol>
+<hr class="docutils" />
+<section id="order">
+<span id="id1"></span><h2>Order<a class="headerlink" href="#order" title="Permalink to this headline"></a></h2>
+<p>The Order attribute is an attribute of the top-level production process object and is of the type JSON Array. This array
+contains JSON objects and defines an order that combines all of the information about a particular order. The attributes
+of an order are differentiated into predefined and user-defined attributes. Any attribute whose name is not predefined
+is considered a user-defined attribute. In this section, all predefined attributes are described in detail. The possible
+characteristics of the user-defined attributes are described in a separate section. <a class="reference internal" href="attribute_values.html#attr-values"><span class="std std-ref">section</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only the individual parameters are described below. In  <a class="reference internal" href="../Examples/example01.html#id1"><span class="std std-ref">example 01</span></a> , a concrete example of this file is
+given.</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">name</span></code></p>
+<p>The name is a required parameter of the data type String. It will later serve as an identifier for the different
+jobs and should therefore be unique.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Optional</p></td>
+<td><p>no</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Default value</p></td>
+<td><p>/</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>MissingParameter</p></td>
+<td><p>If name was not set</p></td>
+</tr>
+<tr class="row-odd"><td><p>Warnings</p></td>
+<td><p>BadType</p></td>
+<td><p>If name isn ot a string</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Since the suffix ‘_x’ references identical assembly workpieces that are assembled in different process steps (see
+<a class="reference internal" href="function_file.html#process-function"><span class="std std-ref">process function</span></a>), the name cannot have such a suffix.</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">priority</span></code></p>
+<p>The priority is an optional integer parameter. It determines the processing order when multiple jobs request the same
+scarce resource. If no priorities are set, then the program determines its order. A small value corresponds to a high
+priority. If several orders do not use the same station, then the priorities have no meaning.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Optional</p></td>
+<td><p>yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Default value</p></td>
+<td><p>10</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>InvalidType</p></td>
+<td><p>If priority is not an integer</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidValue</p></td>
+<td><p>If priority is less than one</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">storage</span></code></p>
+<p>The storage is an optional integer parameter that specifies the storage capacity of the final store of an order. The
+storage is a piece value.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Even though this parameter is optional, it should always be set if there is no perfect understanding of the process;
+otherwise, situations may occur where an increasing number of item objects are stored in stores over the simulation
+time. This would lead to memory overload and slow the simulation speed.</p>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Optional</p></td>
+<td><p>yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Default value</p></td>
+<td><p>infinite</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>InvalidType</p></td>
+<td><p>If capacity is not an integer</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidValue</p></td>
+<td><p>If capacity is less than one</p></td>
+</tr>
+</tbody>
+</table>
+<p id="source"><code class="docutils literal notranslate"><span class="pre">source</span></code></p>
+<p>The source is a required parameter of type string. The function from the <a class="reference internal" href="function_file.html#function-file"><span class="std std-ref">production functions</span></a>
+file with the corresponding name is assigned to this order.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Optional</p></td>
+<td><p>yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Default value</p></td>
+<td><p>/</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>UndefinedFunction</p></td>
+<td><p>Function is not defined in the passed file</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidFunction</p></td>
+<td><p>Function is not a generator function</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>InvalidSignature</p></td>
+<td><p>Function does not have exactly two arguments</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidYield</p></td>
+<td><p>Yielded object is not of type int or Timeout</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>InfiniteLoop</p></td>
+<td><p>Source contains an infinite loop</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>MissingParameter</p></td>
+<td><p>No source was defined</p></td>
+</tr>
+<tr class="row-even"><td><p>Warnings</p></td>
+<td><p>BadSignature</p></td>
+<td><p>The signature is not (‘env’, ‘factory’)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>BadYield</p></td>
+<td><p>Source does not yield a timeout event</p></td>
+</tr>
+</tbody>
+</table>
+<p id="sink"><code class="docutils literal notranslate"><span class="pre">sink</span></code></p>
+<p>The sink is an optional parameter of type string. This order is assigned the function from the
+<a class="reference internal" href="function_file.html#function-file"><span class="std std-ref">production functions</span></a> file with the corresponding name. If workpieces of this order represent
+assembly workpieces concerning another process, then the default sink will never be active. If this is not the case,
+then it removes all workpieces from the final store without a time delay.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Optional</p></td>
+<td><p>yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Default value</p></td>
+<td><p>infinite source</p></td>
+<td><p>If item is not part of an assembly process</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>no source</p></td>
+<td><p>If item is part of an assembly process</p></td>
+</tr>
+<tr class="row-odd"><td><p>Exceptions</p></td>
+<td><p>UndefinedFunction</p></td>
+<td><p>Function is not defined in the passed file</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>InvalidFunction</p></td>
+<td><p>Function is not a generator function</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidSignature</p></td>
+<td><p>Function does not have exactly two arguments</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>InvalidYield</p></td>
+<td><p>Yielded object is not of type int or Timeout</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InfiniteLoop</p></td>
+<td><p>Source contains an infinite loop</p></td>
+</tr>
+<tr class="row-even"><td><p>Warnings</p></td>
+<td><p>BadSignature</p></td>
+<td><p>The signature is not (‘env’, ‘factory’)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>BadYield</p></td>
+<td><p>Source does not yield a timeout event</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">station</span></code></p>
+<p>The station attribute is an optional attribute of type Array. This array contains strings that represent the names of
+stations in the order in which items of this order visit them. The default value is an empty array, which means that the
+source places new workpieces directly into the final store (reflecting, for example, the retrieval of external assembly
+workpieces).</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Optional</p></td>
+<td><p>yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Default value</p></td>
+<td><p>[]</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>UndefinedObject</p></td>
+<td><p>No station is defined with this name</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The program does not throw exceptions related to the array’s length because the size of this array is considered a
+reference for the length of the other arrays.</p>
+</div>
+<p id="function"><code class="docutils literal notranslate"><span class="pre">function</span></code></p>
+<p>The function attribute is an optional attribute of type array. It contains strings that correspond to the names of
+functions defined in the  <a class="reference internal" href="function_file.html#function-file"><span class="std std-ref">process functions</span></a> file. The index position determines the connection of
+process functions to stations.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Optional</p></td>
+<td><p>yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Default value</p></td>
+<td><p>[]</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>UndefinedFunction</p></td>
+<td><p>No function with this name is defined</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidSignature</p></td>
+<td><p>Function does not have four arguments</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>MissingParameter</p></td>
+<td><p>Number of functions does not match the number of stations</p></td>
+</tr>
+<tr class="row-odd"><td><p>Warnings</p></td>
+<td><p>BadSignature</p></td>
+<td><p>At least one argument has a bad name</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>BadYield</p></td>
+<td><p>Function does not yield a simpy.Timeout object</p></td>
+</tr>
+</tbody>
+</table>
+<p id="demand"><code class="docutils literal notranslate"><span class="pre">demand</span></code></p>
+<p>The demand parameter is an optional parameter of type array. The index position of the entries connects them to the
+stations from the station’s list. If a station performs an assembly or a pure machining process in a given process step,
+then it determines the structure of the entries of the array. In machining at the station with index position i, the
+i-th element of the demand array is an integer that determines the demand of this station. Another array of integers
+at the corresponding index position in an assembly, which determines the number of individual assembly pieces. The
+<a class="reference internal" href="#component1"><span class="std std-ref">component</span></a> attribute specifies which workpieces are used in an assembly. The default value is a list
+with only 1s and the length of the station list. Thus, the default case represents a pure line production.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Optional</p></td>
+<td><p>yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Default value</p></td>
+<td><p>[1, 1, .., 1]</p></td>
+<td><p>Only possible if there is no assembly</p></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>MissingParameter</p></td>
+<td><p>Number of elements does not match the number of stations</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidType</p></td>
+<td><p>If the list contains different objects than int or list of int</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>InvalidValue</p></td>
+<td><p>Integer element in the list is not greater than zero</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>No exceptions are thrown if the inner structure does not fit around the attribute component because demand serves as
+a reference to avoid redundant error messages.</p>
+</div>
+<p id="component1"><code class="docutils literal notranslate"><span class="pre">component</span></code></p>
+<p>The component attribute is an optional attribute of type array. The inner structure of this array corresponds to that
+of the demand <a class="reference internal" href="#demand"><span class="std std-ref">demand attribute</span></a>. In the case of pure processing, there is an empty array at the
+corresponding index position. In assembly, the inner array contains strings that correspond to the names of orders and
+specify what type the assembly workpieces should be. The default value is an array with only empty arrays; thus, as with
+the attribute demand, a pure line production is represented.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Optional</p></td>
+<td><p>yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Default value</p></td>
+<td><p>[[], [], .., []]</p></td>
+<td><p>Only possible if there is no assembly</p></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>MissingParameter</p></td>
+<td><p>Number of elements does not match the number of stations or the length of the assembly process list does not
+match the length of the assembly demand list</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>UndefinedObject</p></td>
+<td><p>No item is defined with this name</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>InvalidValue</p></td>
+<td><p>Structure does not correspond to the demand structure</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidType</p></td>
+<td><p>List contains object with a type other than ‘list’</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+</section>
+<section id="station">
+<span id="id2"></span><h2>Station<a class="headerlink" href="#station" title="Permalink to this headline"></a></h2>
+<p>The station attribute is an attribute of the top-level production process object and is of the type JSON Array. This
+array contains JSON objects that define a station that combines all of the information about a particular station. The
+attributes of a station are differentiated into predefined and user-defined attributes. Every attribute whose name is
+not predefined is considered a user-defined attribute. This section describes all predefined attributes in detail. The
+possible characteristics of the user-defined attributes are described in a separate <a class="reference internal" href="attribute_values.html#attr-values"><span class="std std-ref">section</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only the individual parameters are described below. In <a class="reference internal" href="../Examples/example01.html#id1"><span class="std std-ref">example 01</span></a>, a concrete example of this file is
+given.</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">name</span></code></p>
+<p>The name is a required parameter of type string. It is used later to identify station objects and therefore must be
+unique.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Optional</p></td>
+<td><p>no</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Default value</p></td>
+<td><p>/</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>MissingParameter</p></td>
+<td><p>If name was not set</p></td>
+</tr>
+<tr class="row-odd"><td><p>Warnings</p></td>
+<td><p>BadType</p></td>
+<td><p>If name is not a string</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">capacity</span></code></p>
+<p>The capacity is an optional integer parameter. It specifies the number of machines that the corresponding station has
+and thus serves to map the production type of the shop floor production. The default value is one and it thus rather
+represents a line production process. If a station has several machines, then one of the free machines is selected
+randomly before machining at this station.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Optional</p></td>
+<td><p>yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Default value</p></td>
+<td><p>1</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>InvalidType</p></td>
+<td><p>If capacity is not an integer</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidValue</p></td>
+<td><p>If capacity is less than one</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">storage</span></code></p>
+<p>The storage attribute is optional and of type integer. It describes the storage capacity of the buffer storage of a
+station. This attribute is a unit value.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Even though this parameter is optional, it should always be set if a perfect understanding of the process does not
+exist; otherwise, an arbitrary accumulation of numerous objects could occur in the memory, which would slow the
+simulation arbitrarily.</p>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Optional</p></td>
+<td><p>yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Default value</p></td>
+<td><p>infinite</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>InvalidType</p></td>
+<td><p>If storage is not an integer</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidValue</p></td>
+<td><p>If storage is less than one</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">measurement</span></code></p>
+<p>The measurement attribute is optional and of type Boolean. If a station is a measurement or quality control station
+where the item attributes are not changed, then this attribute should be set to ‘true’. The effect is that workpieces
+will not be tracked at this station, regardless of whether they are tracked at other stations.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Optional</p></td>
+<td><p>yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Default value</p></td>
+<td><p>false</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>InvalidType</p></td>
+<td><p>If measurement is not a Boolean</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+</section>
+<section id="factory">
+<span id="factory2"></span><h2>Factory<a class="headerlink" href="#factory" title="Permalink to this headline"></a></h2>
+<p>The factory attribute is an optional attribute of the top-level production process object. Unlike the order and station
+attributes, it is not an array but rather a single JSON object. This object contains all global attributes that any
+process function, sink, source, and global function can retrieve. All of these attributes are user-definable. The rules
+that apply to these attributes are described in the <a class="reference internal" href="attribute_values.html#attr-values"><span class="std std-ref">‘Attribute values’</span></a> section. In addition, the
+factory object has a predefined attribute, which is described below.</p>
+<p><code class="docutils literal notranslate"><span class="pre">function</span></code></p>
+<p>The function is an optional attribute of type array. This array contains strings that correspond to the global functions
+from the functions file. The global variables are controlled from these functions, whose structure is described in more
+detail in the <a class="reference internal" href="function_file.html#function-file"><span class="std std-ref">‘function file</span></a> section.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Optional</p></td>
+<td><p>yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Default value</p></td>
+<td><p>[]</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>UndefinedFunction</p></td>
+<td><p>No function with this name is defined</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidFunction</p></td>
+<td><p>Function is not a generator function</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>InvalidSignature</p></td>
+<td><p>Function does not have exactly two argument</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidYield</p></td>
+<td><p>Function yielded an object that is not of type</p></td>
+</tr>
+<tr class="row-even"><td><p>Warnings</p></td>
+<td><p>BadSignature</p></td>
+<td><p>Parameters are not called ‘env’ and ‘factory’</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="interface.html" class="btn btn-neutral float-left" title="Interface Files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="function_file.html" class="btn btn-neutral float-right" title="Production functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Tom Fuchs.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

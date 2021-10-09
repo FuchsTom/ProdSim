@@ -1,0 +1,457 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Example 03: Start simulation and create output data &mdash; ProdSim 0.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Example 04: Plot output data" href="plot_data.html" />
+    <link rel="prev" title="Example 02: Inspect and visualize input data" href="example_inspect_visualize.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ProdSim
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../API/api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Interface_files/interface.html">Interface Files</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="examples.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="example_setup.html">Example 01</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_inspect_visualize.html">Example 02: Inspect and visualize input data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Example 03: Start simulation and create output data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#process-description">Process description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#start-the-simulation">Start the simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-output">Create Output</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plot_data.html">Example 04: Plot output data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_assembly.html">Example 05: Assembly process</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ProdSim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="examples.html">Examples</a> &raquo;</li>
+        
+      <li>Example 03: Start simulation and create output data</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="example-03-start-simulation-and-create-output-data">
+<span id="id1"></span><h1>Example 03: Start simulation and create output data<a class="headerlink" href="#example-03-start-simulation-and-create-output-data" title="Permalink to this headline">¶</a></h1>
+<p>This example will show how to start the simulation and save the data generated in the simulation. Before you can
+perform the operations shown here, you should check the input data used, as shown in examples <a class="reference internal" href="example_setup.html#id1"><span class="std std-ref">one</span></a> and
+<a class="reference internal" href="example_inspect_visualize.html#id1"><span class="std std-ref">two</span></a>.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#process-description"><span class="std std-ref">Process description</span></a></p></li>
+<li><p><a class="reference internal" href="#start-sim"><span class="std std-ref">Start the simulation</span></a></p></li>
+<li><p><a class="reference internal" href="#create-output"><span class="std std-ref">Create output data</span></a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this example can be found in the following directory for experimentation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">prodsim</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">example01</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="process-description">
+<span id="id2"></span><h2>Process description<a class="headerlink" href="#process-description" title="Permalink to this headline">¶</a></h2>
+<p>For the operations described in this and the following example, a different process is used than in the previous
+examples. The reason is that the process used so far should have as complex a logistic structure as possible in order to
+be able to represent as many facets as possible. Here the focus is rather on the process functions and the process data,
+therefore a simple linear process with one item type is used here, in order to be able to recognize all connections
+directly without problems.</p>
+<p>This example does not claim to represent a real process, but aims to show different aspects of modeling.</p>
+<p>A shaft is machined, which is first drilled on a drilling station. The drill can break with a probability specific to
+the machine. If the drill breaks, the surface quality of the shaft is significantly damaged. After the drilling the
+shaft is processed on a lathe at specific shoulders. The surface roughness is increased depending on the wear of the
+turning tool. The wear of the lathe increases with each machining operation. In a final step, the shaft is polished.
+This improves the surface quality. However, the result of this step depends on the temperature in the factory. The
+higher the temperature, the worse the expected result. The temperature has a typical diurnal pattern, with a maximum at
+midday.</p>
+<p>So that the following steps can be reproduced, the two input files are given completely.</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;item&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;shaft&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;station&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;drill&quot;</span><span class="p">,</span> <span class="s2">&quot;lathe&quot;</span><span class="p">,</span> <span class="s2">&quot;polisher&quot;</span><span class="p">],</span>
+      <span class="nt">&quot;function&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;drilling&quot;</span><span class="p">,</span> <span class="s2">&quot;turning&quot;</span><span class="p">,</span> <span class="s2">&quot;polish&quot;</span><span class="p">],</span>
+      <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;shaft_source&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;surface&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mf">0.2</span><span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;station&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;drill&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;storage&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+      <span class="nt">&quot;drill_breakage&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mf">0.015</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;lathe&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;storage&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+      <span class="nt">&quot;wear&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;polisher&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;storage&quot;</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;factory&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;temperature&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mi">20</span><span class="p">],</span>
+    <span class="nt">&quot;function&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;temperature_func&quot;</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The capacity of the machines was arbitrarily limited to ten each, since this is not a relevant size for this process and
+thus it can be avoided that an unnecessarily large number of objects accumulate, which burden the memory of the computer
+and thus reduce the speed of the simulation. It is generally recommended to limit the storage of the stations, unless
+you have a very good understanding of the process and can exclude an accumulation of objects.</p>
+<p>Since exactly one shaft is passed at a time, <code class="docutils literal notranslate"><span class="pre">demand</span></code> can be left at the default value and <code class="docutils literal notranslate"><span class="pre">component</span></code> as well,
+since there are no assemblies.</p>
+<p>In addition, the top-level attribute <code class="docutils literal notranslate"><span class="pre">factory</span></code> was concreted, because a global variable temperature is needed. To be
+able to define the course of the temperature, there is also exactly one element in the list <code class="docutils literal notranslate"><span class="pre">function</span></code>, in which this
+course is defined.</p>
+<p>The functions used can be defined as follows.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">drilling</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">machine</span><span class="p">,</span> <span class="n">factory</span><span class="p">):</span>
+
+    <span class="c1"># When the drill breaks, the roughness increases on average by 2 units.</span>
+    <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">machine</span><span class="o">.</span><span class="n">drill_breakage</span><span class="p">:</span>
+        <span class="n">item</span><span class="o">.</span><span class="n">surface</span> <span class="o">+=</span> <span class="n">random</span><span class="o">.</span><span class="n">normalvariate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+
+    <span class="c1"># One drilling process takes two minutes.</span>
+    <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">turning</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">machine</span><span class="p">,</span> <span class="n">factory</span><span class="p">):</span>
+
+    <span class="c1"># If the wear is unacceptably high, then the machine is serviced</span>
+    <span class="k">if</span> <span class="n">machine</span><span class="o">.</span><span class="n">wear</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">machine</span><span class="o">.</span><span class="n">wear</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># The surface quality depends negatively on the wear of the lathe.</span>
+    <span class="n">item</span><span class="o">.</span><span class="n">surface</span> <span class="o">+=</span> <span class="n">machine</span><span class="o">.</span><span class="n">wear</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="mf">1.5</span>
+    <span class="c1"># it&#39;s possible to use the machine 50 times, before it has to be maintained</span>
+    <span class="n">machine</span><span class="o">.</span><span class="n">wear</span> <span class="o">+=</span> <span class="mf">0.02</span>
+
+    <span class="c1"># One turning process takes exactly four minutes.</span>
+    <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">polish</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">machine</span><span class="p">,</span> <span class="n">factory</span><span class="p">):</span>
+
+    <span class="c1"># The achievable surface quality decreases with temperature</span>
+    <span class="n">item</span><span class="o">.</span><span class="n">surface</span> <span class="o">-=</span> <span class="p">(</span><span class="mi">8</span> <span class="o">-</span> <span class="n">factory</span><span class="o">.</span><span class="n">temperature</span> <span class="o">*</span> <span class="mf">0.3</span><span class="p">)</span>
+
+    <span class="c1"># One polishing process requires four time units.</span>
+    <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">shaft_source</span><span class="p">(</span><span class="n">env</span><span class="p">):</span>
+
+    <span class="c1"># One machining job is started every time unit</span>
+    <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">yield</span> <span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">temperature_func</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">factory</span><span class="p">):</span>
+
+    <span class="c1"># determine the current time of day in minutes</span>
+    <span class="n">current_time</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">now</span> <span class="o">%</span> <span class="mi">1440</span>
+
+    <span class="c1"># Set the temperature in the factory based on the time of day</span>
+
+    <span class="c1"># hour:  0 - 4</span>
+    <span class="k">if</span> <span class="n">current_time</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">factory</span><span class="o">.</span><span class="n">temperature</span> <span class="o">=</span> <span class="mi">19</span>
+    <span class="c1"># hour: 4 - 8</span>
+    <span class="k">elif</span> <span class="n">current_time</span> <span class="o">==</span> <span class="mi">240</span><span class="p">:</span>
+        <span class="n">factory</span><span class="o">.</span><span class="n">temperature</span> <span class="o">=</span> <span class="mi">18</span>
+    <span class="c1"># hour: 8 - 12</span>
+    <span class="k">elif</span> <span class="n">current_time</span> <span class="o">==</span> <span class="mi">480</span><span class="p">:</span>
+        <span class="n">factory</span><span class="o">.</span><span class="n">temperature</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="c1">#  hour: 12 - 16</span>
+    <span class="k">elif</span> <span class="n">current_time</span> <span class="o">==</span> <span class="mi">720</span><span class="p">:</span>
+        <span class="n">factory</span><span class="o">.</span><span class="n">temperature</span> <span class="o">=</span> <span class="mi">23</span>
+    <span class="c1"># hour: 16 - 20</span>
+    <span class="k">elif</span> <span class="n">current_time</span> <span class="o">==</span> <span class="mi">960</span><span class="p">:</span>
+        <span class="n">factory</span><span class="o">.</span><span class="n">temperature</span> <span class="o">=</span> <span class="mi">22</span>
+    <span class="c1"># hour: 20 - 24</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">factory</span><span class="o">.</span><span class="n">temperature</span> <span class="o">=</span> <span class="mi">20</span>
+
+    <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="mi">240</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that the global function temperature_func is called at time zero of the simulation and waits exactly 240 minutes
+(four hours) between each call. If, however, one would choose random time intervals, then one should not check the
+simulation time for equality with a value, but would have to check whether the value lies in an interval, since one
+cannot of course always hit a certain value by chance.</p>
+<hr class="docutils" />
+</div>
+<div class="section" id="start-the-simulation">
+<span id="start-sim"></span><h2>Start the simulation<a class="headerlink" href="#start-the-simulation" title="Permalink to this headline">¶</a></h2>
+<p>This section shows how to start the simulation.</p>
+<p>First, of course, the <code class="docutils literal notranslate"><span class="pre">environment</span></code> must be imported and a new instance created. Since the simulation needs the input
+data (defined above), these must be made known to the simulation environment. For this the method <code class="docutils literal notranslate"><span class="pre">read_files</span></code> is
+called and the file paths to the input files are passed to it. If the method is called more than once, the paths passed
+last are always used. Now the simulation can be started. For this purpose, only the corresponding method must be called
+on the instance to which the input data have been passed.</p>
+<p>The simulation time <code class="docutils literal notranslate"><span class="pre">sim_time</span></code> must be passed to the simulation method. In addition, there are three further optional
+parameters that can be passed. <code class="docutils literal notranslate"><span class="pre">track_components</span></code> is a list, in which the names of arbitrary components can be listed
+(not only items, but also station names or the factory can be set here). Every time a component with this name changes
+its properties they are saved (the source is included as process step ‘-1’). Therefore, only the components that are
+really needed should be set here, otherwise unnecessary data will be stored. However, if you don’t want to store all
+data of a component at every station, but only at a certain station (for example the last one) you can also achieve this
+by using <code class="docutils literal notranslate"><span class="pre">track_comp_on_station</span></code>. This is a list that should contain only station names. If there is a machining at
+this station, then all process data will be saved for each workpiece that is machined at this station. It should be
+noted that in this case the station data itself is not saved. If you want to do this, you have to list the station
+separately in <code class="docutils literal notranslate"><span class="pre">track_components</span></code>.</p>
+<p>Finally there is the parameter <code class="docutils literal notranslate"><span class="pre">progress_bar</span></code>, which is False by default. But if you set it to True, you get a
+progress bar with a percentage, which indicates the simulation progress.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import the simulation Environment</span>
+<span class="kn">from</span> <span class="nn">prodsim</span> <span class="kn">import</span> <span class="n">Environment</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="c1"># create new instance</span>
+    <span class="n">env</span><span class="p">:</span> <span class="n">Environment</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">()</span>
+
+    <span class="c1"># read input data</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">read_files</span><span class="p">(</span><span class="s1">&#39;../data/process_data.json&#39;</span><span class="p">,</span> <span class="s1">&#39;../data/functions.py&#39;</span><span class="p">)</span>
+
+    <span class="c1"># start the simulation</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">sim_time</span><span class="o">=</span><span class="mi">4320</span><span class="p">,</span> <span class="n">track_components</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;shaft&#39;</span><span class="p">],</span> <span class="n">progress_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As <code class="docutils literal notranslate"><span class="pre">sim_time</span></code> here 4320 was used, because minutes were chosen as unit and exactly three days of real time should be
+represented. In addition <code class="docutils literal notranslate"><span class="pre">track_components</span></code> was used, since all data of the shaft should be stored and not only those
+on a certain station. Also the properties of the factory or the stations are not of interest here.</p>
+<p><code class="docutils literal notranslate"><span class="pre">progress_bar</span></code> was set to True, because it is useful especially for the first simulation run. The performance of the
+simulation, on the other hand, is not affected at all by the process bar.</p>
+<hr class="docutils" />
+</div>
+<div class="section" id="create-output">
+<span id="id3"></span><h2>Create Output<a class="headerlink" href="#create-output" title="Permalink to this headline">¶</a></h2>
+<p>Finally, the data generated in the simulation must be made available. The output format used here is .csv. The
+components specified in the <code class="docutils literal notranslate"><span class="pre">simulate</span></code> method only mean that the process data for these objects is stored
+internally in a DataFrame. If the simulation has been run, this data will be deleted, if no corresponding method is
+called on the simulation instance.</p>
+<p>The method that must be called in this case is the <code class="docutils literal notranslate"><span class="pre">data_to_csv</span></code> method. This gets two required parameters and three
+optional ones. Required is always a string that specifies the path to the folder where the files should be stored. In
+addition, in the parameter components to be passed, it is specified from which objects the data should be saved. Of
+course here only string of components can be passed, which were also passed in the method <code class="docutils literal notranslate"><span class="pre">run_simulation</span></code>, since
+otherwise no data are present, which can be stored in an external file.</p>
+<p>Optional parameters are <code class="docutils literal notranslate"><span class="pre">remove_column</span></code>, which removes the specific rows in the csv file. For example, it is possible
+to hide the information about individual attributes. So that this information is not lost, there is the parameter
+<code class="docutils literal notranslate"><span class="pre">keep_original</span></code>. If this value is set to true, then in the case that a column was removed from a file, an additional
+file is created, which contains this column. Finally there is the parameter <code class="docutils literal notranslate"><span class="pre">remove_name</span></code>, which is False by default.
+This decides whether the column ‘name’ is removed, since this is actually superfluous in the output, since a separate
+file is created for each component anyway.</p>
+<p>Thus, the following line must be added to the <a class="reference internal" href="#start-sim"><span class="std std-ref">upper code example</span></a> after the call to
+<code class="docutils literal notranslate"><span class="pre">run_simulation(..)</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">env</span><span class="o">.</span><span class="n">data_to_csv</span><span class="p">(</span><span class="s1">&#39;../data/output_data/&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;shaft&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The files will be created in the specified directory (if this directory does not exist, it will be created
+automatically). You should be careful to use a new directory for each simulation, because the files will be saved
+only under the component name and will be overwritten each time if you do not create a new directory or rename the
+old files individually.</p>
+</div>
+<p>A section of the s generated data (remove_column=None, remove_name=True) is shown below.</p>
+<a class="reference internal image-reference" href="../../_images/example_03_csv.png"><img alt="Process graph" class="align-center" src="../../_images/example_03_csv.png" style="width: 60%;" /></a>
+<p>Lines in which Process step is -1 are attributes of shaft directly after they have been generated by the source. If you
+don’t want to have them you can use <code class="docutils literal notranslate"><span class="pre">track_comp_on_station</span></code> instead of <code class="docutils literal notranslate"><span class="pre">track_components</span></code> in <code class="docutils literal notranslate"><span class="pre">run_simulation</span></code>. In
+addition, nr. specifies the unique id of each item to be able to unambiguously assign data later. If you don’t want to
+have this, you can simply add ‘nr’ to <code class="docutils literal notranslate"><span class="pre">remove_columns</span></code> and the data will not be copied to the .csv file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In <a class="reference internal" href="plot_data.html#id1"><span class="std std-ref">example four</span></a> methods are introduced to generate two different type of plots out of this data.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="plot_data.html" class="btn btn-neutral float-right" title="Example 04: Plot output data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="example_inspect_visualize.html" class="btn btn-neutral float-left" title="Example 02: Inspect and visualize input data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Tom Fuchs.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

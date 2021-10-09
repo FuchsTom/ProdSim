@@ -1,0 +1,32 @@
+.. _example_1:
+
+Example 01: Setup process
+-------------------------
+
+In this example, a textual description of a sample process is converted into a formal structure, which can be passed to
+the program as an input file. In addition, this data is then inspected and visualized.
+
+* :ref:`Create input files <create>`
+* :ref:`Inspect the data <inspect>`
+* :ref:`Visualize the data <visualize>`
+
+.. note::
+   The following example does not claim to represent a real existing process, but aims to show as many facets as
+   possible.
+
+.. _create:
+
+Create input files
+******************
+
+
+
+.. _inspect:
+
+Inspect the data
+****************
+
+.. _visualize:
+
+Visualize the input data
+************************

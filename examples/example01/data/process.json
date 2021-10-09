@@ -1,0 +1,75 @@
+{
+  "order": [
+    {
+      "name": "gearbox",
+      "storage": 10,
+      "source": "source_1",
+      "station": ["assemble_gb","quality_check"],
+      "function": ["assemble_gb","quality_check"],
+      "demand": [[1,8,1],2],
+      "component": [["housing","screw","gear_shaft"],[]]
+    },
+    {
+      "name": "housing",
+      "source": "source_1",
+      "storage": 10
+    },
+    {
+      "name": "screw",
+      "source": "source_1",
+      "storage": 10
+    },
+    {
+      "name": "gear_shaft",
+      "storage": 10,
+      "source": "source_1",
+      "station": ["assemble_gs"],
+      "function": ["assemble_gs"],
+      "demand": [[6,1]],
+      "component": [["gear","shaft"]]
+    },
+    {
+      "name": "gear",
+      "storage": 10,
+      "source": "source_2",
+      "station": ["heat_treatment"],
+      "function": ["heating"],
+      "demand": [8]
+    },
+    {
+      "name": "shaft",
+      "storage": 10,
+      "source": "source_2",
+      "station": ["lathe"],
+      "function": ["turning"]
+    }
+  ],
+  "station": [
+    {
+      "name": "lathe",
+      "storage": 10
+    },
+    {
+      "name": "heat_treatment",
+      "storage": 10
+    },
+    {
+      "name": "assemble_gs",
+      "storage": 10
+    },
+    {
+      "name": "assemble_gb",
+      "storage": 10
+    },
+    {
+      "name": "quality_check",
+      "storage": 10,
+      "measurement": true
+    }
+  ],
+  "factory": {
+    "glob_attr_1": ["f",0],
+    "glob_attr_2": ["n",1,0.1],
+    "function": ["glob_func_1"]
+  }
+}

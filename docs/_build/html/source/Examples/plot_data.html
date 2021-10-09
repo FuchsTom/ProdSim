@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Example 04: Plot output data &mdash; ProdSim 0.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Example 05: Assembly process" href="example_assembly.html" />
+    <link rel="prev" title="Example 03: Start simulation and create output data" href="example_output_data.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ProdSim
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../API/api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Interface_files/interface.html">Interface Files</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="examples.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="example_setup.html">Example 01</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_inspect_visualize.html">Example 02: Inspect and visualize input data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_output_data.html">Example 03: Start simulation and create output data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Example 04: Plot output data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#plot-over-time">Plot over time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plot-over-stations">Plot over stations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="example_assembly.html">Example 05: Assembly process</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ProdSim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="examples.html">Examples</a> &raquo;</li>
+        
+      <li>Example 04: Plot output data</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="example-04-plot-output-data">
+<span id="id1"></span><h1>Example 04: Plot output data<a class="headerlink" href="#example-04-plot-output-data" title="Permalink to this headline">¶</a></h1>
+<p>This section shows how to use methods of the <code class="docutils literal notranslate"><span class="pre">Environment</span></code> class to generate simple plots of simulation data. The data
+basis for the plots are the .csv files generated from the simulation. This offers the advantage of being able to
+generate the plots at any time without having to run the simulation again. Of course, the plots can also be created in
+one call with the simulation by calling the corresponding methods after the method <code class="docutils literal notranslate"><span class="pre">data_to_csv</span></code>.</p>
+<p>The methods provided here cannot offer the full variety of different plots. For individual plots the user has to work
+with the raw data himself.</p>
+<p>The two display options provided here offer the display of the progression of attributes over time and the progression
+of attributes across different stations. It is also possible to create graphs containing plots from different
+datasets/.csv files.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#over-time"><span class="std std-ref">Plot over time</span></a></p></li>
+<li><p><a class="reference internal" href="#over-stations"><span class="std std-ref">Plot over stations</span></a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The data plotted below is taken from the simulation output generated in <a class="reference internal" href="example_output_data.html#id1"><span class="std std-ref">example three</span></a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this example can be found in the following directory for experimentation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">prodsim</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">example01</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="plot-over-time">
+<span id="over-time"></span><h2>Plot over time<a class="headerlink" href="#plot-over-time" title="Permalink to this headline">¶</a></h2>
+<p>In this graph, any number of plots can be created, all of which show the expression of the same attribute of the
+workpieces being processed at a particular station over time. It is even possible to plot data from different
+simulation runs.</p>
+<p>To give a concrete example, the attribute <code class="docutils literal notranslate"><span class="pre">surface</span></code> of the shaft from example three should be plotted over time.
+However, not only the characteristics of the finished shafts are to be represented, but the characteristics at each
+station in the process.</p>
+<p>Even if the output data is already available, the environment must first be imported and an instance created. However,
+since the plotting is based on .csv files, no process data must be read in. Rather, simply call the appropriate method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import the simulation environment</span>
+<span class="kn">from</span> <span class="nn">prodsim</span> <span class="kn">import</span> <span class="n">Environment</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="c1"># create new simulation environment</span>
+    <span class="n">env</span><span class="p">:</span> <span class="n">Environment</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">()</span>
+
+    <span class="c1"># plot the surface quality over time</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">item_attr_over_time</span><span class="p">(</span><span class="s1">&#39;User/user/Desktop/&#39;</span><span class="p">,</span> <span class="s1">&#39;surface&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;../data/output_data/shaft.csv&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;drill&#39;</span><span class="p">,</span> <span class="s1">&#39;lathe&#39;</span><span class="p">,</span> <span class="s1">&#39;polisher&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>The method <code class="docutils literal notranslate"><span class="pre">item_attr_over_time</span></code> takes three arguments. First the path to the directory in which the plot should be
+saved as a .png file. The second argument is a single string, which represents the attribute, whose values should be
+displayed. The last argument is an argument list, which holds a list for each .csv file data should be taken from.</p>
+<p>These lists must follow a special structure. The first element has to be a str, which represents the path to the .csv
+file with the simulation output for a particular item type. The second and third elements are list by them self and must
+have the same length. The length corresponds to the number of stations on which the value of the given attribute should
+be plotted. The first lists holds the labels for each plot and the second one holds the process step number of the
+corresponding station in the simulated process.</p>
+<p>In the given example, the attributes of the <code class="docutils literal notranslate"><span class="pre">surface</span></code> attribute are to be displayed at all three process stations
+([0, 1, 2]) with the names [‘drill’, ‘lathe’, ‘polisher’ ]. Since only data from one file was used, the argument list
+has only the length one.</p>
+<p>The above code leads to the following result.</p>
+<a class="reference internal image-reference" href="../../_images/example_03_over_time.png"><img alt="Process graph" src="../../_images/example_03_over_time.png" style="width: 100%;" /></a>
+<p>This graph reflects exactly the result that was to be expected. The surface quality of the shafts during drilling
+corresponds to the defined initial distribution ([“n”, 10, 0.2]). Only in rare cases (1.5%) when the drill breaks, the
+quality deteriorates by about 2 units. This corresponds to the few upward outliers in the blue plot.</p>
+<p>In the turning process, quality is negatively affected by wear, which increases over time until maintenance is
+performed. This maintenance always takes place after 50 machining operations, which corresponds to 200 time units
+(50 * 4). This cycle can be seen in the orange plot in the form of the ‘triangles’.</p>
+<p>Finally, the influence of temperature can also be seen. The temperature is higher at noon than in the evening. In
+addition, the temperature has a negative influence on the polishing process. Since three days have been simulated, three
+‘waves’ can be seen on the polisher plot (blue). Since the simulation time starts at ‘midnight’ and the temperature
+there is rather low, the surface quality in the green plot initially has a minimum.</p>
+<p>In addition, it can be seen that the workpieces are actually moving through the process, since the outliers from
+drilling can also be found in the subsequent machining shifts (with a small time delay). The same applies to the peaks
+from the turning process.</p>
+<hr class="docutils" />
+</div>
+<div class="section" id="plot-over-stations">
+<span id="over-stations"></span><h2>Plot over stations<a class="headerlink" href="#plot-over-stations" title="Permalink to this headline">¶</a></h2>
+<p>In this graphic a boxplot for one attribute can be displayed for each station for up to four different datasets.</p>
+<p>To give a concrete example of how to create a graphic of this type, the attribute <code class="docutils literal notranslate"><span class="pre">surface</span></code> from example three is also
+shown here. In addition, to show how data from different simulation runs can be plotted on a graph, the simulation
+described in Example three is restarted, but the shafts entering the process have a different distribution, with a small
+mean but a larger spread ([“n”, 8, 0.8]).</p>
+<p>The following code shows how to create the graphic.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import the simulation environment</span>
+<span class="kn">from</span> <span class="nn">prodsim</span> <span class="kn">import</span> <span class="n">Environment</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="c1"># create new simulation environment</span>
+    <span class="n">env</span><span class="p">:</span> <span class="n">Environment</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">()</span>
+
+    <span class="c1"># plot the surface quality over time</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">item_attr_over_station</span><span class="p">(</span><span class="s1">&#39;User/user/Desktop/&#39;</span><span class="p">,</span> <span class="s1">&#39;surface&#39;</span><span class="p">,</span>
+                               <span class="p">[</span><span class="s1">&#39;../data/output_data_1/shaft.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;sim_run_1&#39;</span><span class="p">],</span>
+                               <span class="p">[</span><span class="s1">&#39;../data/output_data_2/shaft.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;sim_run_2&#39;</span><span class="p">],</span>
+                               <span class="n">x_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;drill&#39;</span><span class="p">,</span> <span class="s1">&#39;lathe&#39;</span><span class="p">,</span> <span class="s1">&#39;polisher&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>The Method <code class="docutils literal notranslate"><span class="pre">item_attr_over_station</span></code> takes four arguments. First the path to the directory, where the plot should be
+saved. Second, the name of the attribute, that should be displayed. Then a argument list, which contains up to four list
+of length two. Containing the path to a dataset and a string representing the label for this dataset. Last an optional
+list of the length of the number of process steps, which represent the labeling of the x axis. If this list isn’t set
+the labels will be ‘station_0’, ‘station_1’ ,.. .</p>
+<p>The code shown above generates the following graph.</p>
+<a class="reference internal image-reference" href="../../_images/example_03_over_station.png"><img alt="Process graph" src="../../_images/example_03_over_station.png" style="width: 100%;" /></a>
+<p>Also in this graph the same aspects can be observed as from the <a class="reference internal" href="#over-time"><span class="std std-ref">plot over time</span></a>.</p>
+<p>As already expected from the distribution of the surface values, the mean value of the surface roughness decreases in
+the second simulation run, while the scatter increases. This can be easily seen by comparing the red and blue boxplots.
+In addition, it can be seen that the scatter width of the central 50 % quantile increases strongly with a small initial
+scatter (blue), while it remains almost the same with an already large initial scatter (red).</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="example_assembly.html" class="btn btn-neutral float-right" title="Example 05: Assembly process" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="example_output_data.html" class="btn btn-neutral float-left" title="Example 03: Start simulation and create output data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Tom Fuchs.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

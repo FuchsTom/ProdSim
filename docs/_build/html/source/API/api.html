@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Reference &mdash; ProdSim 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Interface Files" href="../Interface_files/interface.html" />
+    <link rel="prev" title="Overview" href="../../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> ProdSim
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#environment"><code class="docutils literal notranslate"><span class="pre">Environment</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#estimator"><code class="docutils literal notranslate"><span class="pre">Estimator</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Interface_files/interface.html">Interface Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Examples/examples.html">Examples</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ProdSim</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>API Reference</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-reference">
+<span id="api"></span><h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline"></a></h1>
+<section id="environment">
+<h2><code class="docutils literal notranslate"><span class="pre">Environment</span></code><a class="headerlink" href="#environment" title="Permalink to this headline"></a></h2>
+<p>The Environment class represents the central element of the library. All offered simulation functionalities are
+available to the user in the methods through an object of this class. In addition, the environment controls all
+program-internal method calls as well as access to the process data in the background.</p>
+<span class="target" id="module-environment"></span><dl class="py class">
+<dt class="sig sig-object py" id="environment.Environment">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">environment.</span></span><span class="sig-name descname"><span class="pre">Environment</span></span><a class="headerlink" href="#environment.Environment" title="Permalink to this definition"></a></dt>
+<dd><p>Execution Environment for the event-based production simulation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="environment.Environment.clear_env">
+<span class="sig-name descname"><span class="pre">clear_env</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#environment.Environment.clear_env" title="Permalink to this definition"></a></dt>
+<dd><p>Reinitialize the environment object between two different simulation runs.</p>
+<p>After calling this method, a new process must be read in.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="environment.Environment.data_to_csv">
+<span class="sig-name descname"><span class="pre">data_to_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_to_wd</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_column</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_original</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#environment.Environment.data_to_csv" title="Permalink to this definition"></a></dt>
+<dd><p>Exports the simulation data to csv files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_to_wd</strong> (<em>str</em>) – Path to the target directory</p></li>
+<li><p><strong>remove_column</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – List of labels whose columns are removed before saving</p></li>
+<li><p><strong>keep_original</strong> (<em>bool</em><em>, </em><em>optional</em>) – Keep an additional original file without removed columns</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>MissingData</strong> – <code class="docutils literal notranslate"><span class="pre">simulate</span></code> was not called before</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the passed folder does not exist, then the program creates it.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="environment.Environment.inspect">
+<span class="sig-name descname"><span class="pre">inspect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#environment.Environment.inspect" title="Permalink to this definition"></a></dt>
+<dd><p>Checks the passed input files for errors of logical and syntactic nature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>MissingData</strong> – <code class="docutils literal notranslate"><span class="pre">read_files</span></code> was not called, or the data read in does not contain the arrays
+‘order’ and ‘station’</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method is only a support and does not guarantee an error-free simulation run.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="environment.Environment.read_files">
+<span class="sig-name descname"><span class="pre">read_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_data_file</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_function_file</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#environment.Environment.read_files" title="Permalink to this definition"></a></dt>
+<dd><p>Reads in the process input files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_data_file</strong> (<em>str</em>) – Path to the JSON file with the process data</p></li>
+<li><p><strong>path_function_file</strong> (<em>str</em>) – Path to the py file with the function definitions</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>FileNotFoundError</strong> – Files could not be found</p></li>
+<li><p><strong>MissingParameter</strong> – The ‘order’ or ‘station’ array is not defined in the process file or an order or
+station object has no name</p></li>
+<li><p><strong>UndefinedFunction</strong> – One of the referenced functions cannot be found in the function file</p></li>
+<li><p><strong>UndefinedObject</strong> – One of the referenced orders or stations cannot be found in the data file</p></li>
+<li><p><strong>InvalidType</strong> – The component list has an element that is not of type list, or the capacity of an order or
+station is not of type int</p></li>
+<li><p><strong>InvalidValue</strong> – The capacity of an order or station is not greater than zero</p></li>
+<li><p><strong>NotSupportedParameter</strong> – One of the values of the user-defined factory attributes has an undefined
+identifier</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="environment.Environment.simulate">
+<span class="sig-name descname"><span class="pre">simulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim_time</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_components</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress_bar</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_memory</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bit_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">32</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#environment.Environment.simulate" title="Permalink to this definition"></a></dt>
+<dd><p>Starts the simulation run.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sim_time</strong> (<em>int</em>) – Simulated time</p></li>
+<li><p><strong>track_components</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – List of strings representing components whose process data is to be stored</p></li>
+<li><p><strong>progress_bar</strong> (<em>bool</em><em>, </em><em>optional</em>) – Specifies whether a progress bar should be displayed</p></li>
+<li><p><strong>max_memory</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximal size of a single a numpy data array [Mb]</p></li>
+<li><p><strong>bit_type</strong> (<em>int</em><em>, </em><em>optional</em>) – Bit type with which the values are stored</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>MissingData</strong> – <code class="docutils literal notranslate"><span class="pre">read_files</span></code> was not called or the data read in does not contain ‘order’ or ‘station’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="environment.Environment.visualize">
+<span class="sig-name descname"><span class="pre">visualize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#environment.Environment.visualize" title="Permalink to this definition"></a></dt>
+<dd><p>Launches an interactive web application to display the input data.
+This method initiates a local development app on a flask server on localhoast:8050.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>MissingData</strong> – <code class="docutils literal notranslate"><span class="pre">read_files</span></code> was not called or the data read in does not contain the ‘order’ or ‘station’
+array</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method initiates a local development app on a flask server on localhoast:8050.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="estimator">
+<h2><code class="docutils literal notranslate"><span class="pre">Estimator</span></code><a class="headerlink" href="#estimator" title="Permalink to this headline"></a></h2>
+<p>The Estimator class offers some functionalities through which the runtime behavior of the simulation can be estimated.
+Alternatively, a reference simulation with a short simulation time can be performed, and the measured simulation time
+can be scaled proportionally. However, the function est_function is especially useful for developing suitable process
+functions.</p>
+<span class="target" id="module-estimator"></span><dl class="py class">
+<dt class="sig sig-object py" id="estimator.Estimator">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">estimator.</span></span><span class="sig-name descname"><span class="pre">Estimator</span></span><a class="headerlink" href="#estimator.Estimator" title="Permalink to this definition"></a></dt>
+<dd><p>Estimator for estimating the expected simulation time.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="estimator.Estimator.est_attribute">
+<span class="sig-name descname"><span class="pre">est_attribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distribution</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_station</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#estimator.Estimator.est_attribute" title="Permalink to this definition"></a></dt>
+<dd><p>Estimates the time caused by additional attributes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distribution</strong> (<em>List</em><em>[</em><em>tuple</em><em>]</em>) – List of attributes to be estimated</p></li>
+<li><p><strong>num_station</strong> (<em>int</em>) – Number of stations that workpieces of the order under consideration pass through</p></li>
+<li><p><strong>track</strong> (<em>bool</em>) – Indicates whether the order is being tracked</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Estimated additional simulation time for additional attributes</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="estimator.Estimator.est_function">
+<span class="sig-name descname"><span class="pre">est_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_station</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imports</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">object</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item_attributes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">machine_attributes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factory_attributes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#estimator.Estimator.est_function" title="Permalink to this definition"></a></dt>
+<dd><p>Estimates the time caused by a specific function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function</strong> (<em>Callable</em>) – List of attributes to be estimated</p></li>
+<li><p><strong>num_station</strong> (<em>int</em>) – Number of stations at which the process function is called</p></li>
+<li><p><strong>track</strong> (<em>bool</em>) – Indicates whether the order is being tracked</p></li>
+<li><p><strong>imports</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – List of all used import statements</p></li>
+<li><p><strong>objects</strong> (<em>List</em><em>[</em><em>object</em><em>]</em><em>, </em><em>optional</em>) – List of all used objects</p></li>
+<li><p><strong>item_attributes</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>list</em><em>]</em><em>, </em><em>optional</em>) – List of all item attributes used in the function</p></li>
+<li><p><strong>machine_attributes</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>list</em><em>]</em><em>, </em><em>optional</em>) – List of all machine attributes used in the function</p></li>
+<li><p><strong>factory_attributes</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>list</em><em>]</em><em>, </em><em>optional</em>) – List of all factory attributes used in the function</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>InvalidFunction</strong> – Function name is ‘function1’</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Estimated time for a single function call</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="estimator.Estimator.est_item">
+<span class="sig-name descname"><span class="pre">est_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#estimator.Estimator.est_item" title="Permalink to this definition"></a></dt>
+<dd><p>Estimates the time for creating a workpiece.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>track</strong> (<em>bool</em>) – Indicates whether the order is being tracked</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Estimated simulation time for creating a workpiece without attributes</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="estimator.Estimator.est_station">
+<span class="sig-name descname"><span class="pre">est_station</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#estimator.Estimator.est_station" title="Permalink to this definition"></a></dt>
+<dd><p>Estimates the time caused by the recursive process logic.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>track</strong> (<em>bool</em>) – Indicates whether the order is being tracked</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Estimated simulation time for simply passing through stations (without functions and item attributes)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../index.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Interface_files/interface.html" class="btn btn-neutral float-right" title="Interface Files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Tom Fuchs.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

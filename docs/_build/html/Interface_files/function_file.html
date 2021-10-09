@@ -1,0 +1,451 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Function file &mdash; ProdSim 0.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Attribute values" href="attribute_values.html" />
+    <link rel="prev" title="Data file" href="data_file.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ProdSim
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../API/api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Examples/examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="interface.html">Interface Files</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="data_file.html">Data file</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Function file</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#process-function">Process function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#source-and-sink">Source and Sink</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#global-function">Global function</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="attribute_values.html">Attribute values</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ProdSim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="interface.html">Interface Files</a> &raquo;</li>
+        
+      <li>Function file</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="function-file">
+<span id="id1"></span><h1>Function file<a class="headerlink" href="#function-file" title="Permalink to this headline">¶</a></h1>
+<p>The function file is a .py file in which the user can fill all functions used in the data file with content. All
+functions defined here can be differentiated into three categories:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#process-function"><span class="std std-ref">process function</span></a></p></li>
+<li><p><a class="reference internal" href="#source-sink"><span class="std std-ref">source and sink</span></a></p></li>
+<li><p><a class="reference internal" href="#global-function"><span class="std std-ref">global function</span></a></p></li>
+</ul>
+<p>As the names already indicate, process functions are functions that describe a machining process of an item on a
+machine of a station. Source and sink functions describe how many workpieces are fed into the system and when. The
+global functions are functions to influence the behavior of the global attributes. In the following the required
+structure of the respective functions is described.</p>
+<hr class="docutils" />
+<div class="section" id="process-function">
+<span id="id2"></span><h2>Process function<a class="headerlink" href="#process-function" title="Permalink to this headline">¶</a></h2>
+<p>Process functions are functions that describe the behavior of the workpiece and station/machine attributes during
+machining depending on the current workpiece and station properties. In order to be able to define the change of the
+attributes, one can fall back in these functions on the attributes of the workpiece, the station, the factory and the
+simpy.environment (i.e. the simulation time). In addition to changing the attributes, the processing time should also be
+taken into account here, because the simpy.environment can be used to block the machine for other workpieces for a
+certain period of time using the ‘timeout’ method. If no timeout event is yielded, then this corresponds to a processing
+which needs no time and thus the resource is blocked also only for a time and no time span.</p>
+<p>As the following example shows, process functions must always have exactly 4 parameters. The first parameter should be
+named ‘env’ to avoid user errors and via this the simpy.environment and its attributes can be reached. The second
+parameter is ‘item’. With this you can access all user defined attributes corresponding to this item in the data file.
+The next parameter is ‘station’ which, as with the items, can be used to access the current properties of the machines
+of a station. The last parameter is ‘factory’ which gives access to all global attributes.</p>
+<p>To see which exceptions are thrown when there are faulty functions see the following <a class="reference internal" href="data_file.html#function"><span class="std std-ref">section</span></a>.</p>
+<p>To give an example of a possible function, assume that a shaft is to be turned on a lathe. The shaft has a surface
+quality and the lathe has an attribute wear and eccentricity of the spindle. One can now choose different approaches to
+integrate a process model of the machining.Here we assume that we know a process function (here fictitious), which
+describes the surface quality after machining in dependence of the parameters ‘wear’, ‘ eccentricity’, as well as a
+global parameter ‘temperature’. The machining process is normally distributed and takes on average 3 minutes with a
+standard deviation of 0.2. If the wear on the machine is greater than 1, then the desired quality cannot be achieved and
+maintenance is carried out before machining, which resets the wear to zero. This operation lasts exactly 5 minutes. In
+addition, the wear increases in a normally distributed manner with each machining operation. To track the power
+consumption, the global parameter is updated before and after the machining.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">normalvariate</span>
+
+<span class="k">def</span> <span class="nf">shaft_on_lathe</span><span class="p">(</span><span class="n">env</span><span class="p">:</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Environment</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">Item</span><span class="p">,</span> <span class="n">machine</span><span class="p">:</span> <span class="n">Machine</span><span class="p">,</span> <span class="n">factory</span><span class="p">:</span> <span class="n">Factory</span><span class="p">):</span>
+
+    <span class="c1"># Maintenance when wear is too great</span>
+    <span class="k">if</span> <span class="n">machine</span><span class="o">.</span><span class="n">wear</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">machine</span><span class="o">.</span><span class="n">wear</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="c1"># Update global parameter</span>
+    <span class="n">factory</span><span class="o">.</span><span class="n">energy_usage_sector_1</span> <span class="o">+=</span> <span class="mi">10</span>
+
+    <span class="c1"># Calculate the new attributes using a process function</span>
+    <span class="n">item</span><span class="o">.</span><span class="n">surface_quality</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">wear</span> <span class="o">*</span> <span class="mf">0.8</span> <span class="p">(</span><span class="n">factory</span><span class="o">.</span><span class="n">temperature</span> <span class="o">+</span> <span class="mi">273</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span> <span class="o">+</span> <span class="n">machine</span><span class="o">.</span><span class="n">eccentricity</span>
+
+    <span class="c1"># Blocking the resource for the processing time</span>
+    <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">normalvariate</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">))</span>
+
+    <span class="c1"># Update global parameter</span>
+    <span class="n">factory</span><span class="o">.</span><span class="n">energy_usage_sector_1</span> <span class="o">-=</span> <span class="mi">10</span>
+</pre></div>
+</div>
+<p>The following table gives a small overview of the different Parameters of a process function.</p>
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-text">Overview: process function</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Usage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>env</p></td>
+<td><p>simpy.Environment</p></td>
+<td><p>block resource via yield env.timeout(delay=value)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td><p>access simulation time via env.now</p></td>
+</tr>
+<tr class="row-even"><td><p>item</p></td>
+<td><p>Item</p></td>
+<td><p>access user defined item attributes</p></td>
+</tr>
+<tr class="row-odd"><td><p>station</p></td>
+<td><p>Station</p></td>
+<td><p>access user defined item attributes</p></td>
+</tr>
+<tr class="row-even"><td><p>factory</p></td>
+<td><p>Factory</p></td>
+<td><p>access global attributes</p></td>
+</tr>
+</tbody>
+</table>
+<p>Finally, it should be noted that in the case when several items are being processed at the same time on one station, the
+parameter item is of the type List[Item] and the list contains all the workpieces appearing during the processing. The
+access to the attributes must be adapted accordingly.
+Also we refer to assemblies, because assembled workpieces can be accessed via ‘item.assembly_item_name’, which of course
+have further attributes (tree structure).</p>
+<hr class="docutils" />
+</div>
+<div class="section" id="source-and-sink">
+<span id="source-sink"></span><h2>Source and Sink<a class="headerlink" href="#source-and-sink" title="Permalink to this headline">¶</a></h2>
+<p>Sources and sinks are used to insert workpieces into the system and to remove finished workpieces after machining. Each
+workpiece has a source and a sink. If no sources are specified by the user, then default sources are activated, which
+ensure that the process is always started when stations or machines are available.</p>
+<p>Sources place new workpieces with freshly generated attribute values (according to the distribution defined by the user)
+in the store of the first station, the process chain of the respective item type.
+Sinks remove finished workpieces from the end storage of the respective item type.</p>
+<p>As the following example shows, sources and sinks get the simpy.environment as their only passing parameter, which is
+used to define time intervals between two store accesses.</p>
+<p>To see which exceptions are thrown when there are faulty functions see the following section for <a class="reference internal" href="data_file.html#source"><span class="std std-ref">source</span></a>
+and <a class="reference internal" href="data_file.html#sink"><span class="std std-ref">sink</span></a>.</p>
+<p>Since sources and sinks essentially function in the same way, only an example of a source is given here, which is
+supposed to exhibit the following behavior as an example. It is assumed that the time steps are in hours (any other time
+unit can be used by simple transformations). During the day shift (8:00-20:00) every ten minutes three workpieces are to
+be placed in the memory of the first station of the corresponding item type. During the night shift, exactly one
+workpiece should be placed every fifteen minutes.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">source_1</span><span class="p">(</span><span class="n">env</span><span class="p">:</span> <span class="n">Environment</span><span class="p">):</span>
+
+    <span class="c1"># Check if there is a night shift</span>
+    <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">now</span> <span class="o">%</span> <span class="mi">24</span> <span class="o">&lt;</span> <span class="mi">8</span> <span class="ow">or</span> <span class="n">env</span><span class="o">.</span><span class="n">now</span> <span class="o">%</span> <span class="mi">24</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="mi">1</span>
+    <span class="c1"># &#39;yield 1&#39;, works like &#39;return&#39; in a regular function</span>
+
+    <span class="c1"># Day shift</span>
+    <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="k">yield</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>Each time a source function or a sink function is called, a generator is created from it, which is iterated over until
+an object of type ‘int’ is yielded. Therefore it is always necessary that with each possible iteration first an object
+of the type ‘simpy.Timeout’ is yielded and then an object of the type ‘int’. Since the iteration is aborted when an
+‘int’ yield statement is reached, ‘yield int_object’ has the same function as a ‘return’ statement.</p>
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-text">Overview: source and sink</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Usage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>env</p></td>
+<td><p>simpy.Environment</p></td>
+<td><p>block resource via yield env.timeout(delay=value)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td><p>access simulation time via env.now</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+</div>
+<div class="section" id="global-function">
+<span id="id3"></span><h2>Global function<a class="headerlink" href="#global-function" title="Permalink to this headline">¶</a></h2>
+<p>Global functions are used to control the global parameters. Even process functions can also read and assign new values
+to the global parameters within, however this brings some problems with itself, because one assigns
+global parameter from these process functions with new values, then the resulting behavior is only with difficulty to
+estimate, because one does not know always apriori how often and when exactly this function is called (in particular if
+one integrates coincidence with into the system). In addition, you have no flexible access to the values via the process
+functions, because assuming you want to have a global parameter ‘temperature’, which follows a certain course, then you
+have access to this course via the process functions, but cannot define the course itself. The reason for this is that
+the process functions are always called only in the discrete time steps as they are specified by the editing process.
+This problem is solved by the global functions, as the following example shows.</p>
+<p>global functions get exactly two parameters. One is the simpy.environment, which is used to access the time, and the
+other is a factory object, which is used to access the global attributes.</p>
+<p>As an example, suppose you want to have a global parameter ‘temperature’ that follows a step history over time. Again,
+the unit of time is assumed to be hours.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">global_temperature</span><span class="p">(</span><span class="n">env</span><span class="p">:</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Environment</span><span class="p">,</span> <span class="n">factory</span><span class="p">:</span> <span class="n">Factory</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">is_in</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">lower_bound</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">time</span> <span class="o">%</span> <span class="mi">24</span> <span class="o">&gt;</span> <span class="n">low_bound</span> <span class="ow">and</span> <span class="n">time</span> <span class="o">%</span> <span class="mi">24</span> <span class="o">&lt;</span> <span class="n">upper_bound</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">if</span> <span class="n">is_in</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">):</span>
+        <span class="n">factory</span><span class="o">.</span><span class="n">temperature</span> <span class="o">=</span> <span class="mi">18</span>
+    <span class="k">elif</span> <span class="n">is_in</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">14</span><span class="p">):</span>
+        <span class="n">factory</span><span class="o">.</span><span class="n">temperature</span> <span class="o">=</span> <span class="mi">22</span>
+    <span class="k">elif</span> <span class="n">is_in</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">20</span><span class="p">):</span>
+        <span class="n">factory</span><span class="o">.</span><span class="n">temperature</span> <span class="o">=</span> <span class="mi">23</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="n">factory</span><span class="o">.</span><span class="n">temperature</span> <span class="o">=</span> <span class="mi">19</span>
+
+    <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It is important that at least one ‘simpy.timeout’ event is yielded on each run. It is not allowed to yield an object
+that is not of type ‘simpy.Timeout’. The delay specified in the timeout event indicates how large the time jump between
+two update calls should be.</p>
+<p>Of course, it is also possible to model much more complex behavior of global variables, for example, any thermodynamic
+models that determine the course of temperature as a function of the temperature itself and other global attributes,such
+as the power consumption of the machines.</p>
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-text">Overview: global function</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Usage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>env</p></td>
+<td><p>simpy.Environment</p></td>
+<td><p>block resource via yield env.timeout(delay=value)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td><p>access simulation time via env.now</p></td>
+</tr>
+<tr class="row-even"><td><p>factory</p></td>
+<td><p>Factory</p></td>
+<td><p>access global attributes</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="attribute_values.html" class="btn btn-neutral float-right" title="Attribute values" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="data_file.html" class="btn btn-neutral float-left" title="Data file" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Tom Fuchs.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,268 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>API Reference &mdash; ProdSim 0.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Interface Files" href="interface.html" />
+    <link rel="prev" title="ProdSim Documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ProdSim
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#environment"><code class="docutils literal notranslate"><span class="pre">Environment</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interface.html">Interface Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ProdSim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>API Reference</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="api-reference">
+<span id="api"></span><h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="environment">
+<h2><code class="docutils literal notranslate"><span class="pre">Environment</span></code><a class="headerlink" href="#environment" title="Permalink to this headline">¶</a></h2>
+<p>The Environment class is the central class of the program, because all other functionalities are called and synchronized
+via this class. When creating an environment instance, the corresponding data that is to be represented by this instance
+must be passed directly. This process data passed during initialization is stored in an internal format and
+automatically provided to the corresponding method when various functions are called.</p>
+<span class="target" id="module-environment"></span><dl class="py class">
+<dt class="sig sig-object py" id="environment.Environment">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">environment.</span></span><span class="sig-name descname"><span class="pre">Environment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_file</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">function_file</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#environment.Environment" title="Permalink to this definition">¶</a></dt>
+<dd><p>An execution <code class="docutils literal notranslate"><span class="pre">Environment</span></code> for the event based production simulation. The entire process to be mapped is defined
+in the transferred files and the structure must comply with certain <a class="reference internal" href="interface.html#interface"><span class="std std-ref">rules</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_file</strong> (<em>str</em>) – Path to the json-file with the process data</p></li>
+<li><p><strong>function_file</strong> (<em>str</em>) – Path to the py-file with the function definitions</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>FileNotFoundError</strong> – No matching files could be found for the given file paths</p></li>
+<li><p><strong>MissingParameter</strong> – The attribute ‘item’ or ‘station’ was not defined in the process file or an item or
+station object has no defined name</p></li>
+<li><p><strong>UndefinedFunction</strong> – One of the referenced functions could not be found in the function file</p></li>
+<li><p><strong>UndefinedObject</strong> – One of the referenced item or station could not be found in the data file</p></li>
+<li><p><strong>InvalidType</strong> – The component list has an element which is not of type list or the capacity of an item or
+station isn’t of type int</p></li>
+<li><p><strong>InvalidValue</strong> – The capacity of a item or station isn’T greater than zero</p></li>
+<li><p><strong>NotSupportedParameter</strong> – One of the values of user defined attributes has an undefined identifier</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="environment.Environment.inspect_data">
+<span class="sig-name descname"><span class="pre">inspect_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#environment.Environment.inspect_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the given data for possible errors that do not lead to an exception when generating the internal data
+formats, but would lead to a crash during the simulation. The corresponding errors are systematically output.
+This function should not be called at the same time as the simulation, since the errors are not corrected by
+this method, but only indicated and thus the simulation crashes nevertheless. Thus this method is to be seen as
+a help to free new data sets before the simulation from errors.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="environment.Environment.visualize">
+<span class="sig-name descname"><span class="pre">visualize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#environment.Environment.visualize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to visualize the input process data by creating an interactive network graph of the input
+process data. It shows both the material flow and the item and station specific parameters. This method
+initiates a local development app on a flask server on localhoast:8050. For an example see
+<a class="reference internal" href="example_01_setup.html#example-1"><span class="std std-ref">example 01</span></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="interface.html" class="btn btn-neutral float-right" title="Interface Files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="ProdSim Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Tom Fuchs.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

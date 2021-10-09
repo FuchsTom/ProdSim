@@ -1,0 +1,166 @@
+{
+  "order": [
+    {
+      "name": "quartz_bar",
+      "storage": 10,
+      "source": "source_2",
+      "attr_q_1": ["n",200,10],
+      "attr_q_2": ["n",400,12],
+      "attr_q_3": ["n",0.1,0.001],
+      "attr_q_4": ["n",2,1.1],
+      "attr_q_5": ["f",10],
+      "attr_q_6": ["b",0.01]
+    },
+    {
+      "name": "bridge",
+      "station": ["bridging","vision_check-1"],
+      "demand": [[2,2],1],
+      "component": [["quartz_bar","b_mo_wire"],[]],
+      "function": ["bridge_func","vc_1"],
+      "storage": 10,
+      "source": "source_1",
+      "attr_b_0": ["n",2,1.1],
+      "attr_b_1": ["f",10],
+      "attr_b_2": ["b",0.01]
+    },
+    {
+      "name": "inner_part",
+      "station": ["mounting","vision_check-2"],
+      "demand": [[2,2,1,1],1],
+      "component": [["m_mo_wire","mo_foil","coil","bridge"],[]],
+      "function": ["mount_func","vc_2"],
+      "storage": 10,
+      "source": "source_1",
+      "attr_i_1": ["n",10,1],
+      "attr_i_2": ["n",120,1.2],
+      "attr_i_3": ["n",110,2.0],
+      "attr_i_4": ["n",21,0.9],
+      "attr_i_5": ["n",24,0.2],
+      "attr_i_6": ["f",0],
+      "attr_i_7": ["f",0]
+    },
+    {
+      "name": "m_mo_wire",
+      "storage": 10,
+      "source": "source_2",
+      "attr_m_1": ["n",120,1],
+      "attr_m_2": ["n",2,0.01]
+    },
+    {
+      "name": "b_mo_wire",
+      "storage": 10,
+      "source": "source_2",
+      "attr_b_1": ["n",0,1.1],
+      "attr_b_2": ["n",2,1]
+    },
+    {
+      "name": "mo_foil",
+      "storage": 10,
+      "source": "source_2",
+      "attr_f_1": ["n",200,10],
+      "attr_f_2": ["n",400,12]
+    },
+    {
+      "name": "coil",
+      "storage": 10,
+      "source": "source_1"
+    },
+    {
+      "name": "capsule",
+      "station": ["forming","vision_check-3"],
+      "function": ["forming_func","vc_3"],
+      "storage": 10,
+      "source": "source_1",
+      "attr_c_1": ["n",10,1]
+    },
+    {
+      "name": "tube",
+      "storage": 10,
+      "source": "source_1",
+      "attr_t_1": ["n",10,1]
+    },
+    {
+      "name": "housing",
+      "station": ["tubolating","tesla_test","vision_check-4"],
+      "demand": [[1,1],1,1],
+      "component": [["capsule","tube"],[],[]],
+      "function": ["tubolate_func","tt","vc_4"],
+      "storage": 10,
+      "source": "source_1",
+      "attr_h_1": ["f",0],
+      "attr_h_2": ["f",0],
+      "attr_h_3": ["f",0],
+      "attr_h_4": ["f",0],
+      "attr_h_5": ["f",0]
+    },
+    {
+      "name": "bulb",
+      "station": ["pinching","vision_check-5"],
+      "demand": [[1,1],1],
+      "component": [["housing","inner_part"],[]],
+      "function": ["pump_pinch_func","vc_5"],
+      "storage": 10,
+      "source": "source_1",
+      "attr_b_1": ["n",400,12]
+    }
+  ],
+  "station": [
+    {
+      "name": "bridging",
+      "capacity": 2,
+      "storage": 10,
+      "wear": ["f",0]
+    },
+    {
+      "name": "vision_check-1",
+      "storage": 10,
+      "measurement": true
+    },
+    {
+      "name": "mounting",
+      "storage": 10,
+      "mount_attr_1": ["f",1]
+    },
+    {
+      "name": "vision_check-2",
+      "storage": 10,
+      "measurement": true
+    },
+    {
+      "name": "vision_check-3",
+      "storage": 10,
+      "measurement": true
+    },
+    {
+      "name": "tubolating",
+      "storage": 10
+    },
+    {
+      "name": "tesla_test",
+      "storage": 10,
+      "measurement": true
+    },
+    {
+      "name": "vision_check-4",
+      "storage": 10,
+      "measurement": true
+    },
+    {
+      "name": "pinching",
+      "storage": 10
+    },
+    {
+      "name": "vision_check-5",
+      "storage": 10,
+      "measurement": true
+    },
+    {
+      "name": "forming",
+      "storage": 10
+    }
+  ],
+  "factory": {
+    "global_attr_1": ["n", 12,0.1],
+    "global_attr_2": ["f", 2]
+  }
+}

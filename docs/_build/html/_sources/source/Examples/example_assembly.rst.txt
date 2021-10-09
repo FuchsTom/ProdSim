@@ -1,0 +1,311 @@
+.. _5:
+
+Example 05: Assembly process
+----------------------------
+
+This example shows how an assembly process can be simulated. Roughly speaking, there are no major differences to the
+previous examples, but in an assembly process the additional attribute 'component' of the assembly workpiece must be
+specified.
+
+As an exemplary example, the production of the upper half of a toy figure is described, which consists of an upper body,
+two arms and a head.
+
+The content of the example is as follows:
+
+* :ref:`Process description <process_description_>`
+* :ref:`Start simulation <start_sim_>`
+* :ref:`Visualize data <visualize_data>`
+
+.. note::
+   this example can be found in the following directory for experimentation.
+
+   .. code-block::
+
+      /prodsim/examples/example02/
+
+....
+
+.. _process_description_:
+
+Process description
+*******************
+
+In order to be able to define the process in the input files, it must first be described verbally.
+
+First, the upper bodies of plastic are cast in a mold. Three units of plastic granules are cast to form three upper
+bodies per casting process. This casting process also provides holes for the joints of the arms and head. For the sake
+of simplicity, it is assumed here that the mold wears out at the injection opening (which corresponds to the connection
+mold for the head) with each casting process.
+Thus, the opening for the head becomes larger with each operation, while the openings for the arms remain constant.
+Since the plastic has to cool down from the melt, it is not possible to achieve an exact diameter, but only a
+distribution of the diameters of the openings for the joints.
+
+The arms (subdivided into right and left arms) are not manufactured by the manufacturer, but are sourced from an
+external process, as is the head. The diameter of the ball joints of the arms and the head is also distributed.
+
+First, the arms are mounted, and then the head.
+
+Since these toy figures should be usable later, the arms and the head should neither be too tight nor so loose that they
+do not stay in position. Therefore, a final process checks whether this condition is met. It is known from tests that
+the difference in diameter of the mold and the ball joint must not exceed or fall below a certain level.
+
+If this is the case, the corresponding figure is removed from the process and it is tracked how many parts are scrap. In
+addition, a distinction is made as to which joint caused the scrap, so that process improvements can be made later.
+
+The process described in this way can be translated into input files as described in :ref:`Example 01 <1>`.
+
+**Process Data:**
+
+.. code-block:: JSON
+
+   {
+     "item": [
+       {
+         "name": "upper_body",
+         "diameter_arm_r": ["f",0],
+         "diameter_arm_l": ["f",0],
+         "diameter_head": ["f",0],
+         "station": ["casting", "assembly_arm", "assembly_head", "quality_control"],
+         "function": ["cast", "assemble_arms", "assemble_head", "quality_check"],
+         "demand": [3,[1,1],[1],5],
+         "component": [[],["arm_l", "arm_r"], ["head"],[]],
+         "storage": 20
+       },
+       {
+         "name": "arm_l",
+         "joint_diameter": ["l",1.5,0.06],
+         "storage": 10
+       },
+       {
+         "name": "arm_r",
+         "joint_diameter": ["l",1.5,0.05],
+         "storage": 10
+       },
+       {
+         "name": "head",
+         "joint_diameter": ["n",5,0.04],
+         "storage": 10
+       }
+     ],
+     "station": [
+       {
+         "name": "casting",
+         "storage": 20,
+         "abrasion": ["f",0]
+       },
+       {
+         "name": "assembly_arm",
+         "storage": 20
+       },
+       {
+         "name": "assembly_head",
+         "storage": 20
+       },
+       {
+         "name": "quality_control",
+         "storage": 20,
+         "count_rej_a_l": ["f",0],
+         "count_rej_a_r": ["f",0],
+         "count_rej_h": ["f",0]
+       }
+     ]
+   }
+
+.. note::
+   Special attention should be paid to the definition of the `component` attribute of the `upper_body` part.
+
+**Function File:**
+
+.. code-block:: python
+
+   # Required for the initial diameter of the molds
+   import random
+
+   def cast(env, item, machine, factory):
+
+       # Since three objects are created during casting, the attribute 'item' is
+       # a list of length three, which contains three individual workpieces.
+       # You could also define a separate behavior for each of the three
+       # workpieces (via a differentiation of the index).
+       for item_ in item:
+           item_.diameter_arm_r = random.normalvariate(4.5, 0.1)
+           item_.diameter_arm_l = random.normalvariate(4.5, 0.1)
+           # Wear makes the diameter of the head mold smaller
+           item_.diameter_head = random.normalvariate(4.95-machine.abrasion, 0.2)
+
+       # Increase wear at the injection point
+       machine.abrasion += 0.001
+
+       # Injection and cooling processes require 4 time units
+       yield env.timeout(4)
+
+   def assemble_arms(env, item, machine, factory):
+       # When assembling the parts are only plugged together and no attribute
+       # is changed (but of course properties could be changed here).
+       yield env.timeout(0.5)
+
+   def assemble_head(env, item, machine, factory):
+       # When assembling the parts are only plugged together and no attribute
+       # is changed (but of course properties could be changed here).
+       yield env.timeout(0.5)
+
+   def quality_check(env, item, machine, factory):
+
+       # Since 5 figures are always inspected at the same time during a quality control,
+       # it is also necessary to iterate over item here, since this is a list with 5 individual workpieces.
+       for item_ in item:
+
+           # A check is made to ensure that the permissible diameter difference is not exceeded.
+           # If it is, the workpiece is declared as scrap and a corresponding counter is increased.
+           if abs(item_.diameter_arm_r - item_.arm_r.joint_diameter) > 0.6:
+               item_.reject = True
+               machine.count_rej_a_r += 1
+
+           if abs(item_.diameter_arm_l - item_.arm_l.joint_diameter) > 0.6:
+               item_.reject = True
+               machine.count_rej_a_l += 1
+
+           if abs(item_.diameter_head - item_.head.joint_diameter) > 0.5:
+               item_.reject = True
+               machine.count_rej_h += 1
+
+       # One control operation takes 2 time units.
+       yield env.timeout(2)
+
+.. note::
+   Special attention should be paid to the referencing of the assembled objects `arm_l`, `arm_r` and `head` and their
+   attributes in the function `quality_check`.
+
+.. note::
+   The fact that the attribute `reject` is set to True has no influence on this process, because it is the last process
+   step anyway, but it should be made clear that every item has the attribute reject, no matter whether it has been
+   defined or not.
+
+Finally, the `inspect` and `visualize` methods should be called. The visualization returns the following result:
+
+.. code-block:: python
+
+   from prodsim import Environment
+
+   if __name__ == '__main__':
+
+      env: Environment = Environment()
+
+      # read input files
+      env.read_data('../data/assemble_data.json', '../data/assemble_functions.py')
+
+      # call the inspect und visualize function
+      env.inspect()
+      env.visualize()
+
+.. image:: ../Figures/example_05_visualize.png
+   :width: 100%
+   :alt: process graph
+
+You can see the linear manufacturing process, which receives assembly objects in the second and third stage, which
+themselves do not go through any process steps.
+
+....
+
+.. _start_sim_:
+
+Start simulation
+****************
+
+The start of the simulation is relatively unexciting, because there is no difference whether it is a process with
+assemblies or not.
+
+In the following, the number of parts declared as rejects will be examined. Therefore only the data from the last
+process step (`quality_control`) are of interest here, so that the parameter `track_components` is used.
+
+.. code-block:: python
+
+   from prodsim import Environment
+
+   if __name__ == '_main__':
+
+       env: Environment = Environment()
+
+       # read input files
+       env.read_data('../data/assemble_data.json', '../data/assemble_functions.py')
+
+       # start the simulation an define tracked components
+       env.simulate(sim_time=1000, track_components=['quality_control'], progress_bar=True)
+
+       # save data in .csv-file
+       env.data_to_csv('../data/output_data/', ['quality_control'], remove_column=['nr'])
+
+.. note::
+   Since only data of a single station is tracked here, the name and number of the machine (since there is only one
+   anyway) does not matter, so that these do not have to be stored in the csv file. The name is not saved per default,
+   while the attribute 'nr' must be explicitly excluded.
+
+....
+
+.. _visualize_data:
+
+Visualize data
+**************
+
+As already mentioned in :ref:`example 04 <4>`, to create individual plots you have to work with the raw data
+yourself, but ProdSim also offers a plot for this case, which gives you a quick overview of the data.
+
+The method `station_attr_over_time` can map records that have been recorded with the method `track_component` for a
+process station.
+
+The method gets three parameters, one of which is optional. The `path_to_dir` attribute is a string which specifies the
+path to the directory where the diagram should be saved as a .png-file.
+The attribute `attr_name` is optional and can be used if you want to plot several datasets from different simulation
+runs and want to plot the same attribute each time.
+The third attribute `args` gets for each plot a list with 2, or 3 elements. If the attribute `attr_name` is defined,
+then each list needs a string, which specifies the path to the csv file and a label, with which the plot should be
+labeled. The attribute that will be plotted is `attr_name`. But if you want to plot different attributes from one or
+different datasets (as in this example), then you leave `attr_name` at the default value and pass to each list as a
+third string the name of the attribute to be plotted from the corresponding station.
+
+This leads to the following code:
+
+.. code-block:: python
+
+   from prodsim import Environment
+
+   if __name__ == '_main__':
+
+       env: Environment = Environment()
+
+       # read input files
+       env.read_data('../data/assemble_data.json', '../data/assemble_functions.py')
+
+       # start the simulation an define tracked components
+       env.simulate(sim_time=1000, track_components=['quality_control'], progress_bar=True)
+
+       # save data in .csv-file
+       env.data_to_csv('../data/output_data/', ['quality_control'], remove_column=['nr'])
+
+       # plot station data
+       env.station_attr_over_time('User/user/Desktop/',
+                                  ['../data/output_data/quality_control.csv', 'left_arm', 'count_rej_a_l'],
+                                  ['../data/output_data/quality_control.csv', 'right_arm', 'count_rej_a_r'],
+                                  ['../data/output_data/quality_control.csv', 'head', 'count_rej_h'],)
+
+If you run the program, the output leads to the following diagram, which shows the number of rejections over time
+differentiated by the possible rejection reasons (left and right arm and head).
+
+Due to the definition of the function `quality_check`, a figure can have several reasons for rejection at the same time,
+so that the sum of the rejections from all three reasons does not necessarily correspond to the number of figures rejected.
+
+.. note::
+   Since the process result is determined to a large extent by chance, the result is of course different for each run.
+
+.. image:: ../Figures/example_05_plot.png
+   :width: 100%
+   :alt: plot
+
+First, it can be seen that the left arm has a higher reject rate over the entire process, which is due to the slightly
+increased scatter in the diameter of the externally sourced arms (see:
+:ref:`process description <process_description_>`).
+
+In addition, it can be seen that initially the scrap rate due to the heads is low, but from halfway through the process
+it increases to such an extent that virtually every head assembled causes scrap. This is clearly due to wear on the mold
+in the area of the head.
+

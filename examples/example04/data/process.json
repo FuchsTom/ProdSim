@@ -1,0 +1,97 @@
+{
+  "order": [
+    {
+      "name": "figure",
+      "source": "source_1",
+      "storage": 10,
+      "station": ["assemble_figure","quality_check"],
+      "function": ["assemble_figure","quality_check"],
+      "demand": [[2,2,1,1],1],
+      "component": [["leg","upper_limb","head","body"],[]],
+      "t4": ["f",0],
+      "t5": ["f",0],
+      "t6": ["f",0],
+      "t7": ["f",0],
+      "t8": ["f",0]
+    },
+    {
+      "name": "head",
+      "source": "source_1",
+      "storage": 10,
+      "d10": ["n",42,0.4]
+    },
+    {
+      "name": "leg",
+      "source": "source_2",
+      "storage": 10,
+      "d9": ["n",42,0.4]
+    },
+    {
+      "name": "body",
+      "source": "source_1",
+      "storage": 10,
+      "station": ["injection_molding"],
+      "function": ["molding"],
+      "d4": ["n",40,0.4],
+      "d5": ["n",40,0.4],
+      "d6": ["n",40,0.4],
+      "d7": ["n",40,0.4],
+      "d8": ["f",0]
+    },
+    {
+      "name": "upper_limb",
+      "source": "source_2",
+      "storage": 10,
+      "station": ["assemble_limb"],
+      "function": ["assemble_limb"],
+      "demand": [[1,1]],
+      "component": [["hand","arm"]],
+      "t2": ["f",0]
+    },
+    {
+      "name": "arm",
+      "source": "source_2",
+      "storage": 10,
+      "d2": ["n",40,0.4],
+      "d3": ["n",42,0.4]
+    },
+    {
+      "name": "hand",
+      "source": "source_2",
+      "storage": 10,
+      "d1": ["n",42,0.4]
+    }
+  ],
+  "station": [
+    {
+      "name": "assemble_limb",
+      "storage": 1,
+      "capacity": 2
+    },
+    {
+      "name": "assemble_figure",
+      "storage": 10
+    },
+    {
+      "name": "quality_check",
+      "measurement": true,
+      "storage": 10,
+      "r2_1": ["f",0],
+      "r2_2": ["f",0],
+      "r4": ["f",0],
+      "r5": ["f",0],
+      "r6": ["f",0],
+      "r7": ["f",0],
+      "r8": ["f",0]
+    },
+    {
+      "name": "injection_molding",
+      "storage": 10,
+      "hole_diameter": ["f", 40]
+    }
+  ],
+  "factory": {
+    "rejected_id": ["f", 0],
+    "function": ["global_update"]
+  }
+}

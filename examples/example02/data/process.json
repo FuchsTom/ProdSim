@@ -1,0 +1,32 @@
+{
+  "order": [
+    {
+      "name": "shaft",
+      "station": ["drill", "lathe", "polisher"],
+      "function": ["drilling", "turning", "polishing"],
+      "source": "shaft_source",
+      "surface": ["n",10,0.2]
+    }
+  ],
+  "station": [
+    {
+      "name": "drill",
+      "storage": 2,
+      "capacity": 2,
+      "drill_breakage": ["f",0.0015]
+    },
+    {
+      "name": "lathe",
+      "storage": 2,
+      "wear": ["f",0]
+    },
+    {
+      "name": "polisher",
+      "storage": 1
+    }
+  ],
+  "factory": {
+    "temperature": ["f",20],
+    "function": ["temperature_func"]
+  }
+}

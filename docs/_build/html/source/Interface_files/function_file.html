@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Production functions &mdash; ProdSim 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Attribute values" href="attribute_values.html" />
+    <link rel="prev" title="Production structure" href="data_file.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> ProdSim
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../API/api.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="interface.html">Interface Files</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="data_file.html">Production structure</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Production functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#process-function">Process function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#source-and-sink">Source and Sink</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#global-function">Global function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#distribution">Distribution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="attribute_values.html">Attribute values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Examples/examples.html">Examples</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ProdSim</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="interface.html">Interface Files</a> &raquo;</li>
+      <li>Production functions</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="production-functions">
+<span id="function-file"></span><h1>Production functions<a class="headerlink" href="#production-functions" title="Permalink to this headline"></a></h1>
+<p>The functions input file is a Python script in which the user defines all of the functions used in the process input
+file. The functions must be defined in the global scope and can be classified as follows</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#process-function"><span class="std std-ref">Process function</span></a></p></li>
+<li><p><a class="reference internal" href="#source-sink"><span class="std std-ref">Source and sink</span></a></p></li>
+<li><p><a class="reference internal" href="#global-function"><span class="std std-ref">Global function</span></a></p></li>
+<li><p><a class="reference internal" href="#distribution"><span class="std std-ref">Distribution</span></a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following subsections describe only the structure and functionality. The use of these functions is presented in
+chapter 3 (<a class="reference internal" href="../Examples/examples.html#examples"><span class="std std-ref">Examples</span></a>).</p>
+</div>
+<hr class="docutils" />
+<section id="process-function">
+<span id="id1"></span><h2>Process function<a class="headerlink" href="#process-function" title="Permalink to this headline"></a></h2>
+<p>All process functions referenced in the orders under the ‘function’ attribute must be defined in the function input
+file. The process functions are used to represent machining or assembly operations, and each of these functions has four
+arguments: <em>env</em>, <em>item</em>, <em>machine</em>, and <em>factory</em>. The following paragraphs explain what these arguments are used for:</p>
+<p><strong>env</strong></p>
+<p>The argument env points to the reference of the simulation environment of the simulation kernel. This reference can be
+used to access the current simulation time via the attribute now to make the behavior of the process function dependent
+on the simulation time.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">current_sim_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">now</span>
+</pre></div>
+</div>
+<p>In addition, this reference is used to set the current process to the <em>active without control</em> state. For this purpose,
+a <em>simpy.Timeout</em> event is yielded through <em>env</em>. The duration of the release of control is controlled by a time
+interval passed in the process. The machine is blocked for this time such that, for example, maintenance or processing
+times can be mapped.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using a random delay</span>
+<span class="n">delay</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">normalvariate</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+
+<span class="c1"># Delays must be positive</span>
+<span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">delay</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Any number of timeout events can be yielded in a process function, whereas returns are only used to manage the
+control flow if necessary.</p>
+</div>
+<p><strong>item</strong></p>
+<p>Through the argument <em>item</em>, all references to workpieces involved in the process can be accessed. The following table
+displays which information is available.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Read</p></th>
+<th class="head"><p>Write</p></th>
+<th class="head"><p>Access</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>attributes</p></td>
+<td><p><cite>+</cite></p></td>
+<td><p><cite>+</cite></p></td>
+<td><p><cite>item.attr_1</cite> (e.g.)</p></td>
+</tr>
+<tr class="row-odd"><td><p>id</p></td>
+<td><p><cite>+</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>item.item_id</cite></p></td>
+</tr>
+<tr class="row-even"><td><p>name</p></td>
+<td><p><cite>+</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>item.name</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p>reject</p></td>
+<td><p><cite>+</cite></p></td>
+<td><p><cite>+</cite></p></td>
+<td><p><cite>item.reject</cite></p></td>
+</tr>
+</tbody>
+</table>
+<p>The following figure illustrates what the item access structures look like when the workpieces are nested or the demand
+of the process is greater than one.</p>
+<a class="reference internal image-reference" href="../../_images/assembling_structure.png"><img alt="distribution_normal" class="align-center" src="../../_images/assembling_structure.png" style="width: 32%;" /></a>
+<p>The item attribute always references the main workpiece of a process – itemA in this case. The figure shows that two
+workpieces of type itemC were assembled into itemA. Whenever the quantity is greater than one, the references are stored
+in lists. The access to an attribute (e.g., <em>attr_1</em>) of the first of the two itemC items looks as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">item</span><span class="o">.</span><span class="n">itemC</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">attr_1</span>
+</pre></div>
+</div>
+<p>If two (or more) workpieces of the same type were assembled in different assembly steps (see <em>itemB</em>), then access would
+be made in a special way. Starting from the second workpiece, the references are supplemented by the prefix ‘_’ and a
+continuing suffix. Thus, identical workpieces from different process steps can be differentiated. Assuming the middle
+itemB was mounted second, access from its attributes (e.g., <em>attr_2</em>) would be as follows</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># accessing, the first assembled itemB</span>
+<span class="n">item</span><span class="o">.</span><span class="n">itemB</span><span class="o">.</span><span class="n">attr_2</span>
+
+<span class="c1"># accessing, the second assembled itemB</span>
+<span class="n">item</span><span class="o">.</span><span class="n">_itemB2</span><span class="o">.</span><span class="n">attr_2</span>
+</pre></div>
+</div>
+<p>This structure can be nested as far as required. Thus, access to attributes (e.g., <em>attr_3</em>) of itemD is through
+<em>itemB</em>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">item</span><span class="o">.</span><span class="n">itemB</span><span class="o">.</span><span class="n">itemD</span><span class="o">.</span><span class="n">attr_3</span>
+</pre></div>
+</div>
+<p><strong>machine</strong></p>
+<p>The <em>machine</em> argument can be used to reference the attributes of the machine on which the machining takes place. In
+addition, each machine of a station has its own number.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Read</p></th>
+<th class="head"><p>Write</p></th>
+<th class="head"><p>Access</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>attributes</p></td>
+<td><p><cite>+</cite></p></td>
+<td><p><cite>+</cite></p></td>
+<td><p><cite>machine.attr_1</cite> (e.g.)</p></td>
+</tr>
+<tr class="row-odd"><td><p>machine nr</p></td>
+<td><p><cite>+</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>machine.nr</cite></p></td>
+</tr>
+<tr class="row-even"><td><p>name</p></td>
+<td><p><cite>+</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>machine.name</cite></p></td>
+</tr>
+</tbody>
+</table>
+<p>Since there are no nested structures as with the items, access is always via <em>machine.attr_name</em>.</p>
+<p><strong>factory</strong></p>
+<p>All global attributes can be reached through the <em>factory</em> reference. These can also be assigned new values from process
+functions.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">factory</span><span class="o">.</span><span class="n">global_attr</span>
+</pre></div>
+</div>
+<p>However, the behavior of the global attributes is not so controllable since, particularly with stochastic processes, how
+often or when a process function is called is not known. Therefore, the global attributes should only be set based on
+<a class="reference internal" href="#global-function"><span class="std std-ref">global functions</span></a>.</p>
+<hr class="docutils" />
+</section>
+<section id="source-and-sink">
+<span id="source-sink"></span><h2>Source and Sink<a class="headerlink" href="#source-and-sink" title="Permalink to this headline"></a></h2>
+<p>Each job has exactly one source and one sink. Their tasks are to create workpieces in the production process and to
+remove them after they have passed through the process. By matching the behavior of the source and sink, a push or pull
+material flow can be configured in the production system.</p>
+<p>A source or sink is defined as a function in the global scope in the function input file and must match the values of
+the <em>sink</em> and <em>source</em> attributes of the orders. Such a function has exactly two arguments: <em>env</em> and <em>factory</em>. As
+described for the <a class="reference internal" href="#process-function"><span class="std std-ref">processes</span></a>, through these arguments the user can access the current
+simulation time and generate timeout events, and access to global attributes is provided.</p>
+<p>The following figure illustrates the logic of the source and sink functions. These functions can yield any number of
+objects of type int or <em>simpy.Timeout</em>. As soon as an <em>int</em> value is yielded, the iteration over the source or sink
+(generator) is aborted, and the yielded value corresponds to the number of workpieces that the source/sink
+generates/removes. If no int value is yielded, then the iteration stops after the last yield and starts again.</p>
+<a class="reference internal image-reference" href="../../_images/source_logic.png"><img alt="distribution_normal" class="align-center" src="../../_images/source_logic.png" style="width: 39%;" /></a>
+<p>If no sink is defined, then the default sink removes all workpieces from the corresponding end storage without any time
+delay (if no assembly workpieces are taken from this store for another order). If workpieces are always to be ready for
+production, an infinite source can be defined. For this purpose, the storage of the corresponding buffer memory must be
+and an <em>int</em> value from the source must be yielded as the first value. Thus, the source always fills up the storage
+without a time offset and stops when it is full.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define an infinite source</span>
+<span class="k">def</span> <span class="nf">infinite_source</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">factory</span><span class="p">):</span>
+    <span class="k">yield</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../Examples/example03.html#id1"><span class="std std-ref">Example 03</span></a> gives a concrete example of the interaction of an infinite source and sink with a demand
+curve over time.</p>
+<hr class="docutils" />
+</section>
+<section id="global-function">
+<span id="id2"></span><h2>Global function<a class="headerlink" href="#global-function" title="Permalink to this headline"></a></h2>
+<p>Global functions are specified via the <em>functions</em> attribute of the <em>factory</em> object and defined in the global scope of
+the function input file. The task of the global functions is to control the behavior of the global attributes. Global
+functions get two arguments: <em>env</em> and <em>factory</em>. Through env, as already shown with the
+<a class="reference internal" href="#process-function"><span class="std std-ref">process functions</span></a>, <em>timeout</em> events can be generated and the simulation time can be queried,
+while factory is used to obtain access to the global attributes to assign new values to them depending on the time. The
+following figure presents the required structure of a global function schematically:</p>
+<a class="reference internal image-reference" href="../../_images/global_func_logic.png"><img alt="distribution_normal" class="align-center" src="../../_images/global_func_logic.png" style="width: 38%;" /></a>
+<p>First, the global attributes are assigned updated values; arbitrarily nested structures can be used. Subsequently, at
+least one <em>timeout</em> event must be yielded. This is because the global functions are executed parallel to the simulation in
+an infinite loop; without a <em>timeout</em> event, the simulated time would not progress.</p>
+<p>Example <a class="reference internal" href="../Examples/example02.html#id1"><span class="std std-ref">02</span></a> demonstrates how to assign a time profile to global variables. Example <a class="reference internal" href="../Examples/example03.html#id1"><span class="std std-ref">03</span></a> illustrates
+how global functions can be used to influence the behavior of the production system.</p>
+<hr class="docutils" />
+</section>
+<section id="distribution">
+<span id="id3"></span><h2>Distribution<a class="headerlink" href="#distribution" title="Permalink to this headline"></a></h2>
+<p>The user-defined distributions that can be assigned to the attributes of the simulation objects are also defined in the
+global scope of the function input file. For content reasons, the structure of these functions is introduced together
+with the  <a class="reference internal" href="attribute_values.html#user-defined"><span class="std std-ref">attribute distributions</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="data_file.html" class="btn btn-neutral float-left" title="Production structure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="attribute_values.html" class="btn btn-neutral float-right" title="Attribute values" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Tom Fuchs.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

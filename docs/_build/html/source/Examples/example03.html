@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Example 03: Bolt &mdash; ProdSim 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Example 04: Toy figure" href="example04.html" />
+    <link rel="prev" title="Example 02: Shaft" href="example02.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> ProdSim
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../API/api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Interface_files/interface.html">Interface Files</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="examples.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="example01.html">Example 01: Gearbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example02.html">Example 02: Shaft</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Example 03: Bolt</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#process-description">Process description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#source">Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#global-function">Global function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#process-function-forging">Process function: forging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sink">Sink</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulation-output">Simulation output</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="example04.html">Example 04: Toy figure</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ProdSim</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="examples.html">Examples</a> &raquo;</li>
+      <li>Example 03: Bolt</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="example-03-bolt">
+<span id="id1"></span><h1>Example 03: Bolt<a class="headerlink" href="#example-03-bolt" title="Permalink to this headline"></a></h1>
+<p>The purpose of this example is twofold: first, it sets up a pull-controlled material flow in the production system
+using the interaction between the source and the sink of an order, and second, it shows that global attributes can
+control the material flow in the production system.</p>
+<hr class="docutils" />
+<section id="process-description">
+<span id="process-description1"></span><h2>Process description<a class="headerlink" href="#process-description" title="Permalink to this headline"></a></h2>
+<p>To understand the interaction of source and sink more easily, a simple process was chosen. A forge station has five
+forges, each of which produces six bolts per minute. These forges can be independently activated without start-up times.
+The finished bolt storage can hold up to 5000 bolts.</p>
+<a class="reference internal image-reference" href="../../_images/bolt_process.png"><img alt="../../_images/bolt_process.png" class="align-center" src="../../_images/bolt_process.png" style="width: 50%;" /></a>
+<p>This process runs 24 hours a day, and demand fluctuates throughout the day at unknown levels. The goal is to activate
+the machines to ensure that demand can be met and productivity is adjusted to demand.</p>
+<hr class="docutils" />
+</section>
+<section id="source">
+<span id="source1"></span><h2>Source<a class="headerlink" href="#source" title="Permalink to this headline"></a></h2>
+<p>Since the production process is controlled from the sink, it is necessary to ensure that enough input material is always
+available. An infinite source achieves this.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">infinite_source</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">factory</span><span class="p">):</span>
+    <span class="k">yield</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>An infinite source, where new input material is placed without delay, does not yield a <em>timeout</em> event. To enable a
+simulation with an infinite source, two conditions must be fulfilled:</p>
+<ol class="arabic simple">
+<li><p>The capacity of the buffer storage that is to be filled must be limited; and</p></li>
+<li><p>The buffer storage capacity must be at least the same as the demand of the process concerning the first process step.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Stores that are filled by an infinite source should not be filled by additional finite sources since the infinite
+sources dominate them.</p>
+</div>
+<hr class="docutils" />
+</section>
+<section id="global-function">
+<span id="global1"></span><h2>Global function<a class="headerlink" href="#global-function" title="Permalink to this headline"></a></h2>
+<p>There are three global attributes:</p>
+<ol class="arabic simple">
+<li><p><em>number_bolts</em>: The number of bolts in the final storage</p></li>
+<li><p><em>active_machines</em>: The number of currently active machines</p></li>
+<li><p><em>max_active_machines</em>: The maximum allowed number of currently active machines</p></li>
+</ol>
+<p>Since the demand (fictitious) is unknown and the production capacity is to be dynamically controlled, the number of
+bolts in the final storage is used as a control variable.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}max\_active\_machine = \left\{\begin{array}{ll} 5 &amp; ; number\_bolts \in \lbrack0,1000) \\
+                     4 &amp; ; number\_bolts \in \lbrack1000,2000) \\
+         3 &amp; ; number\_bolts \in \lbrack2000,3000) \\
+         2 &amp; ; number\_bolts \in \lbrack3000,4000) \\
+         1 &amp; ; number\_bolts \in \lbrack4000,5000) \\
+         0 &amp; ; number\_bolts = 5000\\
+         \end{array}\right.\end{split}\]</div>
+<p>The idea is that when the demand increases, the number of bolts in the final storage decreases. Thus, the lower the
+number of bolts, the higher the number of active machines must be, such that the production capacity adjusts itself with
+a slight time delay to the subsequent demand without having to know the demand. To make this work, the maximum average
+demand must be smaller than the maximal production capacity of 30  (6 * 5).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">control_logic</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1000</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2000</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3000</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4000</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5000</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">global_control</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">factory</span><span class="p">):</span>
+
+    <span class="c1"># Set max_active_machines_based on number_bolts</span>
+    <span class="k">for</span> <span class="n">quantity</span> <span class="ow">in</span> <span class="n">control_logic</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">factory</span><span class="o">.</span><span class="n">number_bolts</span> <span class="o">&lt;</span> <span class="n">quantity</span><span class="p">:</span>
+            <span class="n">factory</span><span class="o">.</span><span class="n">max_active_machines</span> <span class="o">=</span> <span class="n">control_logic</span><span class="p">[</span><span class="n">quantity</span><span class="p">]</span>
+            <span class="k">break</span>
+        <span class="n">factory</span><span class="o">.</span><span class="n">max_active_machines</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># Update every time step (minute)</span>
+    <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+</section>
+<section id="process-function-forging">
+<span id="forging"></span><h2>Process function: forging<a class="headerlink" href="#process-function-forging" title="Permalink to this headline"></a></h2>
+<p>As the focus is on the material flow, no attributes of the bolts are considered in this process function. Before the
+forging starts, whether the maximum number of active machines has been reached is checked. Since the cycle time is 1
+minute, this check is repeated every minute. If this check is passed, then the number of active machines is increased,
+and the machine is blocked for the forging time. After the forging has finished, the global variable for storage filling
+is updated, and the number of active machines is updated again.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">forging</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">machine</span><span class="p">,</span> <span class="n">factory</span><span class="p">):</span>
+
+    <span class="c1"># Check if production capacity is reached.</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">factory</span><span class="o">.</span><span class="n">active_machines</span> <span class="o">&lt;</span> <span class="n">factory</span><span class="o">.</span><span class="n">max_active_machines</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Update currently active machines</span>
+    <span class="n">factory</span><span class="o">.</span><span class="n">active_machines</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># Block forge for forging time</span>
+    <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Update store quantity</span>
+    <span class="n">factory</span><span class="o">.</span><span class="n">number_bolts</span> <span class="o">+=</span> <span class="mi">6</span>
+
+    <span class="c1"># Update currently active machines</span>
+    <span class="n">factory</span><span class="o">.</span><span class="n">active_machines</span> <span class="o">-=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+</section>
+<section id="sink">
+<span id="temperature1"></span><h2>Sink<a class="headerlink" href="#sink" title="Permalink to this headline"></a></h2>
+<p>It is assumed that the demand follows the given course (black) daily and undergoes certain variations. An approximation
+is made by six partial intervals, which demonstrate a certain scatter (the 95% interval is indicated).</p>
+<a class="reference internal image-reference" href="../../_images/demand_profile.png"><img alt="../../_images/demand_profile.png" class="align-center" src="../../_images/demand_profile.png" style="width: 47%;" /></a>
+<p>In addition, a large demand occurs for approximately 250 bolts approximately every 4 hours, which is also subject to
+variation. The following function presents the realization of such a source behavior. In addition, the current inventory
+in the final storage of the bolts is updated.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Defines the demand distribution over time</span>
+<span class="n">time_dict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="mi">3</span><span class="p">:</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="mi">4</span><span class="p">:</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span> <span class="mi">5</span><span class="p">:</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="mi">6</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">24</span><span class="p">]}</span>
+<span class="n">demand_dict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">],</span> <span class="mi">3</span><span class="p">:</span> <span class="p">[</span><span class="mf">20.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">4</span><span class="p">:</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">],</span> <span class="mi">5</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">],</span> <span class="mi">6</span><span class="p">:</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">]}</span>
+
+<span class="k">def</span> <span class="nf">bolt_sink</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">factory</span><span class="p">):</span>
+
+    <span class="n">demand</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">day_time</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">now</span> <span class="o">%</span> <span class="mi">1440</span>
+
+    <span class="c1"># Determine the standard demand</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">time_interval</span> <span class="ow">in</span> <span class="n">time_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">time_interval</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">day_time</span><span class="o">/</span><span class="mi">60</span> <span class="o">&lt;</span> <span class="n">time_interval</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">dis</span> <span class="o">=</span> <span class="n">demand_dict</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+            <span class="n">demand</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">normalvariate</span><span class="p">(</span><span class="n">dis</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dis</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="k">break</span>
+
+    <span class="c1"># Determining the additional demand</span>
+    <span class="k">if</span> <span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.004</span><span class="p">:</span>
+        <span class="n">demand</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">normalvariate</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">20</span><span class="p">)))</span>
+
+    <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Update number of bolts</span>
+    <span class="n">factory</span><span class="o">.</span><span class="n">number_bolts</span> <span class="o">-=</span> <span class="n">demand</span>
+
+    <span class="c1"># Just for output plotting purpose</span>
+    <span class="n">factory</span><span class="o">.</span><span class="n">current_demand</span> <span class="o">=</span> <span class="n">demand</span>
+
+    <span class="k">yield</span> <span class="n">demand</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+</section>
+<section id="simulation-output">
+<span id="output2"></span><h2>Simulation output<a class="headerlink" href="#simulation-output" title="Permalink to this headline"></a></h2>
+<p>The following figure depicts the course of the number of bolts in the final store as well as the demand. The additional
+demands have been removed from the plot, and a moving average has been used for the demand. Due to oscillation processes
+at the beginning, the simulated days 2–4 are shown.</p>
+<p>The following aspects can be identified:</p>
+<ol class="arabic simple">
+<li><p>At midday, the demand is approximately 20, so three to four forges must be active to meet the demand. Therefore, the
+average inventory at midday is 2000 (see <a class="reference internal" href="#global1"><span class="std std-ref">global_control</span></a>). At night, the demand is approximately
+eight, so only one to two forges are required.</p></li>
+<li><p>If there is an additional demand in the steady-state (e.g., at Sim. time = 2400), then the inventory level decreases
+abruptly. This increases the number of active machines such that the required stock is built up again.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/demand.png"><img alt="../../_images/demand.png" class="align-center" src="../../_images/demand.png" style="width: 50%;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Of course, this mechanism does not represent an efficiency control. The point of this example is rather the use of
+global quantities to limit machine activity. For example, the currently available electricity can also serve as a
+limit for the machines.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="example02.html" class="btn btn-neutral float-left" title="Example 02: Shaft" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="example04.html" class="btn btn-neutral float-right" title="Example 04: Toy figure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Tom Fuchs.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+
+.. _examples:
+
+Examples
+========
+
+The aim of this section is to illustrate the entire process of how this program should be used. The examples are not
+constructed in such a way, in order to represent as real circumstances as possible, but in order to refer as versatile
+as possible to all special features.
+There will be ... examples that chronologically map the use of the program.
+
+* :ref:`Example 01: Setup process <example_1>`
+
+....
+
+.. toctree::
+   :hidden:
+   :maxdepth: 2
+
+   example_01_setup

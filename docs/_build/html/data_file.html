@@ -1,0 +1,962 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Data file &mdash; ProdSim 0.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Function file" href="function_file.html" />
+    <link rel="prev" title="Interface Files" href="interface.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ProdSim
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="interface.html">Interface Files</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Data file</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#item">Item</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#station">Station</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#factory">Factory</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="function_file.html">Function file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attribute_values.html">Attribute values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ProdSim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="interface.html">Interface Files</a> &raquo;</li>
+        
+      <li>Data file</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="data-file">
+<span id="id1"></span><h1>Data file<a class="headerlink" href="#data-file" title="Permalink to this headline">¶</a></h1>
+<p>The process data file is a .json file in which the user can set all the information about the structure of the process.
+The file consists of one large object, which has three properties.</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#item"><span class="std std-ref">Item</span></a></p></li>
+<li><p><a class="reference internal" href="#station"><span class="std std-ref">Station</span></a></p></li>
+<li><p><a class="reference internal" href="#environment"><span class="std std-ref">Environment</span></a></p></li>
+</ol>
+<p>The following describes what these properties should look like and which parameters can be set.</p>
+<hr class="docutils" />
+<div class="section" id="item">
+<span id="id2"></span><h2>Item<a class="headerlink" href="#item" title="Permalink to this headline">¶</a></h2>
+<p>The property item itself is an array attribute of the top-level object. This array holds objects, representing different
+types of items. Those item objects hold all the attributes this particular item should have. There are two different
+types of attributes. Firstly, those that are predefined by the system and secondly, those that can be freely selected
+by the user and describe the properties of the objects. The names of the freely chosen attributes must not collide with
+those of the default attributes.
+After the following example, by setting once all possible parameters and two free attributes and once only the name and
+one free attribute, the default attributes are predefined.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The following example is not a valid data file because only the item attribute is included for clarity. A valid
+file should at least contain the attribute station. Also not all items used in an assembly are defined in the
+item-array.</p>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;item&quot;</span><span class="p">:</span> <span class="p">[</span>
+
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;crankshaft&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;length&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="mi">450</span><span class="p">,</span><span class="mf">0.1</span><span class="p">],</span>
+      <span class="nt">&quot;crack&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="mf">0.1</span><span class="p">],</span>
+      <span class="nt">&quot;station&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;assembly_station_1&quot;</span><span class="p">,</span> <span class="s2">&quot;assembly_station_2&quot;</span><span class="p">,</span> <span class="s2">&quot;quality_control&quot;</span><span class="p">],</span>
+      <span class="nt">&quot;function&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;assembly_1&quot;</span><span class="p">,</span> <span class="s2">&quot;assembly_2&quot;</span><span class="p">,</span> <span class="s2">&quot;quality_check&quot;</span><span class="p">],</span>
+      <span class="nt">&quot;demand&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="mi">10</span><span class="p">],</span>
+      <span class="nt">&quot;component&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="s2">&quot;shaft&quot;</span><span class="p">,</span><span class="s2">&quot;bearing&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;rod&quot;</span><span class="p">],</span> <span class="p">[]],</span>
+      <span class="nt">&quot;priority&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nt">&quot;sink&quot;</span><span class="p">:</span> <span class="s2">&quot;sink_1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;source_1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;capacity&quot;</span><span class="p">:</span> <span class="mi">100</span>
+    <span class="p">},</span>
+
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;shaft&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;surface_quality&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">],</span>
+    <span class="p">}</span>
+
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">name</span></code></p>
+<p>The name is the only mandatory parameter. It should be of type string, but other types will not cause errors in the
+program. It is important that the name is unique and unambiguous.</p>
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-text">Overview: name</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspect</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>optional</p></td>
+<td><p>no</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>default value</p></td>
+<td><p>/</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>MissingParameter</p></td>
+<td><p>If name was not set</p></td>
+</tr>
+<tr class="row-odd"><td><p>Warnings</p></td>
+<td><p>BadType</p></td>
+<td><p>If name isn’t a string</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">priority</span></code></p>
+<p>The Priority is used to put all workpiece types in an ordered sequence. This is needed when two workpiece types are to
+use a scarce resource at the same time and it must be decided which type is to be prioritized. If two types have the
+same priority and use the same resources, the expected behavior of the system is not determined. The priority is an
+integer greater than zero, with smaller values corresponding to a higher priority.</p>
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-text">Overview: priority</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspect</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>optional</p></td>
+<td><p>yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>default value</p></td>
+<td><p>10</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>InvalidType</p></td>
+<td><p>If priority isn’t an integer</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidValue</p></td>
+<td><p>If priority is less than one</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">capacity</span></code></p>
+<p>The capacity is a positive integer that indicates the storage capacity of the store in which workpieces of this type are
+stored after processing at the last station. This storage space is resaved only for workpieces of this particular type.</p>
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-text">Overview: capacity</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspect</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>optional</p></td>
+<td><p>yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>default value</p></td>
+<td><p>infinite</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>InvalidType</p></td>
+<td><p>If capacity isn’t an integer</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidValue</p></td>
+<td><p>If capacity is less than one</p></td>
+</tr>
+</tbody>
+</table>
+<p id="source"><code class="docutils literal notranslate"><span class="pre">source</span></code></p>
+<p>Source is a generator function that creates new workpieces and places them in the buffer memory of the first station.
+The source function gets passed exactly one argument, which is simpy’s underlying environment for the simulation. This
+argument should be named ‘env’ (other names only trigger warnings, but are not good practice).</p>
+<p>The function must have a certain structure, by means of which one can model many different scenarios. With each call of
+this function it must always be ensured that first a simpy.Timeout event is yielded (otherwise an infinite loop can
+occur) and then an ‘int’ value, which stops the iteration via the generator. The timeout event determines the delay
+between two deliveries and the ‘int’ value determines the amount of workpieces that are put into the buffer memory
+during a delivery. By means of the attribute ‘now’ of the environment ‘env’ one can access the current simulation time
+and thus achieve behavior in dependence of the time.</p>
+<p>The first example is a simple source, which sends 2 units into the system every five time units. In the second example,
+assume that the unit of time is hours. Then this source sends one piece every half hour in the period from 10 o’clock in
+the evening to 6 o’clock in the morning, and 2 pieces every ten minutes in the other time period.</p>
+<p>The default source will ensure that always, exactly the number of required workpieces are in the buffer memory.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">source_1</span><span class="p">(</span><span class="n">env</span><span class="p">:</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Environment</span><span class="p">):</span>
+    <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="k">yield</span> <span class="mi">2</span>
+
+<span class="k">def</span> <span class="nf">source_2</span><span class="p">(</span><span class="n">env</span><span class="p">:</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Environment</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">now</span> <span class="o">%</span> <span class="mi">24</span> <span class="o">&lt;</span> <span class="mi">6</span> <span class="ow">or</span> <span class="n">env</span><span class="o">.</span><span class="n">now</span> <span class="o">%</span> <span class="mi">24</span> <span class="o">&gt;</span> <span class="mi">22</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="mi">1</span>
+
+    <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="k">yield</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<table class="docutils align-default" id="id7">
+<caption><span class="caption-text">Overview: source</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspect</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>optional</p></td>
+<td><p>yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>default value</p></td>
+<td><p>infinite source</p></td>
+<td><p>Ensures always enough workpieces</p></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>UndefinedFunction</p></td>
+<td><p>Function is not defined in the passed file</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidFunction</p></td>
+<td><p>Function is not a generator function</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>InvalidSignature</p></td>
+<td><p>Function has not exactly one argument</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidYield</p></td>
+<td><p>Function doesn’t yield Timeout and int</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>InvalidValue</p></td>
+<td><p>Amount isn’t greater than zero</p></td>
+</tr>
+<tr class="row-odd"><td><p>Warnings</p></td>
+<td><p>BadSignature</p></td>
+<td><p>Argument isn’t called ‘env’</p></td>
+</tr>
+</tbody>
+</table>
+<p id="sink"><code class="docutils literal notranslate"><span class="pre">sink</span></code></p>
+<p>The sink is a generator function that has the task of removing workpieces from the final store of each workpiece type.
+The sink function gets passed exactly one argument, which is simpy’s underlying environment for the simulation. This
+argument should be named ‘env’ (other names only trigger warnings, but are not good practice).</p>
+<p>The function must follow a certain structure, which allows it to flexibly represent many different scenarios.
+In every possible case, the function must always yield an object of the type ‘simpy.Timeout’ first. This timeout event
+specifies how long to wait between two accesses to the store. After a timeout object has been yielded, an object of
+type ‘int’ must be yielded, which specifies how many workpieces are to be removed from the store. If it comes to the
+case that an ‘int’ was yielded the iteration is aborted.</p>
+<p>The logic behind implementing a sink is the same as for a source. For an example see <a class="reference internal" href="#source"><span class="std std-ref">source</span></a>.</p>
+<table class="docutils align-default" id="id8">
+<caption><span class="caption-text">Overview: sink</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspect</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>optional</p></td>
+<td><p>yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>default value</p></td>
+<td><p>infinite source</p></td>
+<td><p>If item is not part of an assembly process</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>no source</p></td>
+<td><p>If item is part of an assembly process</p></td>
+</tr>
+<tr class="row-odd"><td><p>Exceptions</p></td>
+<td><p>UndefinedFunction</p></td>
+<td><p>Function is not defined in the passed file</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>InvalidFunction</p></td>
+<td><p>Function is not a generator function</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidSignature</p></td>
+<td><p>Function has not exactly one argument</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>InvalidYield</p></td>
+<td><p>Function doesn’t yield Timeout and int</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidValue</p></td>
+<td><p>Amount isn’t greater than zero</p></td>
+</tr>
+<tr class="row-even"><td><p>Warnings</p></td>
+<td><p>BadSignature</p></td>
+<td><p>Argument isn’t called ‘env’</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">station</span></code></p>
+<p>Station is a list representing the stations in the order this particular type of item uses them. To reference the right
+station the user passes the name as string of the corresponding station. Inside the program this string gets replaced by
+the concrete StationData object. This isn’t very elegant, but in the simulation module this results in short attribute
+access calls.</p>
+<p>Since the station list is handled as a reference in terms of number of process steps here no exception is raises, if
+this list isn’t as long as the other process lists (function, demand, component). Only if there length doesn’t fit the
+number of stations an exception is raised.</p>
+<p>The only exception is raised here, when the referenced station isn’t defined in the data file.</p>
+<p>The default value is an empty list. In this content this means, that the source directly feeds the final store of an
+item without any additional processing steps.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here initially no exceptions are thrown if the length of station and function differ. This is only done for function to exclude redundant error messages.</p>
+</div>
+<table class="docutils align-default" id="id9">
+<caption><span class="caption-text">Overview: station</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspect</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>optional</p></td>
+<td><p>yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>default value</p></td>
+<td><p>[]</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>UndefinedObject</p></td>
+<td><p>no station is defined with this name</p></td>
+</tr>
+</tbody>
+</table>
+<p id="function"><code class="docutils literal notranslate"><span class="pre">function</span></code></p>
+<p>The functions represent the interface where the user can define how the concrete editing process will look like. Here
+you can access all the attributes of the station and the workpieces involved in the process, as well as the properties
+of the color and simpy environment.</p>
+<p>The function gets exactly four parameters, whose order is mandatory. The names are freely selectable, but a warning is
+given if the structure (env, item, station, factory) is washed away. The first argument ‘env’ can be used to access the
+simpy environment and env.now to refer to the simulation time. The second attribute is a reference to the workpieces
+involved in the machining. ‘station’ is the reference for the station. The last attribute ‘factory’ can be used to read
+or modify the global parameters.</p>
+<p>Each process function should contain ‘yield env.timeout(x)’ at least once to block the station as a resource for a
+period of time. It is possible to use this yield statement several times, for example, as shown below in the case when
+there is maintenance besides processing because certain Parameters have run out of allowable.</p>
+<p>An exception is also thrown if the number of functions does not match the number of stations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">process_function</span><span class="p">(</span><span class="n">env</span><span class="p">:</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Environment</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Item</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Item</span><span class="p">]],</span> <span class="n">station</span><span class="p">:</span> <span class="n">Station</span><span class="p">,</span> <span class="n">factory</span><span class="p">:</span> <span class="n">Factory</span><span class="p">):</span>
+
+     <span class="k">if</span> <span class="n">station</span><span class="o">.</span><span class="n">wear</span> <span class="o">&gt;</span> <span class="mf">8.2</span><span class="p">:</span>
+         <span class="n">station</span><span class="o">.</span><span class="n">wear</span> <span class="o">=</span> <span class="mi">0</span>
+         <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="mf">1.2</span><span class="p">)</span>
+
+     <span class="n">item</span><span class="o">.</span><span class="n">surface_quality</span> <span class="o">=</span> <span class="n">station</span><span class="o">.</span><span class="n">wear</span> <span class="o">*</span> <span class="mf">0.8</span> <span class="o">*</span> <span class="n">factory</span><span class="o">.</span><span class="n">temperature</span> <span class="o">/</span> <span class="mi">100</span>
+     <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils align-default" id="id10">
+<caption><span class="caption-text">Overview: function</span><a class="headerlink" href="#id10" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspect</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>optional</p></td>
+<td><p>yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>default value</p></td>
+<td><p>[]</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>UndefinedFunction</p></td>
+<td><p>No function with this name is defined</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidFunction</p></td>
+<td><p>Function is not a generator function</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>InvalidSignature</p></td>
+<td><p>Function doesn’t have four arguments</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidYield</p></td>
+<td><p>Function must yield a simpy.Timeout object</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>MissingParameter</p></td>
+<td><p>Number stations doesn’t match number of stations</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>MissingAttribute</p></td>
+<td><p>Non defined Attribute is referenced</p></td>
+</tr>
+<tr class="row-even"><td><p>Warnings</p></td>
+<td><p>BadSignature</p></td>
+<td><p>At least one argument has a bad name</p></td>
+</tr>
+</tbody>
+</table>
+<p id="demand"><code class="docutils literal notranslate"><span class="pre">demand</span></code></p>
+<p>The attribute demand is a list that specifies how many units of various workpiece types are required in a process step that corresponds to the index of the list. The list contains two different types of entries.</p>
+<p>If there is no assembly in the corresponding process step but a pure machining, then the list contains an integer at the corresponding index position, which indicates how many workpieces this station requires per machining.</p>
+<p>If, on the other hand, there is an assembly, then the element at the corresponding index position is of the type list, which itself contains integers. These integers correspond to a kind of parts list, which specifies how many assembly objects of different types are required. Which types these are is defined in the corresponding index position in the list component.</p>
+<p>If the entire process chain consists only of machining operations where always one item is passed (line production), then this attribute does not need to be set and a list of only ones pages with the appropriate length is generated.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here initially no exceptions are thrown if the strucutre of demand and component differ. This is only done for component to exclude redundant error messages.</p>
+</div>
+<table class="docutils align-default" id="id11">
+<caption><span class="caption-text">Overview: demand</span><a class="headerlink" href="#id11" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspect</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>optional</p></td>
+<td><p>yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>default value</p></td>
+<td><p>[1, 1, .., 1]</p></td>
+<td><p>Only possible if there is no assembly</p></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>MissingParameter</p></td>
+<td><p>Number elements doesn’t match number of stations</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidType</p></td>
+<td><p>If list contains different objects than int or list of int</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>InvalidValue</p></td>
+<td><p>Integer element in list isn’t greater than zero</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">component</span></code></p>
+<p>The list component has the same structure as the list demand. It supplements the list demand with the information, which workpiece types are to be assembled in case of an assembly process. This list contains only elements of the type list, which however can be differentiated into two cases.</p>
+<p>If only one workpiece type is processed in a machining step, this list contains an empty list at the corresponding index position.</p>
+<p>In the case of an assembly, the list contains the names of the workpieces to be assembled.</p>
+<p>The lengths of the assembly items must of course correspond to the corresponding lists of the <a class="reference internal" href="#demand"><span class="std std-ref">demand lists</span></a>.</p>
+<p>If the entire process chain consists only of machining operations, then this attribute does not need to be set and a list of empty pages with the appropriate length is generated.</p>
+<p>If the whole process chain only</p>
+<table class="docutils align-default" id="id12">
+<caption><span class="caption-text">Overview: component</span><a class="headerlink" href="#id12" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspect</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>optional</p></td>
+<td><p>yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>default value</p></td>
+<td><p>[[], [], .., []]</p></td>
+<td><p>Only possible if there is no assembly</p></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>MissingParameter</p></td>
+<td><p>Number elements doesn’t match number of stations or length of assembly process list doesn’t mach length of assembly demand list</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>UndefinedObject</p></td>
+<td><p>no item is defined with this name</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>InvalidValue</p></td>
+<td><p>Structure doesn’t correspond to demand structure</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidType</p></td>
+<td><p>List contains object with other type then ‘list’</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">attribute</span></code></p>
+<p>All parameters that are set by the user and do not belong to the default parameters described above are considered as
+user-defined attributes. The following <a class="reference internal" href="attribute_values.html#attr-values"><span class="std std-ref">section</span></a> provides an overview of the features that may be
+used in these attributes.</p>
+<hr class="docutils" />
+</div>
+<div class="section" id="station">
+<span id="id3"></span><h2>Station<a class="headerlink" href="#station" title="Permalink to this headline">¶</a></h2>
+<p>The property station itself is an array containing any number of objects, each of them being a separate type of station.
+These station objects then contain all the properties that the corresponding station should have in the simulation.
+A station can have two types of properties. On the one hand, those that are defined by the system by default and those
+that are freely defined by the user. Every attribute that is not from the list of default attributes is automatically
+considered as a user-defined attribute.
+It should be noted that the freely selectable attributes must not overwrite the names of the default attributes.
+Before explaining all the pre defined default properties that such a station object have, a small example of a
+corresponding file containing two different stations is shown.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The following example is not a valid data file because only the station attribute is included for clarity. A valid
+file should at least contain the attribute item.</p>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;station&quot;</span><span class="p">:</span> <span class="p">[</span>
+
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;mill&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;capacity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="nt">&quot;storage&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+      <span class="nt">&quot;wear&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+      <span class="nt">&quot;temperature&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mf">0.5</span><span class="p">]</span>
+    <span class="p">},</span>
+
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;lathe&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;prob_of_failure&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mf">0.01</span><span class="p">],</span>
+    <span class="p">}</span>
+
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">name</span></code></p>
+<p>The name is a mandatory parameter that a station must have. It is recommended to use a string as data type, but other
+data types do not cause errors in the program. Since it is not an optional parameter there is no default value.</p>
+<table class="docutils align-default" id="id13">
+<caption><span class="caption-text">Overview: name</span><a class="headerlink" href="#id13" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspect</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>optional</p></td>
+<td><p>no</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>default value</p></td>
+<td><p>/</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>MissingParameter</p></td>
+<td><p>If name was not set</p></td>
+</tr>
+<tr class="row-odd"><td><p>Warnings</p></td>
+<td><p>BadType</p></td>
+<td><p>If name isn’t a string</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">capacity</span></code></p>
+<p>The capacity indicates the number of machines in a station. If a workpiece is processed on a station, one of the
+available machines is selected. The capacity must be an integer and must not be less than one.</p>
+<table class="docutils align-default" id="id14">
+<caption><span class="caption-text">Overview: capacity</span><a class="headerlink" href="#id14" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspect</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>optional</p></td>
+<td><p>yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>default value</p></td>
+<td><p>1</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>InvalidType</p></td>
+<td><p>If capacity isn’t an integer</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidValue</p></td>
+<td><p>If capacity is less than one</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">storage</span></code></p>
+<p>Storage indicates the storage location in the station’s buffer memory. When a workpiece is waiting to be processed, it
+is temporarily stored in this store. The storage must be an integer and must not be less than one.</p>
+<table class="docutils align-default" id="id15">
+<caption><span class="caption-text">Overview: storage</span><a class="headerlink" href="#id15" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspect</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>optional</p></td>
+<td><p>yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>default value</p></td>
+<td><p>infinite</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>InvalidType</p></td>
+<td><p>If storage isn’t an integer</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidValue</p></td>
+<td><p>If storage is less than one</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">attribute</span></code></p>
+<p>All parameters that are set by the user and do not belong to the default parameters described above are considered as
+user-defined attributes. The following <a class="reference internal" href="attribute_values.html#attr-values"><span class="std std-ref">section</span></a> provides an overview of the features that may be
+used in these attributes.</p>
+<hr class="docutils" />
+</div>
+<div class="section" id="factory">
+<span id="environment"></span><h2>Factory<a class="headerlink" href="#factory" title="Permalink to this headline">¶</a></h2>
+<p>Factory is also an attribute of the top-level object of the input file. Unlike item and station, however, factory is
+optional and not an array, but an object. factory, like workpiece or station types, also has default and free attributes
+that can be set by the user. The special feature of the free attributes of the object factory is that these attributes
+are global attributes, i.e. they are available in every process function defined by the user. In addition, the value can
+be also reassigned from any process function. Furthermore, global functions can be defined here, which are called in an
+infinite loop in the simulation. These functions have no parameters.</p>
+<p>In the following all default parameters are described in more detail and finally the free attributes.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The following example is obviously not a valid input file. It should only show the structure of the attribute
+‘factory’.</p>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;factory&quot;</span><span class="p">:</span> <span class="p">{</span>
+     <span class="nt">&quot;temperature_sector_1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mf">0.8</span><span class="p">],</span>
+     <span class="nt">&quot;temperature_sector_2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="mf">22.2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+     <span class="nt">&quot;energy_usage&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+     <span class="nt">&quot;function&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;global_function_1&quot;</span><span class="p">,</span> <span class="s2">&quot;global_function_2&quot;</span><span class="p">]</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">function</span></code></p>
+<p>Function is a list containing functions that are called in an infinite loop in the simulation. These functions can be
+used to control global parameters. Each global function gets exactly two parameter, which should have the name ‘env’
+and ‘factory’. with the first parameter ‘env’ the simpy.Environment can be accessed to yield timeout events or access
+the current simulation time. With the secund parameter you get access to all global parameters.</p>
+<table class="docutils align-default" id="id16">
+<caption><span class="caption-text">Overview: function</span><a class="headerlink" href="#id16" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspect</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>optional</p></td>
+<td><p>yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>default value</p></td>
+<td><p>[]</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Exceptions</p></td>
+<td><p>UndefinedFunction</p></td>
+<td><p>No function with this name is defined</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidFunction</p></td>
+<td><p>Function is not a generator function</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>InvalidSignature</p></td>
+<td><p>Function doesn’t have exactly two argument</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>InvalidYield</p></td>
+<td><p>Function yielded object which is not of type timeout</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>MissingAttribute</p></td>
+<td><p>Non defined Attribute is referenced</p></td>
+</tr>
+<tr class="row-odd"><td><p>Warnings</p></td>
+<td><p>BadSignature</p></td>
+<td><p>Parameters aren’t called ‘env’ and ‘factory’</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">attribute</span></code></p>
+<p>All parameters that are set by the user and do not belong to the default parameters described above are considered as
+user-defined attributes. The following <a class="reference internal" href="attribute_values.html#attr-values"><span class="std std-ref">section</span></a> provides an overview of the features that may be
+used in these attributes.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="function_file.html" class="btn btn-neutral float-right" title="Function file" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="interface.html" class="btn btn-neutral float-left" title="Interface Files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Tom Fuchs.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
