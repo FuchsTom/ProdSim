@@ -98,9 +98,9 @@ installed in other ways as desired, this is left to the user.
 
 1. Install ProdSim
   
-    macOS: ``pip install path_to_ProdSim/dist/ProdSim-0.0.1.tar.gz``
+    macOS: ``pip install path_to_ProdSim/dist/ProdSim-0.0.2.tar.gz``
 
-    Win10: ``pip install path_to_ProdSim\dist\ProdSim-0.0.1.tar.gz``
+    Win10: ``pip install path_to_ProdSim\dist\ProdSim-0.0.2.tar.gz``
 
 To check if the installation was successful, the following Python script can be created and executed outside the 
 ``ProdSim`` folder. Thereby the environment in which ProdSim was installed must be active. If the installation was not 

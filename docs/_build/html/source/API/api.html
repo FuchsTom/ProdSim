@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>API Reference &mdash; ProdSim 0.0.1 documentation</title>
+  <title>API Reference &mdash; ProdSim 0.0.2 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -98,6 +98,29 @@ program-internal method calls as well as access to the process data in the backg
 <li><p><strong>path_to_wd</strong> (<em>str</em>) – Path to the target directory</p></li>
 <li><p><strong>remove_column</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – List of labels whose columns are removed before saving</p></li>
 <li><p><strong>keep_original</strong> (<em>bool</em><em>, </em><em>optional</em>) – Keep an additional original file without removed columns</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>MissingData</strong> – <code class="docutils literal notranslate"><span class="pre">simulate</span></code> was not called before</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the passed folder does not exist, then the program creates it.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="environment.Environment.data_to_hdf5">
+<span class="sig-name descname"><span class="pre">data_to_hdf5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_to_wd</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#environment.Environment.data_to_hdf5" title="Permalink to this definition"></a></dt>
+<dd><p>Exports the simulation data to hdf5 files.</p>
+<p>Creates a hdf5 file in which each simulation object is stored a group. The metadata (‘header’) of each
+simulation object is stored in an attribute and the simulation data in datasets of size max_memory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_to_wd</strong> (<em>str</em>) – Path to the target directory</p></li>
+<li><p><strong>file_name</strong> (<em>str</em>) – Name of the hdf5 file</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
