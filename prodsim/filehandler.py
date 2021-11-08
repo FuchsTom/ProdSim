@@ -1,6 +1,7 @@
 from json import load
 from os.path import exists
 from os import mkdir, path
+from shutil import move
 from shutil import rmtree
 from importlib.util import spec_from_file_location, module_from_spec
 from inspect import getmembers, isfunction
@@ -314,6 +315,9 @@ class FileHandler:
 
         """
 
+        # Path to the temporary hdf5 file
+        temp_path: str = path.join(path.dirname(__file__) + '/_temp_data/_temp/hdf5.hdf5')
+
         # If the specified destination folder does not exist it will be created to avoid loss of simulation data
         if not exists(path_to_wd):
             mkdir(path_to_wd)
@@ -322,7 +326,7 @@ class FileHandler:
 
         # Check if the simulation was run and data can be exported
         if not exists(temp_path):
-            raise MissingData("The method 'data_to_h5' can only be called after 'simulate'.")
+            raise MissingData("The method 'data_to_csv' can only be called after 'simulate'.")
 
         with File(path.join(path.dirname(__file__) + '/_temp_data/_temp/hdf5.hdf5'), 'r') as hdf:
 
