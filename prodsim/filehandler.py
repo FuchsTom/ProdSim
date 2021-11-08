@@ -320,45 +320,76 @@ class FileHandler:
             print("\033[38;2;255;0;0m the path to the folder '{}' doesn't exist, so it was created"
                   "\033[38;2;255;255;255m".format(path_to_wd))
 
-        try:
-            with File(path.join(path.dirname(__file__) + '/_temp_data/_temp/hdf5.hdf5'), 'r') as hdf:
+        # Check if the simulation was run and data can be exported
+        if not exists(temp_path):
+            raise MissingData("The method 'data_to_h5' can only be called after 'simulate'.")
 
-                # Iterate over each group of the file
-                for group_name in hdf:
+        with File(path.join(path.dirname(__file__) + '/_temp_data/_temp/hdf5.hdf5'), 'r') as hdf:
 
-                    g = hdf.get(name=group_name)
-                    fmt = hdf.attrs['fmt']
+            # Iterate over each group of the file
+            for group_name in hdf:
 
-                    # Create the headers. One for the original file and one for when attributes are to be removed during
-                    # exporting
-                    header: str = ''
-                    header_orig: str = ''
-                    column_indices: List[int] = []
-                    for index, attr_name in enumerate(g.attrs['header']):
-                        if attr_name not in remove_column:
-                            header += ',' + attr_name
-                            column_indices.append(index)
-                        header_orig += ',' + attr_name
+                g = hdf.get(name=group_name)
+                fmt = hdf.attrs['fmt']
 
-                    if len(column_indices) != len(g.attrs['header']) and keep_original:
-                        # The user has removed columns and wants to keep the original
+                # Create the headers. One for the original file and one for when attributes are to be removed during
+                # exporting
+                header: str = ''
+                header_orig: str = ''
+                column_indices: List[int] = []
+                for index, attr_name in enumerate(g.attrs['header']):
+                    if attr_name not in remove_column:
+                        header += ',' + attr_name
+                        column_indices.append(index)
+                    header_orig += ',' + attr_name
 
-                        # Create a new csv file with the suffix '_orig.csv' and write the header and all data
-                        with open(path_to_wd + str(group_name) + '_orig.csv', 'a') as f:
-                            f.write(header_orig.strip(',') + '\n')
-                            for obj_ in g:
-                                savetxt(f, g.get(obj_), delimiter=',', fmt=fmt)
+                if len(column_indices) != len(g.attrs['header']) and keep_original:
+                    # The user has removed columns and wants to keep the original
 
-                    # Create a new csv file with the suffix '_orig.csv' and write the header row, as well as the data of
-                    # non-removed columns into this file
-                    with open(path_to_wd + str(group_name) + '.csv', 'a') as f:
-                        f.write(header.strip(',') + '\n')
+                    # Create a new csv file with the suffix '_orig.csv' and write the header and all data
+                    with open(path_to_wd + str(group_name) + '_orig.csv', 'a') as f:
+                        f.write(header_orig.strip(',') + '\n')
                         for obj_ in g:
-                            savetxt(f, g.get(obj_)[:, column_indices], delimiter=',', fmt=fmt)
-        except FileNotFoundError:
-            raise MissingData("The method 'data_to_csv' can only be called after 'simulate'.")
+                            savetxt(f, g.get(obj_), delimiter=',', fmt=fmt)
+
+                # Create a new csv file with the suffix '_orig.csv' and write the header row, as well as the data of
+                # non-removed columns into this file
+                with open(path_to_wd + str(group_name) + '.csv', 'a') as f:
+                    f.write(header.strip(',') + '\n')
+                    for obj_ in g:
+                        savetxt(f, g.get(obj_)[:, column_indices], delimiter=',', fmt=fmt)
 
         # Removing the temporary folder structure to prepare the program for the next simulation run.
         # note: If data_to_csv is not called, then the data from the simulation will remain in the _temp folder until a
         # simulation is started again, or data_to_csv is called in a different context.
         rmtree(path.join(path.dirname(__file__) + '/_temp_data/_temp'))
+
+    @staticmethod
+    def data_to_hdf5(path_to_wd: str, file_name: str) -> None:
+        """Serves as an entry point for Blackboard to export the data in hdf5 format.
+
+        The internal file for caching is read in and each group is exported in the form of a hdf5 file.
+
+        """
+        
+        # Path to the temporary hdf5 file
+        temp_path: str = path.join(path.dirname(__file__) + '/_temp_data/_temp/hdf5.hdf5')
+        
+        # If the specified destination folder does not exist it will be created to avoid loss of simulation data
+        if not exists(path_to_wd):
+            mkdir(path_to_wd)
+            print("\033[38;2;255;0;0m the path to the folder '{}' doesn't exist, so it was created"
+                  "\033[38;2;255;255;255m".format(path_to_wd))
+          
+        # Check if the simulation was run and data can be exported
+        if not exists(temp_path):
+            raise MissingData("The method 'data_to_h5' can only be called after 'simulate'.")
+          
+        # Save the data
+        with File(temp_path, 'a') as hdf:
+          
+            # Delete unused information
+            del hdf.attrs['fmt']
+          
+        # move the modified hdf5 file and rename it
+        move(temp_path, path_to_wd + file_name + ".hdf5")

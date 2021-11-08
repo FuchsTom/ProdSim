@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='ProdSim',
-    version='0.0.1',
+    version='0.0.2',
     description='ProdSim is a process-based discrete event simulation for production environments based on the '
                 'framework SimPy, for the generation of high resolution synthetic manufacturing data',
     long_description=open('README.md').read(),

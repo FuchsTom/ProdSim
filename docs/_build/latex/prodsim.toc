@@ -5,54 +5,54 @@
 \contentsline {subsection}{\numberline {1.1.2}\sphinxstyleliteralintitle {\sphinxupquote {Estimator}}}{5}{subsection.1.1.2}%
 \contentsline {section}{\numberline {1.2}Interface Files}{6}{section.1.2}%
 \contentsline {subsection}{\numberline {1.2.1}Production structure}{6}{subsection.1.2.1}%
-\contentsline {subsubsection}{Order}{6}{subsubsection*.17}%
-\contentsline {subsubsection}{Station}{10}{subsubsection*.23}%
-\contentsline {subsubsection}{Factory}{11}{subsubsection*.24}%
+\contentsline {subsubsection}{Order}{7}{subsubsection*.18}%
+\contentsline {subsubsection}{Station}{10}{subsubsection*.24}%
+\contentsline {subsubsection}{Factory}{11}{subsubsection*.25}%
 \contentsline {subsection}{\numberline {1.2.2}Production functions}{11}{subsection.1.2.2}%
-\contentsline {subsubsection}{Process function}{12}{subsubsection*.25}%
-\contentsline {subsubsection}{Source and Sink}{14}{subsubsection*.26}%
-\contentsline {subsubsection}{Global function}{15}{subsubsection*.27}%
-\contentsline {subsubsection}{Distribution}{15}{subsubsection*.28}%
+\contentsline {subsubsection}{Process function}{12}{subsubsection*.26}%
+\contentsline {subsubsection}{Source and Sink}{14}{subsubsection*.27}%
+\contentsline {subsubsection}{Global function}{15}{subsubsection*.28}%
+\contentsline {subsubsection}{Distribution}{15}{subsubsection*.29}%
 \contentsline {subsection}{\numberline {1.2.3}Attribute values}{15}{subsection.1.2.3}%
-\contentsline {subsubsection}{User defined}{16}{subsubsection*.29}%
-\contentsline {subsubsection}{Fixed}{17}{subsubsection*.30}%
-\contentsline {subsubsection}{Binary}{17}{subsubsection*.31}%
-\contentsline {subsubsection}{Binomial}{18}{subsubsection*.32}%
-\contentsline {subsubsection}{Normal}{19}{subsubsection*.33}%
-\contentsline {subsubsection}{Uniform}{20}{subsubsection*.34}%
-\contentsline {subsubsection}{Poisson}{20}{subsubsection*.35}%
-\contentsline {subsubsection}{Exponential}{21}{subsubsection*.36}%
-\contentsline {subsubsection}{Lognormal}{22}{subsubsection*.37}%
-\contentsline {subsubsection}{Chisquare}{23}{subsubsection*.38}%
-\contentsline {subsubsection}{Student\sphinxhyphen {}t}{23}{subsubsection*.39}%
+\contentsline {subsubsection}{User defined}{16}{subsubsection*.30}%
+\contentsline {subsubsection}{Fixed}{17}{subsubsection*.31}%
+\contentsline {subsubsection}{Binary}{17}{subsubsection*.32}%
+\contentsline {subsubsection}{Binomial}{18}{subsubsection*.33}%
+\contentsline {subsubsection}{Normal}{19}{subsubsection*.34}%
+\contentsline {subsubsection}{Uniform}{20}{subsubsection*.35}%
+\contentsline {subsubsection}{Poisson}{20}{subsubsection*.36}%
+\contentsline {subsubsection}{Exponential}{21}{subsubsection*.37}%
+\contentsline {subsubsection}{Lognormal}{22}{subsubsection*.38}%
+\contentsline {subsubsection}{Chisquare}{23}{subsubsection*.39}%
+\contentsline {subsubsection}{Student\sphinxhyphen {}t}{23}{subsubsection*.40}%
 \contentsline {section}{\numberline {1.3}Examples}{24}{section.1.3}%
 \contentsline {subsection}{\numberline {1.3.1}Example 01: Gearbox}{25}{subsection.1.3.1}%
-\contentsline {subsubsection}{Process description}{25}{subsubsection*.40}%
-\contentsline {subsubsection}{Define orders}{26}{subsubsection*.41}%
-\contentsline {subsubsection}{Define stations}{27}{subsubsection*.42}%
-\contentsline {subsubsection}{Define factory}{28}{subsubsection*.43}%
-\contentsline {subsubsection}{Define functions}{28}{subsubsection*.44}%
-\contentsline {subsubsection}{Inspect}{28}{subsubsection*.45}%
-\contentsline {subsubsection}{Visualize}{29}{subsubsection*.46}%
+\contentsline {subsubsection}{Process description}{25}{subsubsection*.41}%
+\contentsline {subsubsection}{Define orders}{26}{subsubsection*.42}%
+\contentsline {subsubsection}{Define stations}{27}{subsubsection*.43}%
+\contentsline {subsubsection}{Define factory}{28}{subsubsection*.44}%
+\contentsline {subsubsection}{Define functions}{28}{subsubsection*.45}%
+\contentsline {subsubsection}{Inspect}{28}{subsubsection*.46}%
+\contentsline {subsubsection}{Visualize}{29}{subsubsection*.47}%
 \contentsline {subsection}{\numberline {1.3.2}Example 02: Shaft}{30}{subsection.1.3.2}%
-\contentsline {subsubsection}{Process description}{30}{subsubsection*.47}%
-\contentsline {subsubsection}{Process function: drilling}{31}{subsubsection*.48}%
-\contentsline {subsubsection}{Process function: turning}{31}{subsubsection*.49}%
-\contentsline {subsubsection}{Process function: polishing}{32}{subsubsection*.50}%
-\contentsline {subsubsection}{Global function: temperature}{32}{subsubsection*.51}%
-\contentsline {subsubsection}{Start simulation}{33}{subsubsection*.52}%
-\contentsline {subsubsection}{Simulation output}{33}{subsubsection*.53}%
+\contentsline {subsubsection}{Process description}{30}{subsubsection*.48}%
+\contentsline {subsubsection}{Process function: drilling}{31}{subsubsection*.49}%
+\contentsline {subsubsection}{Process function: turning}{31}{subsubsection*.50}%
+\contentsline {subsubsection}{Process function: polishing}{32}{subsubsection*.51}%
+\contentsline {subsubsection}{Global function: temperature}{32}{subsubsection*.52}%
+\contentsline {subsubsection}{Start simulation}{33}{subsubsection*.53}%
+\contentsline {subsubsection}{Simulation output}{33}{subsubsection*.54}%
 \contentsline {subsection}{\numberline {1.3.3}Example 03: Bolt}{34}{subsection.1.3.3}%
-\contentsline {subsubsection}{Process description}{34}{subsubsection*.54}%
-\contentsline {subsubsection}{Source}{35}{subsubsection*.55}%
-\contentsline {subsubsection}{Global function}{35}{subsubsection*.56}%
-\contentsline {subsubsection}{Process function: forging}{36}{subsubsection*.57}%
-\contentsline {subsubsection}{Sink}{36}{subsubsection*.58}%
-\contentsline {subsubsection}{Simulation output}{38}{subsubsection*.59}%
+\contentsline {subsubsection}{Process description}{34}{subsubsection*.55}%
+\contentsline {subsubsection}{Source}{35}{subsubsection*.56}%
+\contentsline {subsubsection}{Global function}{35}{subsubsection*.57}%
+\contentsline {subsubsection}{Process function: forging}{36}{subsubsection*.58}%
+\contentsline {subsubsection}{Sink}{36}{subsubsection*.59}%
+\contentsline {subsubsection}{Simulation output}{38}{subsubsection*.60}%
 \contentsline {subsection}{\numberline {1.3.4}Example 04: Toy figure}{38}{subsection.1.3.4}%
-\contentsline {subsubsection}{Process description}{38}{subsubsection*.60}%
-\contentsline {subsubsection}{Assemble function}{40}{subsubsection*.61}%
-\contentsline {subsubsection}{Quality check}{41}{subsubsection*.62}%
-\contentsline {subsubsection}{Merge output data}{42}{subsubsection*.63}%
-\contentsline {subsubsection}{Identify rejected items}{45}{subsubsection*.64}%
-\contentsline {chapter}{Python Module Index}{47}{section*.65}%
+\contentsline {subsubsection}{Process description}{38}{subsubsection*.61}%
+\contentsline {subsubsection}{Assemble function}{40}{subsubsection*.62}%
+\contentsline {subsubsection}{Quality check}{41}{subsubsection*.63}%
+\contentsline {subsubsection}{Merge output data}{42}{subsubsection*.64}%
+\contentsline {subsubsection}{Identify rejected items}{45}{subsubsection*.65}%
+\contentsline {chapter}{Python Module Index}{47}{section*.66}%

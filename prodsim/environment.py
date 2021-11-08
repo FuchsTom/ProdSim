@@ -129,6 +129,26 @@ class Environment:
             remove_column = []
 
         self.__filehandler.data_to_csv(path_to_wd, remove_column, keep_original)
+    
+    def data_to_hdf5(self, path_to_wd: str, file_name: str) -> None:
+        """Exports the simulation data to hdf5 files.
+    
+        Creates a hdf5 file in which each simulation object is stored a group. The metadata ('header') of each
+        simulation object is stored in an attribute and the simulation data in datasets of size max_memory.
+    
+        :param path_to_wd: Path to the target directory
+        :type path_to_wd: str
+        :param file_name: Name of the hdf5 file
+        :type file_name: str
+        :raises MissingData: ``simulate`` was not called before
+    
+        .. note::
+    
+           If the passed folder does not exist, then the program creates it.
+    
+        """
+
+        self.__filehandler.data_to_hdf5(path_to_wd, file_name)
 
     def clear_env(self) -> None:
         """Reinitialize the environment object between two different simulation runs.

@@ -4,6 +4,14 @@
 
 All notable changes to this project will be documented in this file. 
 
+### 0.0.2 (2021-11-08)
+***
+
+**New Method**
+
+* ``data_to_hdf5`` was added to the simulation environment. Provides export of simulation data in binary hierarchical 
+  format hdf5. 
+
 ### 0.0.1 (2021-09-27)
 ***
 
