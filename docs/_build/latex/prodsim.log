@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.5.20)  8 NOV 2021 18:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.11.15)  29 DEC 2021 00:23
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -777,7 +777,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ] [2
 
 ]
-<logo.png, id=263, 879.285pt x 185.69376pt>
+<logo.png, id=308, 879.285pt x 185.69376pt>
 LaTeX Font Info:    Trying to load font information for T1+txtt on input line 7
 7.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/txfonts/t1txtt.fd
@@ -808,231 +808,319 @@ LaTeX Font Info:    Font shape `T1/txtt/b/n' in size <12> not available
 (Font)              Font shape `T1/txtt/bx/n' tried instead on input line 176.
 [3
 
-] [4] [5] [6] [7] [8] [9] [10] [11]
-<assembling_structure.png, id=372, 333.245pt x 276.03125pt>
+] [4] [5] [6] [7] [8] [9] [10] [11] [12]
+<assembling_structure.png, id=422, 333.245pt x 276.03125pt>
 File: assembling_structure.png Graphic file (type png)
 <use assembling_structure.png>
-Package pdftex.def Info: assembling_structure.png  used on input line 1821.
+Package pdftex.def Info: assembling_structure.png  used on input line 1835.
 (pdftex.def)             Requested size: 150.32504pt x 124.51616pt.
- [12 <./assembling_structure.png>]
-[13]
-<source_logic.png, id=384, 330.23375pt x 335.2525pt>
+ [13 <./assembling_structure.png>]
+<source_logic.png, id=430, 330.23375pt x 335.2525pt>
 File: source_logic.png Graphic file (type png)
 <use source_logic.png>
-Package pdftex.def Info: source_logic.png  used on input line 1963.
+Package pdftex.def Info: source_logic.png  used on input line 1977.
 (pdftex.def)             Requested size: 183.20416pt x 185.99571pt.
- [14 <./source_logic.png>]
-<global_func_logic.png, id=392, 294.09875pt x 193.72375pt>
+
+[14 <./source_logic.png>]
+<global_func_logic.png, id=438, 294.09875pt x 193.72375pt>
 File: global_func_logic.png Graphic file (type png)
 <use global_func_logic.png>
-Package pdftex.def Info: global_func_logic.png  used on input line 1997.
+Package pdftex.def Info: global_func_logic.png  used on input line 2011.
 (pdftex.def)             Requested size: 178.5092pt x 117.58601pt.
  [15 <./global_func_logic.png>]
-<distribution_ud.png, id=426, 462.528pt x 346.896pt>
+<distribution_ud.png, id=472, 462.528pt x 346.896pt>
 File: distribution_ud.png Graphic file (type png)
 <use distribution_ud.png>
-Package pdftex.def Info: distribution_ud.png  used on input line 2207.
+Package pdftex.def Info: distribution_ud.png  used on input line 2221.
 (pdftex.def)             Requested size: 211.38832pt x 158.54192pt.
  [16 <./distribution_ud.png>]
-<distribution_f.png, id=435, 462.528pt x 346.896pt>
+<distribution_f.png, id=481, 462.528pt x 346.896pt>
 File: distribution_f.png Graphic file (type png)
 <use distribution_f.png>
-Package pdftex.def Info: distribution_f.png  used on input line 2237.
+Package pdftex.def Info: distribution_f.png  used on input line 2251.
 (pdftex.def)             Requested size: 211.38832pt x 158.54192pt.
-<distribution_b.png, id=436, 462.528pt x 346.896pt>
+<distribution_b.png, id=482, 462.528pt x 346.896pt>
 File: distribution_b.png Graphic file (type png)
 <use distribution_b.png>
-Package pdftex.def Info: distribution_b.png  used on input line 2318.
+Package pdftex.def Info: distribution_b.png  used on input line 2332.
 (pdftex.def)             Requested size: 211.38832pt x 158.54192pt.
  [17 <./distribution_f.png>]
-<distribution_i.png, id=445, 462.528pt x 346.896pt>
+<distribution_i.png, id=491, 462.528pt x 346.896pt>
 File: distribution_i.png Graphic file (type png)
 <use distribution_i.png>
-Package pdftex.def Info: distribution_i.png  used on input line 2406.
+Package pdftex.def Info: distribution_i.png  used on input line 2420.
 (pdftex.def)             Requested size: 211.38832pt x 158.54192pt.
  [18 <./distribution_b.png> <./distribution_i.png>]
-<distribution_n.png, id=452, 462.528pt x 346.896pt>
+<distribution_n.png, id=498, 462.528pt x 346.896pt>
 File: distribution_n.png Graphic file (type png)
 <use distribution_n.png>
-Package pdftex.def Info: distribution_n.png  used on input line 2510.
+Package pdftex.def Info: distribution_n.png  used on input line 2524.
 (pdftex.def)             Requested size: 211.38832pt x 158.54192pt.
  [19 <./distribution_n.png>]
-<distribution_u.png, id=461, 462.528pt x 346.896pt>
+<distribution_u.png, id=508, 462.528pt x 346.896pt>
 File: distribution_u.png Graphic file (type png)
 <use distribution_u.png>
-Package pdftex.def Info: distribution_u.png  used on input line 2604.
+Package pdftex.def Info: distribution_u.png  used on input line 2618.
 (pdftex.def)             Requested size: 211.38832pt x 158.54192pt.
-<distribution_p.png, id=462, 462.528pt x 346.896pt>
+<distribution_p.png, id=509, 462.528pt x 346.896pt>
 File: distribution_p.png Graphic file (type png)
 <use distribution_p.png>
-Package pdftex.def Info: distribution_p.png  used on input line 2698.
+Package pdftex.def Info: distribution_p.png  used on input line 2712.
 (pdftex.def)             Requested size: 211.38832pt x 158.54192pt.
  [20 <./distribution_u.png>]
-<distribution_e.png, id=468, 462.528pt x 346.896pt>
+<distribution_e.png, id=515, 462.528pt x 346.896pt>
 File: distribution_e.png Graphic file (type png)
 <use distribution_e.png>
-Package pdftex.def Info: distribution_e.png  used on input line 2785.
+Package pdftex.def Info: distribution_e.png  used on input line 2799.
 (pdftex.def)             Requested size: 211.38832pt x 158.54192pt.
  [21 <./distribution_p.png> <./distribution_e.png>]
-<distribution_l.png, id=477, 462.528pt x 346.896pt>
+<distribution_l.png, id=524, 462.528pt x 346.896pt>
 File: distribution_l.png Graphic file (type png)
 <use distribution_l.png>
-Package pdftex.def Info: distribution_l.png  used on input line 2880.
+Package pdftex.def Info: distribution_l.png  used on input line 2894.
 (pdftex.def)             Requested size: 211.38832pt x 158.54192pt.
  [22 <./distribution_l.png>]
-<distribution_c.png, id=483, 462.528pt x 346.896pt>
+<distribution_c.png, id=530, 462.528pt x 346.896pt>
 File: distribution_c.png Graphic file (type png)
 <use distribution_c.png>
-Package pdftex.def Info: distribution_c.png  used on input line 2976.
+Package pdftex.def Info: distribution_c.png  used on input line 2990.
 (pdftex.def)             Requested size: 211.38832pt x 158.54192pt.
  [23 <./distribution_c.png>]
-<distribution_t.png, id=489, 462.528pt x 346.896pt>
+<distribution_t.png, id=536, 462.528pt x 346.896pt>
 File: distribution_t.png Graphic file (type png)
 <use distribution_t.png>
-Package pdftex.def Info: distribution_t.png  used on input line 3064.
+Package pdftex.def Info: distribution_t.png  used on input line 3078.
 (pdftex.def)             Requested size: 211.38832pt x 158.54192pt.
  [24 <./distribution_t.png>]
-<product_tree_gearbox.png, id=508, 405.515pt x 205.76875pt>
+<output_file_station.png, id=546, 821.0675pt x 175.65625pt>
+File: output_file_station.png Graphic file (type png)
+<use output_file_station.png>
+Package pdftex.def Info: output_file_station.png  used on input line 3182.
+(pdftex.def)             Requested size: 375.80544pt x 80.39812pt.
+<output_file_order.png, id=547, 809.0225pt x 165.61874pt>
+File: output_file_order.png Graphic file (type png)
+<use output_file_order.png>
+Package pdftex.def Info: output_file_order.png  used on input line 3203.
+(pdftex.def)             Requested size: 375.80544pt x 76.93356pt.
+<output_file_factory.png, id=548, 848.16875pt x 190.7125pt>
+File: output_file_factory.png Graphic file (type png)
+<use output_file_factory.png>
+Package pdftex.def Info: output_file_factory.png  used on input line 3233.
+(pdftex.def)             Requested size: 375.80544pt x 84.50157pt.
+ [25 <./output_file_station.png> <./output_file_order.png>]
+<define_process_ex_process.png, id=556, 995.72pt x 376.40625pt>
+File: define_process_ex_process.png Graphic file (type png)
+<use define_process_ex_process.png>
+Package pdftex.def Info: define_process_ex_process.png  used on input line 3259
+.
+(pdftex.def)             Requested size: 281.85587pt x 106.54747pt.
+ [26 <./output_file_factory.png> <./define_process_ex_process.png>]
+<define_process_start.png, id=564, 1442.38875pt x 819.06pt>
+File: define_process_start.png Graphic file (type png)
+<use define_process_start.png>
+Package pdftex.def Info: define_process_start.png  used on input line 3292.
+(pdftex.def)             Requested size: 469.75502pt x 266.74124pt.
+<define_process_add_order.png, id=565, 496.85625pt x 387.4475pt>
+File: define_process_add_order.png Graphic file (type png)
+<use define_process_add_order.png>
+Package pdftex.def Info: define_process_add_order.png  used on input line 3305.
+
+(pdftex.def)             Requested size: 281.85587pt x 219.79503pt.
+ [27 <./define_process_start.png>]
+<define_process_orders.png, id=574, 1442.38875pt x 819.06pt>
+File: define_process_orders.png Graphic file (type png)
+<use define_process_orders.png>
+Package pdftex.def Info: define_process_orders.png  used on input line 3325.
+(pdftex.def)             Requested size: 469.75502pt x 266.74124pt.
+ [28 <./define_process_add_order.png> <./define_process_orders.png>]
+<define_process_change_order.png, id=581, 497.86pt x 466.74374pt>
+File: define_process_change_order.png Graphic file (type png)
+<use define_process_change_order.png>
+Package pdftex.def Info: define_process_change_order.png  used on input line 33
+31.
+(pdftex.def)             Requested size: 281.85587pt x 264.24484pt.
+<define_process_change_station.png, id=582, 497.86pt x 571.13374pt>
+File: define_process_change_station.png Graphic file (type png)
+<use define_process_change_station.png>
+Package pdftex.def Info: define_process_change_station.png  used on input line 
+3347.
+(pdftex.def)             Requested size: 281.85587pt x 323.34477pt.
+ [29 <./define_process_change_order.png>]
+<define_process_assembly.png, id=589, 496.85625pt x 684.5575pt>
+File: define_process_assembly.png Graphic file (type png)
+<use define_process_assembly.png>
+Package pdftex.def Info: define_process_assembly.png  used on input line 3353.
+(pdftex.def)             Requested size: 281.85587pt x 388.34253pt.
+
+[30 <./define_process_change_station.png>]
+<define_process_combine_stations.png, id=595, 497.86pt x 237.88875pt>
+File: define_process_combine_stations.png Graphic file (type png)
+<use define_process_combine_stations.png>
+Package pdftex.def Info: define_process_combine_stations.png  used on input lin
+e 3359.
+(pdftex.def)             Requested size: 281.85587pt x 134.67963pt.
+<describe_process_update_graph.png, id=596, 1440.38126pt x 818.05624pt>
+File: describe_process_update_graph.png Graphic file (type png)
+<use describe_process_update_graph.png>
+Package pdftex.def Info: describe_process_update_graph.png  used on input line 
+3367.
+(pdftex.def)             Requested size: 469.75502pt x 266.78883pt.
+ [31 <./define_process_assembly.png> <./define_process_combine_stations.png>]
+<decribe_process_factory.png, id=603, 497.86pt x 344.28625pt>
+File: decribe_process_factory.png Graphic file (type png)
+<use decribe_process_factory.png>
+Package pdftex.def Info: decribe_process_factory.png  used on input line 3379.
+(pdftex.def)             Requested size: 281.85587pt x 194.91609pt.
+ [32 <./describe_process_update_graph.png> <./decribe_process_factory.png>]
+<define_process_create_files.png, id=610, 496.85625pt x 237.88875pt>
+File: define_process_create_files.png Graphic file (type png)
+<use define_process_create_files.png>
+Package pdftex.def Info: define_process_create_files.png  used on input line 33
+95.
+(pdftex.def)             Requested size: 281.85587pt x 134.95186pt.
+ [33 <./define_process_create_files.png>]
+<product_tree_gearbox.png, id=629, 405.515pt x 205.76875pt>
 File: product_tree_gearbox.png Graphic file (type png)
 <use product_tree_gearbox.png>
-Package pdftex.def Info: product_tree_gearbox.png  used on input line 3238.
+Package pdftex.def Info: product_tree_gearbox.png  used on input line 3519.
 (pdftex.def)             Requested size: 187.89914pt x 95.3455pt.
-<product_process_gearbox.png, id=509, 505.89pt x 199.74625pt>
+<product_process_gearbox.png, id=630, 505.89pt x 199.74625pt>
 File: product_process_gearbox.png Graphic file (type png)
 <use product_process_gearbox.png>
-Package pdftex.def Info: product_process_gearbox.png  used on input line 3246.
+Package pdftex.def Info: product_process_gearbox.png  used on input line 3527.
 (pdftex.def)             Requested size: 328.82707pt x 129.83656pt.
- [25 <./product_tree_gearbox.png> <./product_process_gearbox.png>] [26] [27] [2
-8]
-<screenshot_web_app.png, id=537, 944.52875pt x 651.43375pt>
+
+[34 <./product_tree_gearbox.png> <./product_process_gearbox.png>] [35] [36]
+[37]
+<screenshot_web_app.png, id=658, 944.52875pt x 651.43375pt>
 File: screenshot_web_app.png Graphic file (type png)
 <use screenshot_web_app.png>
-Package pdftex.def Info: screenshot_web_app.png  used on input line 3512.
+Package pdftex.def Info: screenshot_web_app.png  used on input line 3793.
 (pdftex.def)             Requested size: 422.77664pt x 291.59181pt.
- [29]
-<shaft_process.png, id=542, 411.5375pt x 87.32625pt>
+ [38 <./screenshot_web_app.png>]
+<shaft_process.png, id=664, 411.5375pt x 87.32625pt>
 File: shaft_process.png Graphic file (type png)
 <use shaft_process.png>
-Package pdftex.def Info: shaft_process.png  used on input line 3536.
+Package pdftex.def Info: shaft_process.png  used on input line 3817.
 (pdftex.def)             Requested size: 234.8775pt x 49.84042pt.
- [30 <./screenshot_web_app.png> <./shaft_process.png>] [31]
-<temperature_profile.png, id=553, 462.528pt x 346.896pt>
+ [39 <./shaft_process.png>]
+<temperature_profile.png, id=671, 462.528pt x 346.896pt>
 File: temperature_profile.png Graphic file (type png)
 <use temperature_profile.png>
-Package pdftex.def Info: temperature_profile.png  used on input line 3637.
+Package pdftex.def Info: temperature_profile.png  used on input line 3918.
 (pdftex.def)             Requested size: 234.8775pt x 176.15768pt.
- [32 <./temperature_profile.png>]
-<surface.png, id=559, 462.528pt x 346.896pt>
+ [40] [41 <./temperature_profile.png>]
+<surface.png, id=681, 462.528pt x 346.896pt>
 File: surface.png Graphic file (type png)
 <use surface.png>
-Package pdftex.def Info: surface.png  used on input line 3724.
+Package pdftex.def Info: surface.png  used on input line 4005.
 (pdftex.def)             Requested size: 234.8775pt x 176.15768pt.
- [33]
-<shaft_csv.png, id=568, 456.70625pt x 297.11pt>
+<shaft_csv.png, id=682, 456.70625pt x 297.11pt>
 File: shaft_csv.png Graphic file (type png)
 <use shaft_csv.png>
-Package pdftex.def Info: shaft_csv.png  used on input line 3732.
+Package pdftex.def Info: shaft_csv.png  used on input line 4013.
 (pdftex.def)             Requested size: 211.38832pt x 137.51549pt.
-<bolt_process.png, id=569, 349.305pt x 65.24374pt>
+ [42 <./surface.png> <./shaft_csv.png>]
+<bolt_process.png, id=692, 349.305pt x 65.24374pt>
 File: bolt_process.png Graphic file (type png)
 <use bolt_process.png>
-Package pdftex.def Info: bolt_process.png  used on input line 3754.
+Package pdftex.def Info: bolt_process.png  used on input line 4035.
 (pdftex.def)             Requested size: 234.8775pt x 43.87135pt.
- [34 <./surface.png> <./shaft_csv.png> <./bolt_process.png>] [35]
-<demand_profile.png, id=586, 462.528pt x 346.896pt>
+ [43 <./bolt_process.png>] [44]
+<demand_profile.png, id=707, 462.528pt x 346.896pt>
 File: demand_profile.png Graphic file (type png)
 <use demand_profile.png>
-Package pdftex.def Info: demand_profile.png  used on input line 3903.
+Package pdftex.def Info: demand_profile.png  used on input line 4184.
 (pdftex.def)             Requested size: 220.78543pt x 165.59245pt.
- [36] [37 <./demand_profile.png>]
-<demand.png, id=597, 462.528pt x 346.896pt>
+ [45 <./demand_profile.png>]
+<demand.png, id=715, 462.528pt x 346.896pt>
 File: demand.png Graphic file (type png)
 <use demand.png>
-Package pdftex.def Info: demand.png  used on input line 3971.
+Package pdftex.def Info: demand.png  used on input line 4252.
 (pdftex.def)             Requested size: 234.8775pt x 176.15768pt.
-<figure_tree.png, id=598, 504.88625pt x 240.9pt>
+ [46 <./demand.png>]
+<figure_tree.png, id=723, 504.88625pt x 240.9pt>
 File: figure_tree.png Graphic file (type png)
 <use figure_tree.png>
-Package pdftex.def Info: figure_tree.png  used on input line 3999.
+Package pdftex.def Info: figure_tree.png  used on input line 4280.
 (pdftex.def)             Requested size: 211.38832pt x 100.86118pt.
- [38 <./demand.png>]
-<figure_process.png, id=606, 507.8975pt x 293.095pt>
+<figure_process.png, id=724, 507.8975pt x 293.095pt>
 File: figure_process.png Graphic file (type png)
 <use figure_process.png>
-Package pdftex.def Info: figure_process.png  used on input line 4007.
+Package pdftex.def Info: figure_process.png  used on input line 4288.
 (pdftex.def)             Requested size: 291.2458pt x 168.0766pt.
-<figure.png, id=607, 418.56375pt x 408.52625pt>
+<figure.png, id=725, 418.56375pt x 408.52625pt>
 File: figure.png Graphic file (type png)
 <use figure.png>
-Package pdftex.def Info: figure.png  used on input line 4020.
+Package pdftex.def Info: figure.png  used on input line 4301.
 (pdftex.def)             Requested size: 234.8775pt x 229.24066pt.
- [39 <./figure_tree.png> <./figure_process.png>]
-[40 <./figure.png>] [41]
-<rejection.png, id=626, 462.528pt x 346.896pt>
+ [47 <./figure_tree.png> <./figure_process.png>] [48 <./figure.png>] [49]
+<rejection.png, id=742, 462.528pt x 346.896pt>
 File: rejection.png Graphic file (type png)
 <use rejection.png>
-Package pdftex.def Info: rejection.png  used on input line 4149.
+Package pdftex.def Info: rejection.png  used on input line 4430.
 (pdftex.def)             Requested size: 225.4804pt x 169.11243pt.
-<arm_csv.png, id=627, 888.31876pt x 300.12125pt>
+<arm_csv.png, id=743, 888.31876pt x 300.12125pt>
 File: arm_csv.png Graphic file (type png)
 <use arm_csv.png>
-Package pdftex.def Info: arm_csv.png  used on input line 4176.
+Package pdftex.def Info: arm_csv.png  used on input line 4457.
 (pdftex.def)             Requested size: 375.80544pt x 126.96596pt.
- [42 <./rejection.png>]
-<hand_csv.png, id=633, 889.3225pt x 305.14pt>
+ [50 <./rejection.png>]
+<hand_csv.png, id=749, 889.3225pt x 305.14pt>
 File: hand_csv.png Graphic file (type png)
 <use hand_csv.png>
-Package pdftex.def Info: hand_csv.png  used on input line 4182.
+Package pdftex.def Info: hand_csv.png  used on input line 4463.
 (pdftex.def)             Requested size: 375.80544pt x 128.9448pt.
-<upper_limb_csv.png, id=634, 886.31125pt x 283.0575pt>
+<upper_limb_csv.png, id=750, 886.31125pt x 283.0575pt>
 File: upper_limb_csv.png Graphic file (type png)
 <use upper_limb_csv.png>
-Package pdftex.def Info: upper_limb_csv.png  used on input line 4188.
+Package pdftex.def Info: upper_limb_csv.png  used on input line 4469.
 (pdftex.def)             Requested size: 375.80544pt x 120.01926pt.
-<merge.png, id=635, 966.61125pt x 479.7925pt>
+<merge.png, id=751, 966.61125pt x 479.7925pt>
 File: merge.png Graphic file (type png)
 <use merge.png>
-Package pdftex.def Info: merge.png  used on input line 4218.
+Package pdftex.def Info: merge.png  used on input line 4499.
 (pdftex.def)             Requested size: 422.77664pt x 209.85011pt.
- [43 <./arm_csv.png> <./hand_csv.png> <./upper_limb_csv.png>]
-<demand_greater_one.png, id=647, 860.21375pt x 303.1325pt>
+
+[51 <./arm_csv.png> <./hand_csv.png> <./upper_limb_csv.png>]
+<demand_greater_one.png, id=764, 860.21375pt x 303.1325pt>
 File: demand_greater_one.png Graphic file (type png)
 <use demand_greater_one.png>
-Package pdftex.def Info: demand_greater_one.png  used on input line 4227.
+Package pdftex.def Info: demand_greater_one.png  used on input line 4508.
 (pdftex.def)             Requested size: 422.77664pt x 148.98488pt.
 LaTeX Font Info:    Font shape `TS1/txtt/m/it' in size <10> not available
-(Font)              Font shape `TS1/txtt/m/sl' tried instead on input line 4240
+(Font)              Font shape `TS1/txtt/m/sl' tried instead on input line 4521
 .
 
-Overfull \vbox (3.73694pt too high) detected at line 4251
+Overfull \vbox (3.73694pt too high) detected at line 4532
  []
 
-[44 <./merge.png> <./demand_greater_one.png>]
-<merged_figure_csv.png, id=655, 888.31876pt x 241.90375pt>
+[52 <./merge.png> <./demand_greater_one.png>]
+<merged_figure_csv.png, id=772, 888.31876pt x 241.90375pt>
 File: merged_figure_csv.png Graphic file (type png)
 <use merged_figure_csv.png>
-Package pdftex.def Info: merged_figure_csv.png  used on input line 4275.
+Package pdftex.def Info: merged_figure_csv.png  used on input line 4556.
 (pdftex.def)             Requested size: 422.77664pt x 115.12694pt.
- [45 <./merged_figure_csv.png>]
-[46
+ [53 <./merged_figure_csv.png>]
+[54
 
-] [47
+] [55
 
 
 ]
 No file prodsim.ind.
 (./prodsim.aux)
 Package rerunfilecheck Info: File `prodsim.out' has not changed.
-(rerunfilecheck)             Checksum: EADF67DFC72E1530236350CDB9182CD1;7951.
+(rerunfilecheck)             Checksum: 28CA7446BB3ACAF1E2EAF6BCF178AF69;9562.
  ) 
 Here is how much of TeX's memory you used:
- 14067 strings out of 478994
- 209338 string characters out of 5858184
- 608311 words of memory out of 5000000
- 30991 multiletter control sequences out of 15000+600000
+ 14208 strings out of 478994
+ 213762 string characters out of 5858183
+ 613619 words of memory out of 5000000
+ 31098 multiletter control sequences out of 15000+600000
  466885 words of font info for 77 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
- 83i,23n,88p,1369b,619s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 83i,23n,88p,1369b,672s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/t
 exlive/2021/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc}{/usr/local/texlive/20
 21/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc}</usr/local/texlive/2021/texmf
@@ -1057,10 +1145,10 @@ e/qtmb.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/tex-gyre/qtmr
 /texlive/2021/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb></usr/local/texli
 ve/2021/texmf-dist/fonts/type1/public/txfonts/tcxtt.pfb></usr/local/texlive/202
 1/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on prodsim.pdf (51 pages, 2156170 bytes).
+Output written on prodsim.pdf (59 pages, 3648118 bytes).
 PDF statistics:
- 783 PDF objects out of 1000 (max. 8388607)
- 611 compressed objects within 7 object streams
- 151 named destinations out of 1000 (max. 500000)
- 652 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 902 PDF objects out of 1000 (max. 8388607)
+ 694 compressed objects within 7 object streams
+ 171 named destinations out of 1000 (max. 500000)
+ 810 words of extra memory for PDF output out of 10000 (max. 10000000)
 

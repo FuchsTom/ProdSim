@@ -60,8 +60,8 @@
 
 
 \title{ProdSim}
-\date{Nov 08, 2021}
-\release{0.0.2}
+\date{Dec 29, 2021}
+\release{0.1.0}
 \author{Tom Fuchs}
 \newcommand{\sphinxlogo}{\vbox{}}
 \renewcommand{\releasename}{Release}
@@ -201,9 +201,13 @@ After calling this method, a new process must be read in.
 \index{data\_to\_csv() (environment.Environment method)@\spxentry{data\_to\_csv()}\spxextra{environment.Environment method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/API/api:environment.Environment.data_to_csv}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{data\_to\_csv}}}{\emph{\DUrole{n}{path\_to\_wd}\DUrole{p}{:} \DUrole{n}{str}}, \emph{\DUrole{n}{remove\_column}\DUrole{p}{:} \DUrole{n}{Optional\DUrole{p}{{[}}List\DUrole{p}{{[}}str\DUrole{p}{{]}}\DUrole{p}{{]}}} \DUrole{o}{=} \DUrole{default_value}{None}}, \emph{\DUrole{n}{keep\_original}\DUrole{p}{:} \DUrole{n}{bool} \DUrole{o}{=} \DUrole{default_value}{True}}}{{ $\rightarrow$ None}}
+\phantomsection\label{\detokenize{source/API/api:environment.Environment.data_to_csv}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{data\_to\_csv}}}{\emph{\DUrole{n}{path\_to\_wd}\DUrole{p}{:} \DUrole{n}{str}}, \emph{\DUrole{n}{remove\_column}\DUrole{p}{:} \DUrole{n}{Optional\DUrole{p}{{[}}List\DUrole{p}{{[}}str\DUrole{p}{{]}}\DUrole{p}{{]}}} \DUrole{o}{=} \DUrole{default_value}{None}}, \emph{\DUrole{n}{keep\_original}\DUrole{p}{:} \DUrole{n}{bool} \DUrole{o}{=} \DUrole{default_value}{False}}}{{ $\rightarrow$ None}}
 \sphinxAtStartPar
 Exports the simulation data to csv files.
+
+\sphinxAtStartPar
+Creates a file for each simulation object, with columns containing object properties and general simulation
+information.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
 \item {} 
@@ -265,6 +269,16 @@ simulation object is stored in an attribute and the simulation data in datasets 
 \sphinxAtStartPar
 If the passed folder does not exist, then the program creates it.
 \end{sphinxadmonition}
+
+\end{fulllineitems}
+
+\index{define\_process() (environment.Environment method)@\spxentry{define\_process()}\spxextra{environment.Environment method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/API/api:environment.Environment.define_process}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{define\_process}}}{}{{ $\rightarrow$ None}}
+\sphinxAtStartPar
+Launches an interactive web application to define a new production process.
+This method initiates a local development app on a flask server on localhoast:8050.
 
 \end{fulllineitems}
 
@@ -3123,6 +3137,273 @@ InvalidValue
 \end{tabular}
 \par
 \sphinxattableend\end{savenotes}
+
+
+\subsection{Simulation output}
+\label{\detokenize{source/Interface_files/output_file:simulation-output}}\label{\detokenize{source/Interface_files/output_file:output-file}}\label{\detokenize{source/Interface_files/output_file::doc}}
+\sphinxAtStartPar
+Two predefined output formats are available: csv and hdf5. In both formats the output is provided in tabular form. In
+the case of csv, a file is created for each simulation object (station, order, factory) whose data should be saved. In
+the case of hdf5, a single file is created that contains a group for each simulation object.
+
+\sphinxAtStartPar
+The {\hyperref[\detokenize{source/Interface_files/output_file:general-structure}]{\sphinxcrossref{\DUrole{std,std-ref}{general structure}}}} of the output files is described first, followed by the specifics for
+the individual simulation objects ({\hyperref[\detokenize{source/Interface_files/output_file:output-station}]{\sphinxcrossref{\DUrole{std,std-ref}{station}}}}, {\hyperref[\detokenize{source/Interface_files/output_file:output-order}]{\sphinxcrossref{\DUrole{std,std-ref}{order}}}},
+{\hyperref[\detokenize{source/Interface_files/output_file:output-factory}]{\sphinxcrossref{\DUrole{std,std-ref}{factory}}}}).
+
+
+\bigskip\hrule\bigskip
+
+
+
+\subsubsection{General structure}
+\label{\detokenize{source/Interface_files/output_file:general-structure}}\label{\detokenize{source/Interface_files/output_file:id1}}
+\sphinxAtStartPar
+The output files are in tabular form, to which rows are added during simulation. The first columns contain all
+user\sphinxhyphen{}defined attributes and the following columns contain some object (station, order, factory) specific information.
+
+\sphinxAtStartPar
+For the tables of stations and orders it applies that for each processing that is carried out on a machine of a
+station, the corresponding table of the order and the station are extended by a row that containing the relevant
+information regarding the time point at which the respective interaction is completed. Whereas the factory table is
+extended by one row after each call of a global function.
+
+
+\bigskip\hrule\bigskip
+
+
+
+\subsubsection{Output station}
+\label{\detokenize{source/Interface_files/output_file:output-station}}\label{\detokenize{source/Interface_files/output_file:id2}}
+\sphinxAtStartPar
+The first columns contain the respective user\sphinxhyphen{}defined values of the station attributes. While the last two columns
+contain the machine number and the current simulation time.
+
+\noindent{\hspace*{\fill}\sphinxincludegraphics[width=0.800\linewidth]{{output_file_station}.png}\hspace*{\fill}}
+
+\sphinxAtStartPar
+The \sphinxstylestrong{machine number} corresponds to the index of the machine of a station. The index starts for each station with
+zero and can be read during the simulation to implement machine specific behavior.
+
+\sphinxAtStartPar
+The simulation \sphinxstylestrong{time} corresponds to the time point in which a machining or assembly operation was completed
+successfully at a machine.
+
+
+\bigskip\hrule\bigskip
+
+
+
+\subsubsection{Output order}
+\label{\detokenize{source/Interface_files/output_file:output-order}}\label{\detokenize{source/Interface_files/output_file:id3}}
+\sphinxAtStartPar
+Similar to the output files of the other simulation objects, the first columns contain the values of the user\sphinxhyphen{}defined
+attributes. The following columns contain the item ID, assembly comp, station ID and simulation time.
+
+\noindent{\hspace*{\fill}\sphinxincludegraphics[width=0.800\linewidth]{{output_file_order}.png}\hspace*{\fill}}
+
+\sphinxAtStartPar
+The \sphinxstylestrong{item ID} is a unique integer ID increasing throughout the simulation.
+
+\sphinxAtStartPar
+The column \sphinxstylestrong{comp} is only included if items of the order are assembled to items of another order in the process. The
+column contains the unique item ID of the item to which the item referred to in the column is assembled.  If the item
+is not assembled in the first stage, the value nan will appear in the rows created before this assembly.
+
+\sphinxAtStartPar
+The \sphinxstylestrong{station ID} is the ID of the station at which the corresponding row was added. The station ID is assigned
+automatically and corresponds to the index position (starting with 0) of the station in the input JSON file.
+Additionally, there is the index \sphinxstyleemphasis{\sphinxhyphen{}1}. This index corresponds to the rows that are added directly after the creation of
+new items in the source.
+
+\sphinxAtStartPar
+The simulation \sphinxstylestrong{time} corresponds to the time point in which a item was processed successfully at a machine.
+
+
+\bigskip\hrule\bigskip
+
+
+
+\subsubsection{Output factory}
+\label{\detokenize{source/Interface_files/output_file:output-factory}}\label{\detokenize{source/Interface_files/output_file:id4}}
+\sphinxAtStartPar
+The first columns contain the values of the user\sphinxhyphen{}defined global attributes. While the last column contains the
+simulation time at which the attribute values of the attributes were recorded.
+
+\noindent{\hspace*{\fill}\sphinxincludegraphics[width=0.800\linewidth]{{output_file_factory}.png}\hspace*{\fill}}
+
+\begin{sphinxadmonition}{note}{Note:}
+\sphinxAtStartPar
+Different from the stations and the orders, a row is created after each execution of a global function. If there are
+no global functions, no rows are added. In this case an \sphinxstyleemphasis{empty} global function can be created, which only yields
+timeouts in required time steps.
+\end{sphinxadmonition}
+
+
+\section{Defining processes}
+\label{\detokenize{source/Defining_processes/defining_processes:first}}\label{\detokenize{source/Defining_processes/defining_processes:defining-processes}}\label{\detokenize{source/Defining_processes/defining_processes:id1}}\label{\detokenize{source/Defining_processes/defining_processes::doc}}
+\sphinxAtStartPar
+In general, the structure of the process is described in a JSON file and the actions in a python\sphinxhyphen{}script (see
+{\hyperref[\detokenize{source/Interface_files/interface:interface}]{\sphinxcrossref{\DUrole{std,std-ref}{Interface Files}}}}). Since the initial setup of these files is time consuming and discourages the user from using ProdSim
+for the first time, a web application for defining new processes is offered. When the structure of a process has been
+completely defined and individual parameters need to be changed between simulation runs, it is easier to change them
+directly in the corresponding JSON file instead of using the application.
+
+\sphinxAtStartPar
+The application is intended as an optional extension of Base\sphinxhyphen{}ProdSim and can be easily removed from the project during
+individual ongoing development of ProdSim.
+
+\sphinxAtStartPar
+The following describes how the given fictitious production process can be modeled.
+
+\noindent{\hspace*{\fill}\sphinxincludegraphics[width=0.600\linewidth]{{define_process_ex_process}.png}\hspace*{\fill}}
+
+\begin{sphinxadmonition}{note}{Note:}
+\sphinxAtStartPar
+The application is not part of the actual project and is still under development. Please report bugs and
+malfunctions, as well as useful enhancement suggestions.
+\end{sphinxadmonition}
+
+
+\bigskip\hrule\bigskip
+
+
+
+\subsection{Start the application}
+\label{\detokenize{source/Defining_processes/defining_processes:start-the-application}}\label{\detokenize{source/Defining_processes/defining_processes:dp-call-dp}}
+\sphinxAtStartPar
+To start the application the method \sphinxcode{\sphinxupquote{define\_process}} has to be called on a simulation environment.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from} \PYG{n+nn}{prodsim} \PYG{k+kn}{import} \PYG{n}{Environment}
+
+\PYG{k}{if} \PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:}
+
+    \PYG{c+c1}{\PYGZsh{} Create simulation environment}
+    \PYG{n}{env} \PYG{o}{=} \PYG{n}{Environment}\PYG{p}{(}\PYG{p}{)}
+
+    \PYG{c+c1}{\PYGZsh{} Start the application}
+    \PYG{n}{env}\PYG{o}{.}\PYG{n}{define\PYGZus{}process}\PYG{p}{(}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+Copying the link into a browser (or clicking on the link, depending on your IDE) will open the following window.
+
+\noindent{\hspace*{\fill}\sphinxincludegraphics[width=1.000\linewidth]{{define_process_start}.png}\hspace*{\fill}}
+
+
+\bigskip\hrule\bigskip
+
+
+
+\subsection{Create and change order}
+\label{\detokenize{source/Defining_processes/defining_processes:create-and-change-order}}\label{\detokenize{source/Defining_processes/defining_processes:dp-order}}
+\sphinxAtStartPar
+In order to define a new process, it is recommended to start with creating all used orders and to use them as a base for
+further operations. New orders can be created using the \sphinxtitleref{add order} button. The following dialog opens.
+
+\noindent{\hspace*{\fill}\sphinxincludegraphics[width=0.600\linewidth]{{define_process_add_order}.png}\hspace*{\fill}}
+
+\sphinxAtStartPar
+Thereby only the fields \sphinxtitleref{order name} and \sphinxtitleref{source name} must be filled with unique strings. All other fields are
+optional and will be filled with the default values (see: {\hyperref[\detokenize{source/Interface_files/data_file:data-file}]{\sphinxcrossref{\DUrole{std,std-ref}{interface files}}}}) if not filled.
+
+\begin{sphinxadmonition}{warning}{Warning:}
+\sphinxAtStartPar
+The name of an order, as well as the number of stations, cannot be changed afterwards.
+\end{sphinxadmonition}
+
+\sphinxAtStartPar
+The number of stations corresponds to the number of process steps that the items of the corresponding order pass
+through. For example, order a contains three stations because the second station is visited twice ({\hyperref[\detokenize{source/Defining_processes/defining_processes:first}]{\sphinxcrossref{\DUrole{std,std-ref}{see}}}}).
+
+\sphinxAtStartPar
+Once all orders have been defined, the graph is initially empty, because changes to the graph are only displayed when
+the \sphinxtitleref{refresh graph} button is clicked (internally, these changes are also saved without clicking the button). Clicking
+the refresh button results in the following graph:
+
+\noindent{\hspace*{\fill}\sphinxincludegraphics[width=1.000\linewidth]{{define_process_orders}.png}\hspace*{\fill}}
+
+\sphinxAtStartPar
+To change individual properties of an order or to assign user\sphinxhyphen{}defined attributes to the items of this order, click on
+the end storage (triangle) of this order in the graph and perform the needed changes in the opening dialog.
+
+\noindent{\hspace*{\fill}\sphinxincludegraphics[width=0.600\linewidth]{{define_process_change_order}.png}\hspace*{\fill}}
+
+
+\bigskip\hrule\bigskip
+
+
+
+\subsection{Change station}
+\label{\detokenize{source/Defining_processes/defining_processes:change-station}}\label{\detokenize{source/Defining_processes/defining_processes:dp-station}}
+\sphinxAtStartPar
+Similar to the orders, single stations can be clicked to change their properties. The opening dialog consists of three
+areas. In the upper area, the core properties (name, capacity, storage, measurement) of the station can be changed. In
+the second area, for each order in which the station is involved, the function that will be performed and whether
+machining or assembly will be performed can be specified. In the third area, user\sphinxhyphen{}defined attributes may be assigned to
+the station.
+
+\noindent{\hspace*{\fill}\sphinxincludegraphics[width=0.600\linewidth]{{define_process_change_station}.png}\hspace*{\fill}}
+
+\sphinxAtStartPar
+For example, components of orders a and c are to be assembled at the third station of order b ({\hyperref[\detokenize{source/Defining_processes/defining_processes:first}]{\sphinxcrossref{\DUrole{std,std-ref}{see}}}}). This
+can be defined in the dialog as follows:
+
+\noindent{\hspace*{\fill}\sphinxincludegraphics[width=0.600\linewidth]{{define_process_assembly}.png}\hspace*{\fill}}
+
+\sphinxAtStartPar
+In addition, the second station in job a is to be used twice and job b and c should share a station. This can be
+realized with the button \sphinxtitleref{combine stations}. By clicking on the button the following dialog opens:
+
+\noindent{\hspace*{\fill}\sphinxincludegraphics[width=0.600\linewidth]{{define_process_combine_stations}.png}\hspace*{\fill}}
+
+\sphinxAtStartPar
+The names of the two stations that will be combined into a single station can be entered here. The station in the
+second field will be deleted and replaced by the station in the first field. After carrying out the modifications
+described above, the graph can be refreshed by clicking refresh graph. The changes made ( assemblies and combined use
+of stations) appear in the graph.
+
+\noindent{\hspace*{\fill}\sphinxincludegraphics[width=1.000\linewidth]{{describe_process_update_graph}.png}\hspace*{\fill}}
+
+
+\bigskip\hrule\bigskip
+
+
+
+\subsection{Edit factory}
+\label{\detokenize{source/Defining_processes/defining_processes:edit-factory}}\label{\detokenize{source/Defining_processes/defining_processes:dp-factory}}
+\sphinxAtStartPar
+Finally, the properties of the \sphinxtitleref{factory} can be set. By clicking the button \sphinxtitleref{edit factory} the following dialog opens.
+
+\noindent{\hspace*{\fill}\sphinxincludegraphics[width=0.600\linewidth]{{decribe_process_factory}.png}\hspace*{\fill}}
+
+\sphinxAtStartPar
+All global functions and global attributes can be entered here.
+
+
+\bigskip\hrule\bigskip
+
+
+
+\subsection{Create files}
+\label{\detokenize{source/Defining_processes/defining_processes:create-files}}\label{\detokenize{source/Defining_processes/defining_processes:dp-files}}
+\sphinxAtStartPar
+Once the entire process has been defined as required, the corresponding output files must be created and saved. To do
+this, the following dialog can be opened by clicking the \sphinxtitleref{create files} button.
+
+\noindent{\hspace*{\fill}\sphinxincludegraphics[width=0.600\linewidth]{{define_process_create_files}.png}\hspace*{\fill}}
+
+\sphinxAtStartPar
+The first field contains the name of the project and the second field the path (relative or absolute) to the directory
+where the output files will be saved. Two files will be created. A JSON file containing the entire structure of the
+process and a python\sphinxhyphen{}script containing all necessary functions (sources and sinks, process models and global functions).
+These functions are empty and must be filled with the desired content before the simulation.
+
+\begin{sphinxadmonition}{warning}{Warning:}
+\sphinxAtStartPar
+No data is cached during the definition of a process, so closing the window deletes all data.
+\end{sphinxadmonition}
 
 
 \section{Examples}

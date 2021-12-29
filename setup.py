@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='ProdSim',
-    version='0.0.2',
+    version='0.1.0',
     description='ProdSim is a process-based discrete event simulation for production environments based on the '
                 'framework SimPy, for the generation of high resolution synthetic manufacturing data',
     long_description=open('README.md').read(),
@@ -12,8 +12,9 @@ setup(
         'simpy>=4.0.1',
         'dash>=2.0.0',
         'dash-cytoscape>=0.3.0',
-        'numpy>=1.21.2',
-        'h5py>=3.4.0',
+        'dash-bootstrap-components>=1.0.2',
+        'numpy>=1.21.5',
+        'h5py>=3.6.0',
         'dill>=0.3.4'
     ],
     classifiers=[

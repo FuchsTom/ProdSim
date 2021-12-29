@@ -83,4 +83,6 @@ Table of Contents
 
    ./source/Interface_files/interface
 
+   ./source/Defining_processes/defining_processes
+
    ./source/Examples/examples

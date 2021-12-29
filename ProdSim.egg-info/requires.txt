@@ -1,0 +1,7 @@
+simpy>=4.0.1
+dash>=2.0.0
+dash-cytoscape>=0.3.0
+dash-bootstrap-components>=1.0.2
+numpy>=1.21.5
+h5py>=3.6.0
+dill>=0.3.4

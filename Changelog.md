@@ -4,6 +4,18 @@
 
 All notable changes to this project will be documented in this file. 
 
+### 0.1.0 (2021-12-29)
+***
+
+**New Method**
+
+* ``define_process()``  was added to the simulation environment. Provides graphically supported process definition.
+
+**Restructured code**
+
+* The specific callback functions and the layout definitions have been relocated from the module 
+  ``prodsim/visualize.py`` to the directory ``prodsim/app/``. 
+
 ### 0.0.2 (2021-11-08)
 ***
 

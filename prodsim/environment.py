@@ -165,3 +165,11 @@ class Environment:
         Tracker.clear_tracked_orders()
         Tracker.clear_tracked_sim_obj()
         Helper.clear_ud_switch_dict()
+
+    def define_process(self) -> None:
+        """Launches an interactive web application to define a new production process.
+        This method initiates a local development app on a flask server on localhoast:8050.
+
+        """
+
+        self.__visualizer.define_process()

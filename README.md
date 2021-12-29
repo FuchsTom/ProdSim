@@ -68,7 +68,7 @@ if __name__ == '__main__':
 ---
 **NOTE**
 
-The program, as well as the installation described below, was tested for the operating systems Win10 and macOS.  A 
+The program, as well as the installation described below, was tested for the operating systems Win10 and macOS. A 
 current Python version (>=3.8.0) is required.
 
 ---
@@ -98,9 +98,9 @@ installed in other ways as desired, this is left to the user.
 
 1. Install ProdSim
   
-    macOS: ``pip install path_to_ProdSim/dist/ProdSim-0.0.2.tar.gz``
+    macOS: ``pip install path_to_ProdSim/dist/ProdSim-0.1.0.tar.gz``
 
-    Win10: ``pip install path_to_ProdSim\dist\ProdSim-0.0.2.tar.gz``
+    Win10: ``pip install path_to_ProdSim\dist\ProdSim-0.1.0.tar.gz``
 
 To check if the installation was successful, the following Python script can be created and executed outside the 
 ``ProdSim`` folder. Thereby the environment in which ProdSim was installed must be active. If the installation was not 
@@ -114,6 +114,9 @@ env = Environment()
 
 ---
 **NOTE**
+
+When using an old version of pip, a parse error may occur during installation. It is recommended to use the latest 
+version of pip. 
 
 Since ProdSim (including the required third party libraries) is installed in its own environment, it must be ensured 
 that the correct interpreter is selected when executing a script. 
@@ -146,14 +149,14 @@ The following packages are automatically installed in the current environment wh
 
 ## <a id="documentation"></a>Documentation
 
-A html version of the documentation can be called from the following file. Since other files (figures, ...) are called 
-from this file, it is only functional in the specified folder.  
+The documentation is hosted via read the docs: 
 
-`` /ProdSim/docs/_build/html/index.html ``
+`` https://prodsim.readthedocs.io/en/latest/index.html ``
 
-A pdf version of the documentation can be found under the following path:
+Alternatively, the documentation can be downloaded: 
 
-`` /ProdSim/docs/_build/latex/prodsim.pdf ``
+* pdf: `` /ProdSim/docs/_build/latex/prodsim.pdf ``
+* html: `` /ProdSim/docs/_build/html/index.html ``
 
 ## <a id="examples"></a>Examples
 
@@ -172,6 +175,7 @@ The complete source code can be found at ``/ProdSim/prodsim/`` and contains the 
 |--__pychache__/
 |--_estimate_process/
 |--_temp_data/
+|--app/
 |--components.py
 |--environment.py
 |--estimator.py

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulation output &mdash; ProdSim 0.1.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Defining processes" href="../Defining_processes/defining_processes.html" />
+    <link rel="prev" title="Attribute values" href="attribute_values.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> ProdSim
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../API/api.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="interface.html">Interface Files</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="data_file.html">Production structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function_file.html">Production functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attribute_values.html">Attribute values</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Simulation output</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general-structure">General structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-station">Output station</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-order">Output order</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-factory">Output factory</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Defining_processes/defining_processes.html">Defining processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Examples/examples.html">Examples</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ProdSim</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="interface.html">Interface Files</a> &raquo;</li>
+      <li>Simulation output</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="simulation-output">
+<span id="output-file"></span><h1>Simulation output<a class="headerlink" href="#simulation-output" title="Permalink to this headline"></a></h1>
+<p>Two predefined output formats are available: csv and hdf5. In both formats the output is provided in tabular form. In
+the case of csv, a file is created for each simulation object (station, order, factory) whose data should be saved. In
+the case of hdf5, a single file is created that contains a group for each simulation object.</p>
+<p>The <a class="reference internal" href="#general-structure"><span class="std std-ref">general structure</span></a> of the output files is described first, followed by the specifics for
+the individual simulation objects (<a class="reference internal" href="#output-station"><span class="std std-ref">station</span></a>, <a class="reference internal" href="#output-order"><span class="std std-ref">order</span></a>,
+<a class="reference internal" href="#output-factory"><span class="std std-ref">factory</span></a>).</p>
+<hr class="docutils" />
+<section id="general-structure">
+<span id="id1"></span><h2>General structure<a class="headerlink" href="#general-structure" title="Permalink to this headline"></a></h2>
+<p>The output files are in tabular form, to which rows are added during simulation. The first columns contain all
+user-defined attributes and the following columns contain some object (station, order, factory) specific information.</p>
+<p>For the tables of stations and orders it applies that for each processing that is carried out on a machine of a
+station, the corresponding table of the order and the station are extended by a row that containing the relevant
+information regarding the time point at which the respective interaction is completed. Whereas the factory table is
+extended by one row after each call of a global function.</p>
+<hr class="docutils" />
+</section>
+<section id="output-station">
+<span id="id2"></span><h2>Output station<a class="headerlink" href="#output-station" title="Permalink to this headline"></a></h2>
+<p>The first columns contain the respective user-defined values of the station attributes. While the last two columns
+contain the machine number and the current simulation time.</p>
+<a class="reference internal image-reference" href="../../_images/output_file_station.png"><img alt="output_file_station" class="align-center" src="../../_images/output_file_station.png" style="width: 80%;" /></a>
+<p>The <strong>machine number</strong> corresponds to the index of the machine of a station. The index starts for each station with
+zero and can be read during the simulation to implement machine specific behavior.</p>
+<p>The simulation <strong>time</strong> corresponds to the time point in which a machining or assembly operation was completed
+successfully at a machine.</p>
+<hr class="docutils" />
+</section>
+<section id="output-order">
+<span id="id3"></span><h2>Output order<a class="headerlink" href="#output-order" title="Permalink to this headline"></a></h2>
+<p>Similar to the output files of the other simulation objects, the first columns contain the values of the user-defined
+attributes. The following columns contain the item ID, assembly comp, station ID and simulation time.</p>
+<a class="reference internal image-reference" href="../../_images/output_file_order.png"><img alt="output_file_station" class="align-center" src="../../_images/output_file_order.png" style="width: 80%;" /></a>
+<p>The <strong>item ID</strong> is a unique integer ID increasing throughout the simulation.</p>
+<p>The column <strong>comp</strong> is only included if items of the order are assembled to items of another order in the process. The
+column contains the unique item ID of the item to which the item referred to in the column is assembled.  If the item
+is not assembled in the first stage, the value nan will appear in the rows created before this assembly.</p>
+<p>The <strong>station ID</strong> is the ID of the station at which the corresponding row was added. The station ID is assigned
+automatically and corresponds to the index position (starting with 0) of the station in the input JSON file.
+Additionally, there is the index <em>-1</em>. This index corresponds to the rows that are added directly after the creation of
+new items in the source.</p>
+<p>The simulation <strong>time</strong> corresponds to the time point in which a item was processed successfully at a machine.</p>
+<hr class="docutils" />
+</section>
+<section id="output-factory">
+<span id="id4"></span><h2>Output factory<a class="headerlink" href="#output-factory" title="Permalink to this headline"></a></h2>
+<p>The first columns contain the values of the user-defined global attributes. While the last column contains the
+simulation time at which the attribute values of the attributes were recorded.</p>
+<a class="reference internal image-reference" href="../../_images/output_file_factory.png"><img alt="output_file_station" class="align-center" src="../../_images/output_file_factory.png" style="width: 80%;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Different from the stations and the orders, a row is created after each execution of a global function. If there are
+no global functions, no rows are added. In this case an <em>empty</em> global function can be created, which only yields
+timeouts in required time steps.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="attribute_values.html" class="btn btn-neutral float-left" title="Attribute values" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Defining_processes/defining_processes.html" class="btn btn-neutral float-right" title="Defining processes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Tom Fuchs.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
